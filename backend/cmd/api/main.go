@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"os"
 
@@ -61,15 +60,10 @@ func handleCommand(command string) {
 		logger.Info().Msg("✅ Database reset completed")
 
 	case "version":
-		fmt.Println("WebifyLab Backend v1.0.0")
+		logger.Info().Msg("WebifyLab Backend v1.0.0")
 
 	default:
 		logger.Error().Str("command", command).Msg("Unknown command")
-		fmt.Println("Available commands:")
-		fmt.Println("  migrate   - Run all pending migrations")
-		fmt.Println("  rollback  - Rollback last migration")
-		fmt.Println("  reset     - Drop and re-create all tables")
-		fmt.Println("  version   - Show version")
 		os.Exit(1)
 	}
 }
@@ -82,32 +76,50 @@ func startServer() {
 
 	// Setup database connection
 	config.SetupDatabase()
-
 	logger.Info().Msg("✅ Database connected")
 
-	// Auto-migrate in development only (NOT in production!)
+	// Auto-migrate in development only
 	if config.AppConfig.AppEnv == "development" {
 		logger.Info().Msg("🔄 Running auto-migration (development mode)...")
 		if err := migration.RunMigrations(); err != nil {
 			logger.Warn().Err(err).Msg("⚠️  Auto-migration failed, continuing...")
 		}
-	} else {
-		logger.Info().Msg("⏭️  Skipping auto-migration (production mode)")
 	}
 
 	// Setup Gin Router
 	router := gin.Default()
 
-	// Apply request logger middleware
+	// ============================================
+	// MIDDLEWARE STACK (ORDER MATTERS!)
+	// ============================================
+	// 1. CORS (first, so preflight OPTIONS works)
+	router.Use(middleware.SetupCORS())
+
+	// 2. Request Logger (after CORS, so we log actual requests)
 	router.Use(middleware.RequestLogger())
 
-	// Health Check Endpoint
+	// ============================================
+	// PUBLIC ROUTES
+	// ============================================
 	router.GET("/api/v1/health", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"status":  "success",
 			"message": "WebifyLab API is running 🚀",
 			"service": "backend",
 			"env":     config.AppConfig.AppEnv,
+		})
+	})
+
+	// CORS test endpoint (untuk verifikasi CORS headers)
+	router.GET("/api/v1/cors-test", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"success": true,
+			"message": "CORS is working correctly",
+			"data": map[string]interface{}{
+				"origin":       c.GetHeader("Origin"),
+				"env":          config.AppConfig.AppEnv,
+				"cors_enabled": true,
+			},
 		})
 	})
 
