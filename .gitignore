@@ -1,0 +1,65 @@
+# ==========================================
+# WebifyLab Portal - Global .gitignore
+# ==========================================
+
+# Dependencies
+node_modules/
+vendor/
+
+# Build outputs
+.next/
+dist/
+build/
+out/
+
+# Environment variables (RAHASIA!)
+.env
+.env.local
+.env.*.local
+.env.production
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Docker & Deployment artifacts
+*.tar.gz
+frontend.tar.gz
+backend.tar.gz
+
+# Local Uploads (keep the folder structure, ignore contents)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Database backups & dumps
+*.sql
+*.sql.gz
+*.dump
+
+# Go specific
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+test
+coverage.out
