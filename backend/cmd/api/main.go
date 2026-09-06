@@ -1,12 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"os"
 
 	"webifylab-backend/internal/config"
 	"webifylab-backend/internal/middleware"
+	"webifylab-backend/internal/models"
 	"webifylab-backend/pkg/logger"
 
 	"github.com/gin-gonic/gin"
@@ -33,7 +33,18 @@ func main() {
 	// Setup database connection
 	config.SetupDatabase()
 
-	logger.Info().Msg("✅ Database connected")
+	logger.Info().Msg("Database connected")
+
+	// Auto-migrate database (ONLY in development!)
+	if config.AppConfig.AppEnv == "development" {
+		logger.Info().Msg("Running auto-migration...")
+		if err := config.DB.AutoMigrate(models.AllModels()...); err != nil {
+			logger.Fatal().Err(err).Msg("❌ Failed to migrate database")
+		}
+		logger.Info().Msg("Database migrated successfully")
+	} else {
+		logger.Info().Msg("⏭Skipping auto-migration (production mode)")
+	}
 
 	// Setup Gin Router
 	router := gin.Default()
@@ -51,24 +62,14 @@ func main() {
 		})
 	})
 
-	// Test error logging (hapus setelah test)
-router.GET("/api/v1/test-error", func(c *gin.Context) {
-	err := fmt.Errorf("this is a test error")
-	logger.LogError(err, "Test error occurred")
-	
-	c.JSON(http.StatusInternalServerError, gin.H{
-		"error": "test error",
-	})
-})
-
 	// Determine port
 	port := config.AppConfig.AppPort
 	if port == "" {
 		port = "8080"
 	}
 
-	logger.Info().Str("port", port).Msg("🌐 Server listening")
+	logger.Info().Str("port", port).Msg("Server listening")
 	if err := router.Run(":" + port); err != nil {
-		logger.Fatal().Err(err).Msg("❌ Failed to start server")
+		logger.Fatal().Err(err).Msg("Failed to start server")
 	}
 }
