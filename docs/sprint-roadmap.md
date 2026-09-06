@@ -1,20 +1,21 @@
 # 📄 SPRINT ROADMAP & PLANNING DOCUMENT
+
 ## WebifyLab Portal — Phase 1 (MVP)
 
 ---
 
 ### 1. INFORMASI DOKUMEN
 
-| Field | Detail |
-|---|---|
-| **Produk** | WebifyLab Portal |
-| **Tipe Dokumen** | Sprint Roadmap & Planning |
-| **Versi** | 1.0.0 |
-| **Tanggal** | 05 September 2026 |
-| **Durasi Total** | 12 minggu (6 sprint × 2 minggu) |
-| **Metodologi** | Agile Scrum (Solo Developer) |
-| **Penulis** | Rizal (System Analyst & Fullstack Developer) |
-| **Status** | Approved — Ready for Execution |
+| Field            | Detail                                       |
+| ---------------- | -------------------------------------------- |
+| **Produk**       | WebifyLab Portal                             |
+| **Tipe Dokumen** | Sprint Roadmap & Planning                    |
+| **Versi**        | 1.0.0                                        |
+| **Tanggal**      | 05 September 2026                            |
+| **Durasi Total** | 12 minggu (6 sprint × 2 minggu)              |
+| **Metodologi**   | Agile Scrum (Solo Developer)                 |
+| **Penulis**      | Rizal (System Analyst & Fullstack Developer) |
+| **Status**       | Approved — Ready for Execution               |
 
 ---
 
@@ -36,29 +37,29 @@ Sprint 6:                                                              ███
 
 #### 2.2 Daftar Sprint
 
-| Sprint | Nama | Durasi | Fokus Utama | Deliverable |
-|---|---|---|---|---|
-| **Sprint 0** | Pre-Development Setup | 1 minggu | Setup infrastruktur & repository | Monorepo siap, VPS siap |
-| **Sprint 1** | Backend Foundation | 2 minggu | Golang project + Auth API | API auth berfungsi |
-| **Sprint 2** | Content API | 2 minggu | CRUD API untuk semua content | 30+ endpoints siap |
-| **Sprint 3** | Frontend Public | 2 minggu | Next.js + semua halaman publik | 11 halaman publik live |
-| **Sprint 4** | Admin Dashboard | 2 minggu | CMS dashboard lengkap | Admin bisa manage content |
-| **Sprint 5** | Integration & Polish | 2 minggu | Integrasi + optimasi + email | Semua fitur terintegrasi |
-| **Sprint 6** | Testing & Launch | 1 minggu | QA + deployment + launch | Portal live! 🚀 |
+| Sprint       | Nama                  | Durasi   | Fokus Utama                      | Deliverable               |
+| ------------ | --------------------- | -------- | -------------------------------- | ------------------------- |
+| **Sprint 0** | Pre-Development Setup | 1 minggu | Setup infrastruktur & repository | Monorepo siap, VPS siap   |
+| **Sprint 1** | Backend Foundation    | 2 minggu | Golang project + Auth API        | API auth berfungsi        |
+| **Sprint 2** | Content API           | 2 minggu | CRUD API untuk semua content     | 30+ endpoints siap        |
+| **Sprint 3** | Frontend Public       | 2 minggu | Next.js + semua halaman publik   | 11 halaman publik live    |
+| **Sprint 4** | Admin Dashboard       | 2 minggu | CMS dashboard lengkap            | Admin bisa manage content |
+| **Sprint 5** | Integration & Polish  | 2 minggu | Integrasi + optimasi + email     | Semua fitur terintegrasi  |
+| **Sprint 6** | Testing & Launch      | 1 minggu | QA + deployment + launch         | Portal live! 🚀           |
 
 **Total Durasi:** 12 minggu
 
 #### 2.3 Milestone Utama
 
-| Milestone | Target Tanggal | Kriteria |
-|---|---|---|
-| 🏁 **M1: Infrastructure Ready** | Akhir Minggu 1 | Monorepo siap, VPS clean, DNS & SSL aktif |
-| 🏁 **M2: API Core Ready** | Akhir Minggu 3 | Auth API + database connected |
-| 🏁 **M3: Content API Complete** | Akhir Minggu 5 | Semua CRUD API berfungsi |
-| 🏁 **M4: Public Pages Live** | Akhir Minggu 7 | Semua halaman publik bisa diakses |
-| 🏁 **M5: Admin Dashboard Complete** | Akhir Minggu 9 | CMS bisa manage semua content |
-| 🏁 **M6: Feature Complete** | Akhir Minggu 11 | Semua fitur terintegrasi |
-| 🏁 **M7: LAUNCH!** | Akhir Minggu 12 | Portal live di webifylab.my.id |
+| Milestone                           | Target Tanggal  | Kriteria                                  |
+| ----------------------------------- | --------------- | ----------------------------------------- |
+| 🏁 **M1: Infrastructure Ready**     | Akhir Minggu 1  | Monorepo siap, VPS clean, DNS & SSL aktif |
+| 🏁 **M2: API Core Ready**           | Akhir Minggu 3  | Auth API + database connected             |
+| 🏁 **M3: Content API Complete**     | Akhir Minggu 5  | Semua CRUD API berfungsi                  |
+| 🏁 **M4: Public Pages Live**        | Akhir Minggu 7  | Semua halaman publik bisa diakses         |
+| 🏁 **M5: Admin Dashboard Complete** | Akhir Minggu 9  | CMS bisa manage semua content             |
+| 🏁 **M6: Feature Complete**         | Akhir Minggu 11 | Semua fitur terintegrasi                  |
+| 🏁 **M7: LAUNCH!**                  | Akhir Minggu 12 | Portal live di webifylab.my.id            |
 
 #### 2.4 Definition of Done (DoD)
 
@@ -98,6 +99,7 @@ Setiap pagi, tanyakan ke diri sendiri:
 ---
 
 ### 3. SPRINT 0: PRE-DEVELOPMENT SETUP
+
 **Durasi:** 1 minggu  
 **Fokus:** Setup infrastruktur, repository, dan environment development  
 **Goal:** Semua fondasi siap sebelum coding dimulai
@@ -108,85 +110,85 @@ Setiap pagi, tanyakan ke diri sendiri:
 
 ##### 🗂️ Kategori: Infrastructure & VPS
 
-- [ ] **TASK-001: Hapus previous deployment dari VPS**
+- [x] **TASK-001: Hapus previous deployment dari VPS**
   - **Estimasi:** 2 jam
   - **Prioritas:** 🔴 Tinggi
   - **Dependencies:** Tidak ada
   - **Detail:**
-    - [ ] Stop semua container yang berjalan (`docker-compose down`)
-    - [ ] Backup database lama jika perlu (`docker exec ... pg_dump`)
-    - [ ] Hapus container dan image lama (`docker container prune`, `docker image prune`)
-    - [ ] Hapus volume lama (`docker volume rm`)
-    - [ ] Hapus files deployment lama (`rm -rf /var/www/old-webifylab/*`)
-    - [ ] Verifikasi VPS dalam keadaan bersih (`docker ps` kosong)
+    - [x] Stop semua container yang berjalan (`docker-compose down`)
+    - [x] Backup database lama jika perlu (`docker exec ... pg_dump`)
+    - [x] Hapus container dan image lama (`docker container prune`, `docker image prune`)
+    - [x] Hapus volume lama (`docker volume rm`)
+    - [x] Hapus files deployment lama (`rm -rf /var/www/old-webifylab/*`)
+    - [x] Verifikasi VPS dalam keadaan bersih (`docker ps` kosong)
   - **Acceptance Criteria:**
     - VPS dalam keadaan bersih, tidak ada container berjalan
     - Storage dan RAM tersedia untuk deployment baru
 
-- [ ] **TASK-002: Setup DNS A record untuk api.webifylab.my.id**
+- [x] **TASK-002: Setup DNS A record untuk api.webifylab.my.id**
   - **Estimasi:** 1 jam
   - **Prioritas:** 🔴 Tinggi
   - **Dependencies:** Tidak ada
   - **Detail:**
-    - [ ] Login ke DNS provider (domain registrar)
-    - [ ] Tambahkan A record: `api` → IP VPS
-    - [ ] Tunggu propagation (1-24 jam)
-    - [ ] Verifikasi dengan `nslookup api.webifylab.my.id` atau `dig`
+    - [x] Login ke DNS provider (domain registrar)
+    - [x] Tambahkan A record: `api` → IP VPS
+    - [x] Tunggu propagation (1-24 jam)
+    - [x] Verifikasi dengan `nslookup api.webifylab.my.id` atau `dig`
   - **Acceptance Criteria:**
     - `api.webifylab.my.id` resolve ke IP VPS
     - `curl http://api.webifylab.my.id` bisa diakses (meski belum ada content)
 
-- [ ] **TASK-003: Setup SSL certificate untuk api.webifylab.my.id**
+- [x] **TASK-003: Setup SSL certificate untuk api.webifylab.my.id**
   - **Estimasi:** 1 jam
   - **Prioritas:** 🔴 Tinggi
   - **Dependencies:** TASK-002 (DNS sudah propagate)
   - **Detail:**
-    - [ ] Install Certbot jika belum (`sudo apt install certbot`)
-    - [ ] Generate SSL untuk api subdomain: `sudo certbot certonly --standalone -d api.webifylab.my.id`
-    - [ ] Verifikasi certificate ter-generate di `/etc/letsencrypt/live/api.webifylab.my.id/`
-    - [ ] Setup auto-renew: `sudo crontab -e` → `0 3 * * * certbot renew --quiet`
+    - [x] Install Certbot jika belum (`sudo apt install certbot`)
+    - [x] Generate SSL untuk api subdomain: `sudo certbot certonly --standalone -d api.webifylab.my.id`
+    - [x] Verifikasi certificate ter-generate di `/etc/letsencrypt/live/api.webifylab.my.id/`
+    - [x] Setup auto-renew: `sudo crontab -e` → `0 3 * * * certbot renew --quiet`
   - **Acceptance Criteria:**
     - SSL certificate valid untuk api.webifylab.my.id
     - Auto-renew sudah dikonfigurasi
 
-- [ ] **TASK-004: Setup swap space di VPS**
+- [x] **TASK-004: Setup swap space di VPS**
   - **Estimasi:** 30 menit
   - **Prioritas:** 🔴 Tinggi
   - **Dependencies:** Tidak ada
   - **Detail:**
-    - [ ] Buat swap file 2GB: `sudo fallocate -l 2G /swapfile`
-    - [ ] Set permissions: `sudo chmod 600 /swapfile`
-    - [ ] Format swap: `sudo mkswap /swapfile`
-    - [ ] Enable swap: `sudo swapon /swapfile`
-    - [ ] Persist di fstab: `echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab`
-    - [ ] Set swappiness: `sudo sysctl vm.swappiness=10`
+    - [x] Buat swap file 2GB: `sudo fallocate -l 2G /swapfile`
+    - [x] Set permissions: `sudo chmod 600 /swapfile`
+    - [x] Format swap: `sudo mkswap /swapfile`
+    - [x] Enable swap: `sudo swapon /swapfile`
+    - [x] Persist di fstab: `echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab`
+    - [x] Set swappiness: `sudo sysctl vm.swappiness=10`
   - **Acceptance Criteria:**
     - `free -h` menunjukkan swap 2GB aktif
     - Swappiness = 10
 
-- [ ] **TASK-005: Verifikasi Docker dan Nginx di VPS**
+- [x] **TASK-005: Verifikasi Docker dan Nginx di VPS**
   - **Estimasi:** 30 menit
   - **Prioritas:** 🔴 Tinggi
   - **Dependencies:** Tidak ada
   - **Detail:**
-    - [ ] Cek Docker: `docker --version` dan `docker compose version`
-    - [ ] Cek Nginx: `nginx -v` dan `sudo systemctl status nginx`
-    - [ ] Pastikan Nginx berjalan: `sudo systemctl start nginx`
-    - [ ] Test Nginx default page: `curl http://localhost`
+    - [x] Cek Docker: `docker --version` dan `docker compose version`
+    - [x] Cek Nginx: `nginx -v` dan `sudo systemctl status nginx`
+    - [x] Pastikan Nginx berjalan: `sudo systemctl start nginx`
+    - [x] Test Nginx default page: `curl http://localhost`
   - **Acceptance Criteria:**
     - Docker dan Docker Compose terinstall dan berfungsi
     - Nginx berjalan dan bisa serve halaman default
 
 ##### 🗂️ Kategori: Repository Setup
 
-- [ ] **TASK-006: Init monorepo repository**
+- [x] **TASK-006: Init monorepo repository**
   - **Estimasi:** 2 jam
   - **Prioritas:** 🔴 Tinggi
   - **Dependencies:** Tidak ada
   - **Detail:**
-    - [ ] Buat folder project: `mkdir webifylab-portal && cd webifylab-portal`
-    - [ ] Init git: `git init`
-    - [ ] Buat struktur folder:
+    - [x] Buat folder project: `mkdir webifylab-portal && cd webifylab-portal`
+    - [x] Init git: `git init`
+    - [x] Buat struktur folder:
       ```
       webifylab-portal/
       ├── frontend/
@@ -198,71 +200,73 @@ Setiap pagi, tanyakan ke diri sendiri:
       ├── docs/
       └── .github/
       ```
-    - [ ] Buat file root:
-      - [ ] `README.md` — Project overview
-      - [ ] `.gitignore` — Global gitignore
-      - [ ] `.env.example` — Environment variables template
-      - [ ] `docker-compose.yml` — Docker orchestration
-      - [ ] `docker-compose.dev.yml` — Development overrides
-      - [ ] `Makefile` — Common commands
-    - [ ] Commit awal: `git add . && git commit -m "chore: init monorepo structure"`
+    - [x] Buat file root:
+      - [x] `README.md` — Project overview
+      - [x] `.gitignore` — Global gitignore
+      - [x] `.env.example` — Environment variables template
+      - [x] `docker-compose.yml` — Docker orchestration
+      - [-] `docker-compose.dev.yml` — Development overrides
+      - [x] `Makefile` — Common commands
+    - [x] Commit awal: `git add . && git commit -m "chore: init monorepo structure"`
   - **Acceptance Criteria:**
     - Struktur folder sesuai dengan Database Schema Document
     - Semua file root sudah ada
     - Git repository ter-initialize
 
-- [ ] **TASK-007: Setup .gitignore**
+- [x] **TASK-007: Setup .gitignore**
   - **Estimasi:** 30 menit
   - **Prioritas:** 🟡 Sedang
   - **Dependencies:** TASK-006
   - **Detail:**
-    - [ ] Buat `.gitignore` di root:
+    - [x] Buat `.gitignore` di root:
+
       ```
       # Dependencies
       node_modules/
       vendor/
-      
+
       # Build outputs
       .next/
       dist/
       build/
-      
+
       # Environment
       .env
       .env.local
       .env.*.local
-      
+
       # Logs
       *.log
       logs/
-      
+
       # OS files
       .DS_Store
       Thumbs.db
-      
+
       # IDE
       .vscode/
       .idea/
-      
+
       # Docker
       *.tar.gz
-      
+
       # Uploads (local development)
       backend/uploads/*
       !backend/uploads/.gitkeep
-      
+
       # Database
       *.sql.gz
       ```
+
   - **Acceptance Criteria:**
     - File-file sensitive tidak ter-commit ke git
 
-- [ ] **TASK-008: Setup Makefile dengan common commands**
+- [x] **TASK-008: Setup Makefile dengan common commands**
   - **Estimasi:** 2 jam
   - **Prioritas:** 🟡 Sedang
   - **Dependencies:** TASK-006
   - **Detail:**
-    - [ ] Buat `Makefile` dengan commands:
+    - [x] Buat `Makefile` dengan commands:
       - `make dev` — Start development environment
       - `make build` — Build all Docker images
       - `make up` — Start all containers
@@ -272,76 +276,79 @@ Setiap pagi, tanyakan ke diri sendiri:
       - `make seed` — Seed initial data
       - `make deploy` — Full deployment pipeline
       - `make backup` — Backup database + uploads
-    - [ ] Test semua commands berjalan tanpa error
+    - [x] Test semua commands berjalan tanpa error
   - **Acceptance Criteria:**
     - Semua commands di Makefile berfungsi
     - Dokumentasi commands ada di README.md
 
-- [ ] **TASK-009: Setup docker-compose.yml**
+- [x] **TASK-009: Setup docker-compose.yml**
   - **Estimasi:** 2 jam
   - **Prioritas:** 🔴 Tinggi
   - **Dependencies:** TASK-006
   - **Detail:**
-    - [ ] Buat `docker-compose.yml` dengan 3 services:
+    - [x] Buat `docker-compose.yml` dengan 3 services:
       - `frontend` (Next.js)
       - `backend` (Golang)
       - `postgres` (PostgreSQL 15)
-    - [ ] Konfigurasi network: `webifylab-network`
-    - [ ] Konfigurasi volumes: `pgdata`, `uploads`
-    - [ ] Memory limits sesuai PRD:
+    - [x] Konfigurasi network: `webifylab-network`
+    - [x] Konfigurasi volumes: `pgdata`, `uploads`
+    - [x] Memory limits sesuai PRD:
       - frontend: 350MB
       - backend: 150MB
       - postgres: 200MB
-    - [ ] Healthcheck untuk postgres
-    - [ ] Test dengan `docker-compose config`
+    - [x] Healthcheck untuk postgres
+    - [x] Test dengan `docker-compose config`
   - **Acceptance Criteria:**
     - `docker-compose config` valid tanpa error
     - Struktur sesuai dengan API Specification Document
 
-- [ ] **TASK-010: Setup .env.example**
+- [x] **TASK-010: Setup .env.example**
   - **Estimasi:** 30 menit
   - **Prioritas:** 🔴 Tinggi
   - **Dependencies:** TASK-006
   - **Detail:**
-    - [ ] Buat `.env.example` dengan semua variables yang dibutuhkan:
+    - [x] Buat `.env.example` dengan semua variables yang dibutuhkan:
+
       ```
       # Application
       APP_ENV=production
       SITE_URL=https://webifylab.my.id
       API_URL=https://api.webifylab.my.id
-      
+
       # Database
       DB_USER=webifylab
       DB_PASSWORD=
       DB_NAME=webifylab
-      
+
       # JWT
       JWT_SECRET=
-      
+
       # Resend
       RESEND_API_KEY=
       ADMIN_EMAIL=admin@webifylab.my.id
       ```
-    - [ ] Buat `.env` lokal untuk development (tidak di-commit)
-    - [ ] Generate JWT secret: `openssl rand -base64 32`
+
+    - [x] Buat `.env` lokal untuk development (tidak di-commit)
+    - [x] Generate JWT secret: `openssl rand -base64 32`
+
   - **Acceptance Criteria:**
     - Template .env.example lengkap
     - .env lokal sudah terisi untuk development
 
 ##### 🗂️ Kategori: Local Development Environment
 
-- [ ] **TASK-011: Verifikasi local development tools**
+- [x] **TASK-011: Verifikasi local development tools**
   - **Estimasi:** 1 jam
   - **Prioritas:** 🔴 Tinggi
   - **Dependencies:** Tidak ada
   - **Detail:**
-    - [ ] Cek Node.js: `node --version` (minimal v20)
-    - [ ] Cek npm: `npm --version`
-    - [ ] Cek Go: `go version` (minimal 1.22)
-    - [ ] Cek Docker Desktop: `docker --version` (jika pakai)
-    - [ ] Cek Git: `git --version`
-    - [ ] Cek code editor (VS Code / lainnya)
-    - [ ] Install extensions yang dibutuhkan:
+    - [x] Cek Node.js: `node --version` (minimal v20)
+    - [x] Cek npm: `npm --version`
+    - [x] Cek Go: `go version` (minimal 1.22)
+    - [x] Cek Docker Desktop: `docker --version` (jika pakai)
+    - [x] Cek Git: `git --version`
+    - [x] Cek code editor (VS Code / lainnya)
+    - [x] Install extensions yang dibutuhkan:
       - Go (untuk Golang)
       - ESLint + Prettier (untuk Next.js)
       - Docker (untuk Docker)
@@ -349,50 +356,50 @@ Setiap pagi, tanyakan ke diri sendiri:
     - Semua tools terinstall dengan versi yang sesuai
     - Laptop 16GB RAM cukup untuk build
 
-- [ ] **TASK-012: Setup PostgreSQL lokal untuk development**
+- [x] **TASK-012: Setup PostgreSQL lokal untuk development**
   - **Estimasi:** 1 jam
   - **Prioritas:** 🟡 Sedang
   - **Dependencies:** TASK-011
   - **Detail:**
-    - [ ] Option A: Install PostgreSQL lokal
-      - [ ] Install PostgreSQL 15
-      - [ ] Buat database: `createdb webifylab_dev`
-      - [ ] Buat user: `createuser webifylab_dev`
-    - [ ] Option B: Pakai Docker untuk PostgreSQL
-      - [ ] `docker run -d --name webifylab-postgres -e POSTGRES_DB=webifylab_dev -e POSTGRES_PASSWORD=dev -p 5432:5432 postgres:15-alpine`
-    - [ ] Test koneksi: `psql -U webifylab_dev -d webifylab_dev -h localhost`
+    - [x] Option A: Install PostgreSQL lokal
+      - [x] Install PostgreSQL 15
+      - [x] Buat database: `createdb webifylab_dev`
+      - [x] Buat user: `createuser webifylab_dev`
+    - [-] Option B: Pakai Docker untuk PostgreSQL
+      - [-] `docker run -d --name webifylab-postgres -e POSTGRES_DB=webifylab_dev -e POSTGRES_PASSWORD=dev -p 5432:5432 postgres:15-alpine`
+    - [x] Test koneksi: `psql -U webifylab_dev -d webifylab_dev -h localhost`
   - **Acceptance Criteria:**
     - PostgreSQL bisa diakses dari lokal
     - Database `webifylab_dev` siap digunakan
 
 ##### 🗂️ Kategori: Documentation
 
-- [ ] **TASK-013: Update README.md dengan project overview**
+- [x] **TASK-013: Update README.md dengan project overview**
   - **Estimasi:** 1 jam
   - **Prioritas:** 🟡 Sedang
   - **Dependencies:** TASK-006
   - **Detail:**
-    - [ ] Tulis overview project
-    - [ ] Tulis tech stack
-    - [ ] Tulis cara setup local development
-    - [ ] Tulis cara deployment
-    - [ ] Tulis struktur folder
-    - [ ] Link ke dokumen lain (PRD, Database Schema, API Spec, Design Spec)
+    - [x] Tulis overview project
+    - [x] Tulis tech stack
+    - [x] Tulis cara setup local development
+    - [x] Tulis cara deployment
+    - [x] Tulis struktur folder
+    - [x] Link ke dokumen lain (PRD, Database Schema, API Spec, Design Spec)
   - **Acceptance Criteria:**
     - README.md informatif dan lengkap
     - New developer bisa setup project hanya dengan membaca README
 
-- [ ] **TASK-014: Simpan semua dokumen di folder /docs**
+- [x] **TASK-014: Simpan semua dokumen di folder /docs**
   - **Estimasi:** 30 menit
   - **Prioritas:** 🟡 Sedang
   - **Dependencies:** TASK-006
   - **Detail:**
-    - [ ] Copy PRD ke `/docs/PRD.md`
-    - [ ] Copy Database Schema ke `/docs/DATABASE_SCHEMA.md`
-    - [ ] Copy API Specification ke `/docs/API_SPECIFICATION.md`
-    - [ ] Copy Design Specification ke `/docs/DESIGN_SPECIFICATION.md`
-    - [ ] Copy Sprint Roadmap ini ke `/docs/SPRINT_ROADMAP.md`
-    - [ ] Commit semua dokumen
+    - [x] Copy PRD ke `/docs/PRD.md`
+    - [x] Copy Database Schema ke `/docs/DATABASE_SCHEMA.md`
+    - [x] Copy API Specification ke `/docs/API_SPECIFICATION.md`
+    - [x] Copy Design Specification ke `/docs/DESIGN_SPECIFICATION.md`
+    - [x] Copy Sprint Roadmap ini ke `/docs/SPRINT_ROADMAP.md`
+    - [x] Commit semua dokumen
   - **Acceptance Criteria:**
     - Semua dokumen terpusat di `/docs`
     - Mudah diakses saat development
@@ -401,13 +408,13 @@ Setiap pagi, tanyakan ke diri sendiri:
 
 #### 3.2 Sprint 0 Summary
 
-| Kategori | Jumlah Task | Estimasi Total |
-|---|---|---|
-| Infrastructure & VPS | 5 tasks | 6 jam |
-| Repository Setup | 5 tasks | 7 jam |
-| Local Development | 2 tasks | 2 jam |
-| Documentation | 2 tasks | 1.5 jam |
-| **TOTAL** | **14 tasks** | **~16.5 jam** |
+| Kategori             | Jumlah Task  | Estimasi Total |
+| -------------------- | ------------ | -------------- |
+| Infrastructure & VPS | 5 tasks      | 6 jam          |
+| Repository Setup     | 5 tasks      | 7 jam          |
+| Local Development    | 2 tasks      | 2 jam          |
+| Documentation        | 2 tasks      | 1.5 jam        |
+| **TOTAL**            | **14 tasks** | **~16.5 jam**  |
 
 **Sprint 0 Progress Tracker:**
 
@@ -415,29 +422,30 @@ Setiap pagi, tanyakan ke diri sendiri:
 ┌─────────────────────────────────────────────────────────────┐
 │  SPRINT 0 PROGRESS                                          │
 ├─────────────────────────────────────────────────────────────┤
-│  [ ] TASK-001: Hapus previous deployment                    │
-│  [ ] TASK-002: Setup DNS A record                           │
-│  [ ] TASK-003: Setup SSL certificate                        │
-│  [ ] TASK-004: Setup swap space                             │
-│  [ ] TASK-005: Verifikasi Docker & Nginx                    │
-│  [ ] TASK-006: Init monorepo repository                     │
-│  [ ] TASK-007: Setup .gitignore                             │
-│  [ ] TASK-008: Setup Makefile                               │
-│  [ ] TASK-009: Setup docker-compose.yml                     │
-│  [ ] TASK-010: Setup .env.example                           │
-│  [ ] TASK-011: Verifikasi local tools                       │
-│  [ ] TASK-012: Setup PostgreSQL lokal                       │
-│  [ ] TASK-013: Update README.md                             │
-│  [ ] TASK-014: Simpan dokumen di /docs                      │
+│  [x] TASK-001: Hapus previous deployment                    │
+│  [x] TASK-002: Setup DNS A record                           │
+│  [x] TASK-003: Setup SSL certificate                        │
+│  [x] TASK-004: Setup swap space                             │
+│  [x] TASK-005: Verifikasi Docker & Nginx                    │
+│  [x] TASK-006: Init monorepo repository                     │
+│  [x] TASK-007: Setup .gitignore                             │
+│  [x] TASK-008: Setup Makefile                               │
+│  [x] TASK-009: Setup docker-compose.yml                     │
+│  [x] TASK-010: Setup .env.example                           │
+│  [x] TASK-011: Verifikasi local tools                       │
+│  [x] TASK-012: Setup PostgreSQL lokal                       │
+│  [x] TASK-013: Update README.md                             │
+│  [x] TASK-014: Simpan dokumen di /docs                      │
 ├─────────────────────────────────────────────────────────────┤
-│  PROGRESS: 0/14 tasks (0%)                                  │
-│  ████████████████████████████████████████████████████████   │
+│  PROGRESS: 14/14 tasks (100%)                               │
+│  █████████████████████████████████████████████████████████  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
 ### 4. SPRINT 1: BACKEND FOUNDATION
+
 **Durasi:** 2 minggu  
 **Fokus:** Setup Golang project, database connection, dan Auth API  
 **Goal:** Backend API dasar berfungsi dengan authentication
@@ -448,14 +456,14 @@ Setiap pagi, tanyakan ke diri sendiri:
 
 ##### 🗂️ Kategori: Golang Project Setup
 
-- [ ] **TASK-101: Init Golang project structure**
+- [x] **TASK-101: Init Golang project structure**
   - **Estimasi:** 3 jam
   - **Prioritas:** 🔴 Tinggi
   - **Dependencies:** Sprint 0 selesai
   - **Detail:**
-    - [ ] Buat folder `backend/`
-    - [ ] Init Go module: `go mod init webifylab`
-    - [ ] Buat struktur folder sesuai Database Schema Document:
+    - [x] Buat folder `backend/`
+    - [x] Init Go module: `go mod init webifylab`
+    - [x] Buat struktur folder sesuai Database Schema Document:
       ```
       backend/
       ├── cmd/
@@ -482,7 +490,7 @@ Setiap pagi, tanyakan ke diri sendiri:
       ├── go.mod
       └── go.sum
       ```
-    - [ ] Install dependencies:
+    - [x] Install dependencies:
       ```bash
       go get github.com/gin-gonic/gin
       go get gorm.io/gorm
@@ -495,21 +503,21 @@ Setiap pagi, tanyakan ke diri sendiri:
       go get github.com/golang-migrate/migrate/v4
       go get github.com/resend/resend-go/v2
       ```
-    - [ ] Buat `main.go` dengan basic Gin server
-    - [ ] Test server berjalan: `go run cmd/server/main.go`
+    - [x] Buat `main.go` dengan basic Gin server
+    - [x] Test server berjalan: `go run cmd/server/main.go`
   - **Acceptance Criteria:**
     - Server Gin berjalan di port 8080
     - Health check endpoint `/api/v1/health` return 200
     - Struktur folder sesuai dengan dokumentasi
 
-- [ ] **TASK-102: Setup configuration dengan Viper**
+- [x] **TASK-102: Setup configuration dengan Viper**
   - **Estimasi:** 2 jam
   - **Prioritas:** 🔴 Tinggi
   - **Dependencies:** TASK-101
   - **Detail:**
-    - [ ] Buat `internal/config/config.go`
-    - [ ] Load environment variables dari `.env`
-    - [ ] Definisi struct Config:
+    - [x] Buat `internal/config/config.go`
+    - [x] Load environment variables dari `.env`
+    - [x] Definisi struct Config:
       ```go
       type Config struct {
           AppEnv      string
@@ -526,61 +534,61 @@ Setiap pagi, tanyakan ke diri sendiri:
           FrontendURL string
       }
       ```
-    - [ ] Test config loading
+    - [x] Test config loading
   - **Acceptance Criteria:**
     - Config ter-load dari environment variables
     - Default values berfungsi jika env tidak ada
 
-- [ ] **TASK-103: Setup database connection dengan GORM**
+- [x] **TASK-103: Setup database connection dengan GORM**
   - **Estimasi:** 3 jam
   - **Prioritas:** 🔴 Tinggi
   - **Dependencies:** TASK-102
   - **Detail:**
-    - [ ] Buat `internal/config/database.go`
-    - [ ] Setup GORM connection ke PostgreSQL
-    - [ ] Setup connection pool settings
-    - [ ] Test koneksi berhasil
-    - [ ] Setup auto-migrate untuk development (disable untuk production)
+    - [x] Buat `internal/config/database.go`
+    - [x] Setup GORM connection ke PostgreSQL
+    - [x] Setup connection pool settings
+    - [x] Test koneksi berhasil
+    - [x] Setup auto-migrate untuk development (disable untuk production)
   - **Acceptance Criteria:**
     - Koneksi ke PostgreSQL berhasil
     - Connection pool configured
     - Bisa execute query sederhana
 
-- [ ] **TASK-104: Setup logging dengan Zerolog**
+- [x] **TASK-104: Setup logging dengan Zerolog**
   - **Estimasi:** 1 jam
   - **Prioritas:** 🟡 Sedang
   - **Dependencies:** TASK-101
   - **Detail:**
-    - [ ] Buat `pkg/logger/logger.go`
-    - [ ] Setup Zerolog dengan level berdasarkan environment
-    - [ ] Integrasikan dengan Gin middleware untuk request logging
-    - [ ] Format log JSON untuk production, pretty untuk development
+    - [x] Buat `pkg/logger/logger.go`
+    - [x] Setup Zerolog dengan level berdasarkan environment
+    - [x] Integrasikan dengan Gin middleware untuk request logging
+    - [x] Format log JSON untuk production, pretty untuk development
   - **Acceptance Criteria:**
     - Semua request ter-log dengan method, path, status, duration
     - Error ter-log dengan stack trace
 
 ##### 🗂️ Kategori: Database Models
 
-- [ ] **TASK-105: Buat semua GORM models**
+- [x] **TASK-105: Buat semua GORM models**
   - **Estimasi:** 4 jam
   - **Prioritas:** 🔴 Tinggi
   - **Dependencies:** TASK-103
   - **Detail:**
-    - [ ] Buat model `User` di `internal/models/user.go`
-    - [ ] Buat model `RefreshToken` di `internal/models/refresh_token.go`
-    - [ ] Buat model `PasswordReset` di `internal/models/password_reset.go`
-    - [ ] Buat model `Category` di `internal/models/category.go`
-    - [ ] Buat model `Tag` di `internal/models/tag.go`
-    - [ ] Buat model `BlogPost` di `internal/models/blog_post.go`
-    - [ ] Buat model `PostTag` di `internal/models/post_tag.go`
-    - [ ] Buat model `CaseStudy` di `internal/models/case_study.go`
-    - [ ] Buat model `CaseStudyTag` di `internal/models/case_study_tag.go`
-    - [ ] Buat model `Portfolio` di `internal/models/portfolio.go`
-    - [ ] Buat model `Service` di `internal/models/service.go`
-    - [ ] Buat model `Lead` di `internal/models/lead.go`
-    - [ ] Buat model `Media` di `internal/models/media.go`
-    - [ ] Buat model `SiteSetting` di `internal/models/site_setting.go`
-    - [ ] Pastikan semua models sesuai dengan Database Schema Document
+    - [x] Buat model `User` di `internal/models/user.go`
+    - [x] Buat model `RefreshToken` di `internal/models/refresh_token.go`
+    - [x] Buat model `PasswordReset` di `internal/models/password_reset.go`
+    - [x] Buat model `Category` di `internal/models/category.go`
+    - [x] Buat model `Tag` di `internal/models/tag.go`
+    - [x] Buat model `BlogPost` di `internal/models/blog_post.go`
+    - [x] Buat model `PostTag` di `internal/models/post_tag.go`
+    - [x] Buat model `CaseStudy` di `internal/models/case_study.go`
+    - [x] Buat model `CaseStudyTag` di `internal/models/case_study_tag.go`
+    - [x] Buat model `Portfolio` di `internal/models/portfolio.go`
+    - [x] Buat model `Service` di `internal/models/service.go`
+    - [x] Buat model `Lead` di `internal/models/lead.go`
+    - [x] Buat model `Media` di `internal/models/media.go`
+    - [x] Buat model `SiteSetting` di `internal/models/site_setting.go`
+    - [x] Pastikan semua models sesuai dengan Database Schema Document
   - **Acceptance Criteria:**
     - Semua 14 models terdefinisi
     - Relationships antar models benar
@@ -856,14 +864,14 @@ Setiap pagi, tanyakan ke diri sendiri:
 
 #### 4.2 Sprint 1 Summary
 
-| Kategori | Jumlah Task | Estimasi Total |
-|---|---|---|
-| Golang Project Setup | 4 tasks | 9 jam |
-| Database Models | 3 tasks | 9 jam |
-| Middleware | 3 tasks | 6 jam |
-| Auth API | 6 tasks | 12 jam |
-| Utilities | 4 tasks | 7 jam |
-| **TOTAL** | **20 tasks** | **~43 jam** |
+| Kategori             | Jumlah Task  | Estimasi Total |
+| -------------------- | ------------ | -------------- |
+| Golang Project Setup | 4 tasks      | 9 jam          |
+| Database Models      | 3 tasks      | 9 jam          |
+| Middleware           | 3 tasks      | 6 jam          |
+| Auth API             | 6 tasks      | 12 jam         |
+| Utilities            | 4 tasks      | 7 jam          |
+| **TOTAL**            | **20 tasks** | **~43 jam**    |
 
 **Sprint 1 Progress Tracker:**
 
@@ -872,13 +880,13 @@ Setiap pagi, tanyakan ke diri sendiri:
 │  SPRINT 1 PROGRESS                                          │
 ├─────────────────────────────────────────────────────────────┤
 │  Golang Project Setup:                                      │
-│  [ ] TASK-101: Init Golang project structure                │
-│  [ ] TASK-102: Setup configuration dengan Viper             │
-│  [ ] TASK-103: Setup database connection dengan GORM        │
-│  [ ] TASK-104: Setup logging dengan Zerolog                 │
+│  [x] TASK-101: Init Golang project structure                │
+│  [x] TASK-102: Setup configuration dengan Viper             │
+│  [x] TASK-103: Setup database connection dengan GORM        │
+│  [x] TASK-104: Setup logging dengan Zerolog                 │
 │                                                             │
 │  Database Models:                                           │
-│  [ ] TASK-105: Buat semua GORM models                       │
+│  [x] TASK-105: Buat semua GORM models                       │
 │  [ ] TASK-106: Buat database migrations                     │
 │  [ ] TASK-107: Seed initial data                            │
 │                                                             │
@@ -901,14 +909,15 @@ Setiap pagi, tanyakan ke diri sendiri:
 │  [ ] TASK-119: Buat password hasher                         │
 │  [ ] TASK-120: Setup Dockerfile untuk backend               │
 ├─────────────────────────────────────────────────────────────┤
-│  PROGRESS: 0/20 tasks (0%)                                  │
-│  ████████████████████████████████████████████████████████   │
+│  PROGRESS: 5/20 tasks (25%)                                 │
+│  ██████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
 ### 5. SPRINT 2: CONTENT API
+
 **Durasi:** 2 minggu  
 **Fokus:** CRUD API untuk semua content (Blog, Case Study, Portfolio, Services, Leads, Media)  
 **Goal:** Semua content API berfungsi dan siap di-consume frontend
@@ -1353,18 +1362,18 @@ Setiap pagi, tanyakan ke diri sendiri:
 
 #### 5.2 Sprint 2 Summary
 
-| Kategori | Jumlah Task | Estimasi Total |
-|---|---|---|
-| Blog API | 3 tasks | 8 jam |
-| Case Study API | 3 tasks | 7 jam |
-| Portfolio API | 3 tasks | 5 jam |
-| Services API | 1 task | 3 jam |
-| Leads API | 3 tasks | 7 jam |
-| Media API | 3 tasks | 8 jam |
-| Categories & Tags API | 2 tasks | 4 jam |
-| Dashboard & Settings API | 2 tasks | 5 jam |
-| Route Registration | 3 tasks | 7 jam |
-| **TOTAL** | **23 tasks** | **~54 jam** |
+| Kategori                 | Jumlah Task  | Estimasi Total |
+| ------------------------ | ------------ | -------------- |
+| Blog API                 | 3 tasks      | 8 jam          |
+| Case Study API           | 3 tasks      | 7 jam          |
+| Portfolio API            | 3 tasks      | 5 jam          |
+| Services API             | 1 task       | 3 jam          |
+| Leads API                | 3 tasks      | 7 jam          |
+| Media API                | 3 tasks      | 8 jam          |
+| Categories & Tags API    | 2 tasks      | 4 jam          |
+| Dashboard & Settings API | 2 tasks      | 5 jam          |
+| Route Registration       | 3 tasks      | 7 jam          |
+| **TOTAL**                | **23 tasks** | **~54 jam**    |
 
 **Sprint 2 Progress Tracker:**
 
@@ -1421,6 +1430,7 @@ Setiap pagi, tanyakan ke diri sendiri:
 ---
 
 ### 6. SPRINT 3: FRONTEND PUBLIC
+
 **Durasi:** 2 minggu  
 **Fokus:** Setup Next.js dan semua halaman publik  
 **Goal:** Semua halaman publik live dan bisa diakses visitor
@@ -1970,14 +1980,14 @@ Setiap pagi, tanyakan ke diri sendiri:
 
 #### 6.2 Sprint 3 Summary
 
-| Kategori | Jumlah Task | Estimasi Total |
-|---|---|---|
-| Next.js Project Setup | 4 tasks | 7 jam |
-| Layout & Navigation | 3 tasks | 7 jam |
-| UI Components | 6 tasks | 12 jam |
-| Public Pages | 12 tasks | 31 jam |
-| SEO & Performance | 5 tasks | 9 jam |
-| **TOTAL** | **30 tasks** | **~66 jam** |
+| Kategori              | Jumlah Task  | Estimasi Total |
+| --------------------- | ------------ | -------------- |
+| Next.js Project Setup | 4 tasks      | 7 jam          |
+| Layout & Navigation   | 3 tasks      | 7 jam          |
+| UI Components         | 6 tasks      | 12 jam         |
+| Public Pages          | 12 tasks     | 31 jam         |
+| SEO & Performance     | 5 tasks      | 9 jam          |
+| **TOTAL**             | **30 tasks** | **~66 jam**    |
 
 **Sprint 3 Progress Tracker:**
 
@@ -2033,6 +2043,7 @@ Setiap pagi, tanyakan ke diri sendiri:
 ---
 
 ### 7. SPRINT 4: ADMIN DASHBOARD
+
 **Durasi:** 2 minggu  
 **Fokus:** CMS dashboard lengkap untuk manage semua content  
 **Goal:** Admin bisa manage blog, case study, portfolio, leads, dan media
@@ -2513,19 +2524,19 @@ Setiap pagi, tanyakan ke diri sendiri:
 
 #### 7.2 Sprint 4 Summary
 
-| Kategori | Jumlah Task | Estimasi Total |
-|---|---|---|
-| Admin Layout & Auth | 4 tasks | 8 jam |
-| Dashboard Overview | 1 task | 3 jam |
-| Blog Management | 3 tasks | 9 jam |
-| Case Study Management | 3 tasks | 8 jam |
-| Portfolio Management | 3 tasks | 7 jam |
-| Lead Management | 2 tasks | 5 jam |
-| Media Management | 1 task | 3 jam |
-| Settings | 1 task | 2 jam |
-| Categories & Tags | 1 task | 2 jam |
-| Polish & UX | 3 tasks | 5 jam |
-| **TOTAL** | **22 tasks** | **~52 jam** |
+| Kategori              | Jumlah Task  | Estimasi Total |
+| --------------------- | ------------ | -------------- |
+| Admin Layout & Auth   | 4 tasks      | 8 jam          |
+| Dashboard Overview    | 1 task       | 3 jam          |
+| Blog Management       | 3 tasks      | 9 jam          |
+| Case Study Management | 3 tasks      | 8 jam          |
+| Portfolio Management  | 3 tasks      | 7 jam          |
+| Lead Management       | 2 tasks      | 5 jam          |
+| Media Management      | 1 task       | 3 jam          |
+| Settings              | 1 task       | 2 jam          |
+| Categories & Tags     | 1 task       | 2 jam          |
+| Polish & UX           | 3 tasks      | 5 jam          |
+| **TOTAL**             | **22 tasks** | **~52 jam**    |
 
 **Sprint 4 Progress Tracker:**
 
@@ -2583,6 +2594,7 @@ Setiap pagi, tanyakan ke diri sendiri:
 ---
 
 ### 8. SPRINT 5: INTEGRATION & POLISH
+
 **Durasi:** 2 minggu  
 **Fokus:** Integrasi semua fitur, email, SEO, performance, dan bug fixing  
 **Goal:** Semua fitur terintegrasi dan siap untuk testing
@@ -2873,16 +2885,16 @@ Setiap pagi, tanyakan ke diri sendiri:
 
 #### 8.2 Sprint 5 Summary
 
-| Kategori | Jumlah Task | Estimasi Total |
-|---|---|---|
-| Email Integration | 3 tasks | 8 jam |
-| Frontend-Backend Integration | 2 tasks | 8 jam |
-| SEO Optimization | 2 tasks | 4 jam |
-| Performance Optimization | 2 tasks | 5 jam |
-| Security Audit | 1 task | 2 jam |
-| Content & Data | 2 tasks | 6 jam |
-| Final Polish | 4 tasks | 10 jam |
-| **TOTAL** | **16 tasks** | **~43 jam** |
+| Kategori                     | Jumlah Task  | Estimasi Total |
+| ---------------------------- | ------------ | -------------- |
+| Email Integration            | 3 tasks      | 8 jam          |
+| Frontend-Backend Integration | 2 tasks      | 8 jam          |
+| SEO Optimization             | 2 tasks      | 4 jam          |
+| Performance Optimization     | 2 tasks      | 5 jam          |
+| Security Audit               | 1 task       | 2 jam          |
+| Content & Data               | 2 tasks      | 6 jam          |
+| Final Polish                 | 4 tasks      | 10 jam         |
+| **TOTAL**                    | **16 tasks** | **~43 jam**    |
 
 **Sprint 5 Progress Tracker:**
 
@@ -2928,6 +2940,7 @@ Setiap pagi, tanyakan ke diri sendiri:
 ---
 
 ### 9. SPRINT 6: TESTING & LAUNCH
+
 **Durasi:** 1 minggu  
 **Fokus:** Final testing, deployment, dan launch  
 **Goal:** Portal live di webifylab.my.id! 🚀
@@ -3176,13 +3189,13 @@ Setiap pagi, tanyakan ke diri sendiri:
 
 #### 9.2 Sprint 6 Summary
 
-| Kategori | Jumlah Task | Estimasi Total |
-|---|---|---|
-| Final Testing | 2 tasks | 6 jam |
-| Deployment | 5 tasks | 9 jam |
-| Launch | 3 tasks | 4 jam |
-| Documentation | 2 tasks | 3 jam |
-| **TOTAL** | **12 tasks** | **~22 jam** |
+| Kategori      | Jumlah Task  | Estimasi Total |
+| ------------- | ------------ | -------------- |
+| Final Testing | 2 tasks      | 6 jam          |
+| Deployment    | 5 tasks      | 9 jam          |
+| Launch        | 3 tasks      | 4 jam          |
+| Documentation | 2 tasks      | 3 jam          |
+| **TOTAL**     | **12 tasks** | **~22 jam**    |
 
 **Sprint 6 Progress Tracker:**
 
@@ -3221,16 +3234,16 @@ Setiap pagi, tanyakan ke diri sendiri:
 
 #### 10.1 Ringkasan Semua Sprint
 
-| Sprint | Nama | Tasks | Estimasi | Status | Progress |
-|---|---|---|---|---|---|
-| Sprint 0 | Pre-Development Setup | 14 | 16.5 jam | ⬜ Belum Mulai | 0% |
-| Sprint 1 | Backend Foundation | 20 | 43 jam | ⬜ Belum Mulai | 0% |
-| Sprint 2 | Content API | 23 | 54 jam | ⬜ Belum Mulai | 0% |
-| Sprint 3 | Frontend Public | 30 | 66 jam | ⬜ Belum Mulai | 0% |
-| Sprint 4 | Admin Dashboard | 22 | 52 jam | ⬜ Belum Mulai | 0% |
-| Sprint 5 | Integration & Polish | 16 | 43 jam | ⬜ Belum Mulai | 0% |
-| Sprint 6 | Testing & Launch | 12 | 22 jam | ⬜ Belum Mulai | 0% |
-| **TOTAL** | | **137 tasks** | **~296.5 jam** | | **0%** |
+| Sprint    | Nama                  | Tasks         | Estimasi       | Status         | Progress |
+| --------- | --------------------- | ------------- | -------------- | -------------- | -------- |
+| Sprint 0  | Pre-Development Setup | 14            | 16.5 jam       | ⬜ Belum Mulai | 0%       |
+| Sprint 1  | Backend Foundation    | 20            | 43 jam         | ⬜ Belum Mulai | 0%       |
+| Sprint 2  | Content API           | 23            | 54 jam         | ⬜ Belum Mulai | 0%       |
+| Sprint 3  | Frontend Public       | 30            | 66 jam         | ⬜ Belum Mulai | 0%       |
+| Sprint 4  | Admin Dashboard       | 22            | 52 jam         | ⬜ Belum Mulai | 0%       |
+| Sprint 5  | Integration & Polish  | 16            | 43 jam         | ⬜ Belum Mulai | 0%       |
+| Sprint 6  | Testing & Launch      | 12            | 22 jam         | ⬜ Belum Mulai | 0%       |
+| **TOTAL** |                       | **137 tasks** | **~296.5 jam** |                | **0%**   |
 
 #### 10.2 Master Progress Tracker
 
@@ -3312,18 +3325,18 @@ Setiap akhir minggu, isi review ini:
 
 ### 11. RISK REGISTER
 
-| No | Risiko | Probabilitas | Dampak | Mitigasi |
-|---|---|---|---|---|
-| R1 | Server 1GB RAM tidak cukup saat build | Tinggi | Tinggi | Build di laptop, deploy artifact saja |
-| R2 | DNS propagation lambat | Sedang | Rendah | Setup DNS di awal Sprint 0, tunggu 24-48 jam |
-| R3 | Resend API limit (100 emails/hari) | Rendah | Sedang | Monitor usage, upgrade plan jika perlu |
-| R4 | Scope creep (fitur tambahan) | Tinggi | Sedang | Disiplin dengan PRD, fitur baru masuk Phase 2 |
-| R5 | Burnout (solo dev) | Sedang | Tinggi | Istirahat cukup, jangan kerja > 8 jam/hari |
-| R6 | Bug critical saat launch | Sedang | Tinggi | Testing thorough di Sprint 5 & 6 |
-| R7 | Database corruption | Rendah | Tinggi | Daily backup, test restore |
-| R8 | SSL certificate expired | Rendah | Tinggi | Auto-renew dengan Certbot + monitoring |
-| R9 | Golang/Next.js version incompatibility | Rendah | Sedang | Lock versions di go.mod dan package.json |
-| R10 | Kehilangan data saat deployment | Rendah | Tinggi | Backup sebelum deployment |
+| No  | Risiko                                 | Probabilitas | Dampak | Mitigasi                                      |
+| --- | -------------------------------------- | ------------ | ------ | --------------------------------------------- |
+| R1  | Server 1GB RAM tidak cukup saat build  | Tinggi       | Tinggi | Build di laptop, deploy artifact saja         |
+| R2  | DNS propagation lambat                 | Sedang       | Rendah | Setup DNS di awal Sprint 0, tunggu 24-48 jam  |
+| R3  | Resend API limit (100 emails/hari)     | Rendah       | Sedang | Monitor usage, upgrade plan jika perlu        |
+| R4  | Scope creep (fitur tambahan)           | Tinggi       | Sedang | Disiplin dengan PRD, fitur baru masuk Phase 2 |
+| R5  | Burnout (solo dev)                     | Sedang       | Tinggi | Istirahat cukup, jangan kerja > 8 jam/hari    |
+| R6  | Bug critical saat launch               | Sedang       | Tinggi | Testing thorough di Sprint 5 & 6              |
+| R7  | Database corruption                    | Rendah       | Tinggi | Daily backup, test restore                    |
+| R8  | SSL certificate expired                | Rendah       | Tinggi | Auto-renew dengan Certbot + monitoring        |
+| R9  | Golang/Next.js version incompatibility | Rendah       | Sedang | Lock versions di go.mod dan package.json      |
+| R10 | Kehilangan data saat deployment        | Rendah       | Tinggi | Backup sebelum deployment                     |
 
 ---
 
@@ -3342,6 +3355,6 @@ Sebuah task dianggap **SELESAI** jika:
 
 ### 13. CHANGELOG
 
-| Versi | Tanggal | Perubahan |
-|---|---|---|
+| Versi | Tanggal    | Perubahan                                  |
+| ----- | ---------- | ------------------------------------------ |
 | 1.0.0 | 2026-09-05 | Initial release — 137 tasks dalam 7 sprint |
