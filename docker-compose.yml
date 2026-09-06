@@ -1,83 +1,46 @@
-# ============================================
-# WebifyLab Portal - Production Docker Compose
-# ============================================
-# Digunakan untuk deployment ke VPS
-# Memory total: ~700MB (frontend 350M + backend 150M + postgres 200M)
-# ============================================
-
 version: "3.8"
 
 services:
-  # -------------------------------------------
-  # Frontend: Next.js (SSR/SSG)
-  # -------------------------------------------
   frontend:
-    image: webifylab-frontend:latest
+    image: webifylab-frontend:latest # Akan di-replace oleh GitHub Actions
     container_name: webifylab-frontend
     restart: unless-stopped
     environment:
       - NODE_ENV=production
-      - HOSTNAME=0.0.0.0
-      - PORT=3000
-      - NEXT_PUBLIC_API_URL=${API_URL:-https://api.webifylab.my.id}
-      - NEXT_PUBLIC_SITE_URL=${SITE_URL:-https://webifylab.my.id}
-    # Bind ke localhost saja agar hanya Nginx host yang bisa akses
-    ports:
-      - "127.0.0.1:3000:3000"
+      - NEXT_PUBLIC_API_URL=${API_URL}
+      - NEXT_PUBLIC_SITE_URL=${SITE_URL}
     networks:
       - webifylab-network
     deploy:
       resources:
         limits:
           memory: 350M
-        reservations:
-          memory: 200M
-    healthcheck:
-      test:
-        [
-          "CMD",
-          "wget",
-          "--no-verbose",
-          "--tries=1",
-          "--spider",
-          "http://localhost:3000/",
-        ]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
 
-  # -------------------------------------------
-  # Backend: Golang (Gin + GORM)
-  # -------------------------------------------
   backend:
-    image: webifylab-backend:latest
+    image: webifylab-backend:latest # Akan di-replace oleh GitHub Actions
     container_name: webifylab-backend
     restart: unless-stopped
     env_file:
       - .env
     environment:
-      - APP_ENV=${APP_ENV:-production}
+      - APP_ENV=${APP_ENV}
       - APP_PORT=8080
       - APP_HOST=0.0.0.0
       - DB_HOST=postgres
       - DB_PORT=5432
-      - DB_USER=${DB_USER:-webifylab}
+      - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
-      - DB_NAME=${DB_NAME:-webifylab}
+      - DB_NAME=${DB_NAME}
       - DB_SSLMODE=disable
       - JWT_SECRET=${JWT_SECRET}
       - JWT_EXPIRY=24h
       - REFRESH_TOKEN_EXPIRY=168h
       - RESEND_API_KEY=${RESEND_API_KEY}
-      - ADMIN_EMAIL=${ADMIN_EMAIL:-admin@webifylab.my.id}
-      - FRONTEND_URL=${SITE_URL:-https://webifylab.my.id}
-      - CORS_ORIGIN=${SITE_URL:-https://webifylab.my.id}
+      - ADMIN_EMAIL=${ADMIN_EMAIL}
+      - FRONTEND_URL=${SITE_URL}
+      - CORS_ORIGIN=${SITE_URL}
       - UPLOAD_DIR=/app/uploads
       - MAX_UPLOAD_SIZE=5242880
-    # Bind ke localhost saja agar hanya Nginx host yang bisa akses
-    ports:
-      - "127.0.0.1:8080:8080"
     depends_on:
       postgres:
         condition: service_healthy
@@ -89,33 +52,37 @@ services:
       resources:
         limits:
           memory: 150M
-        reservations:
-          memory: 80M
-    healthcheck:
-      test:
-        [
-          "CMD",
-          "wget",
-          "--no-verbose",
-          "--tries=1",
-          "--spider",
-          "http://localhost:8080/api/v1/health",
-        ]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 20s
 
-  # -------------------------------------------
-  # Database: PostgreSQL 15 (Tuned for 1GB RAM)
-  # -------------------------------------------
   postgres:
     image: postgres:15-alpine
     container_name: webifylab-postgres
     restart: unless-stopped
     environment:
-      - POSTGRES_DB=${DB_NAME:-webifylab}
-      - POSTGRES_USER=${DB_USER:-webifylab}
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - TZ=Asia/Jakarta
-    # TIDAK di
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./infra/postgres/postgresql.conf:/etc/postgresql/postgresql.conf
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - webifylab-network
+    deploy:
+      resources:
+        limits:
+          memory: 200M
+
+networks:
+  webifylab-network:
+    driver: bridge
+
+volumes:
+  pgdata:
+    driver: local
+  uploads:
+    driver: local
