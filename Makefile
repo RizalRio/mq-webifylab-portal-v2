@@ -65,13 +65,24 @@ dev:
 # ============================================
 # Database
 # ============================================
-migrate:
-	@echo "Running migrations..."
-	cd backend && go run cmd/server/main.go migrate
+# ============================================
+# Database Migrations
+# ============================================
+migrate-up:
+	@echo "🔄 Running migrations..."
+	cd backend && go run cmd/api/main.go migrate
+
+migrate-down:
+	@echo "🔄 Rolling back last migration..."
+	cd backend && go run cmd/api/main.go rollback
+
+migrate-reset:
+	@echo "⚠️  Resetting database..."
+	cd backend && go run cmd/api/main.go reset
 
 seed:
 	@echo "Seeding initial data..."
-	cd backend && go run cmd/server/main.go seed
+	cd backend && go run cmd/api/main.go seed
 
 db-shell:
 	@echo "Opening PostgreSQL shell..."
