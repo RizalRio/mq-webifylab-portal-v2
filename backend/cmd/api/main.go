@@ -8,6 +8,7 @@ import (
 	"webifylab-backend/internal/middleware"
 	"webifylab-backend/internal/migration"
 	"webifylab-backend/pkg/logger"
+	"webifylab-backend/pkg/validator"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
@@ -24,6 +25,10 @@ func main() {
 
 	// Initialize logger
 	logger.Init(config.AppConfig.AppEnv)
+
+	// Initialize validator
+	validator.Init()
+	logger.Info().Msg("✅ Validator initialized")
 
 	// Handle CLI commands
 	if len(os.Args) > 1 {
@@ -89,17 +94,14 @@ func startServer() {
 	// Setup Gin Router
 	router := gin.Default()
 
-	// ============================================
-	// MIDDLEWARE STACK (ORDER MATTERS!)
-	// ============================================
-	// 1. CORS (first, so preflight OPTIONS works)
+	// 1. CORS Middleware
 	router.Use(middleware.SetupCORS())
 
-	// 2. Request Logger (after CORS, so we log actual requests)
+	// 2. Request Logger Middleware
 	router.Use(middleware.RequestLogger())
 
 	// ============================================
-	// PUBLIC ROUTES (Tidak butuh auth)
+	// PUBLIC ROUTES
 	// ============================================
 	router.GET("/api/v1/health", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
@@ -110,16 +112,27 @@ func startServer() {
 		})
 	})
 
+	// CORS test endpoint
+	router.GET("/api/v1/cors-test", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"success": true,
+			"message": "CORS is working correctly",
+			"data": map[string]interface{}{
+				"origin":       c.GetHeader("Origin"),
+				"env":          config.AppConfig.AppEnv,
+				"cors_enabled": true,
+			},
+		})
+	})
+
 	// ============================================
-	// PROTECTED ROUTES (Butuh Auth + Rate Limit)
+	// PROTECTED ROUTES (untuk testing)
 	// ============================================
 	protected := router.Group("/api/v1/protected")
-	protected.Use(middleware.AuthRequired()) // Wajib login
+	protected.Use(middleware.AuthRequired())
+	protected.Use(middleware.RateLimit("100-M"))
 
 	{
-		// Endpoint ini bisa diakses siapa saja yang login (Limit: 100 req/menit)
-		protected.Use(middleware.RateLimit("100-M"))
-		
 		protected.GET("/me", func(c *gin.Context) {
 			userID := c.GetString("user_id")
 			role := c.GetString("role")
@@ -133,11 +146,9 @@ func startServer() {
 			})
 		})
 
-		// Endpoint ini HANYA bisa diakses oleh super_admin atau admin
-		// DAN dibatasi sangat ketat: 5 request per menit (simulasi endpoint sensitif)
 		adminOnly := protected.Group("/admin")
 		adminOnly.Use(middleware.RequireRole("super_admin", "admin"))
-		adminOnly.Use(middleware.RateLimit("5-M")) // Limit ketat!
+		adminOnly.Use(middleware.RateLimit("5-M"))
 
 		{
 			adminOnly.GET("/dashboard", func(c *gin.Context) {
