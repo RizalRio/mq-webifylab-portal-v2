@@ -99,7 +99,7 @@ func startServer() {
 	router.Use(middleware.RequestLogger())
 
 	// ============================================
-	// PUBLIC ROUTES
+	// PUBLIC ROUTES (Tidak butuh auth)
 	// ============================================
 	router.GET("/api/v1/health", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
@@ -110,18 +110,45 @@ func startServer() {
 		})
 	})
 
-	// CORS test endpoint (untuk verifikasi CORS headers)
-	router.GET("/api/v1/cors-test", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"success": true,
-			"message": "CORS is working correctly",
-			"data": map[string]interface{}{
-				"origin":       c.GetHeader("Origin"),
-				"env":          config.AppConfig.AppEnv,
-				"cors_enabled": true,
-			},
+	// ============================================
+	// PROTECTED ROUTES (Butuh Auth + Rate Limit)
+	// ============================================
+	protected := router.Group("/api/v1/protected")
+	protected.Use(middleware.AuthRequired()) // Wajib login
+
+	{
+		// Endpoint ini bisa diakses siapa saja yang login (Limit: 100 req/menit)
+		protected.Use(middleware.RateLimit("100-M"))
+		
+		protected.GET("/me", func(c *gin.Context) {
+			userID := c.GetString("user_id")
+			role := c.GetString("role")
+			c.JSON(http.StatusOK, gin.H{
+				"success": true,
+				"message": "Welcome to protected area",
+				"data": gin.H{
+					"user_id": userID,
+					"role":    role,
+				},
+			})
 		})
-	})
+
+		// Endpoint ini HANYA bisa diakses oleh super_admin atau admin
+		// DAN dibatasi sangat ketat: 5 request per menit (simulasi endpoint sensitif)
+		adminOnly := protected.Group("/admin")
+		adminOnly.Use(middleware.RequireRole("super_admin", "admin"))
+		adminOnly.Use(middleware.RateLimit("5-M")) // Limit ketat!
+
+		{
+			adminOnly.GET("/dashboard", func(c *gin.Context) {
+				c.JSON(http.StatusOK, gin.H{
+					"success": true,
+					"message": "Welcome to Admin Dashboard",
+					"data":    "Secret admin data here",
+				})
+			})
+		}
+	}
 
 	// Determine port
 	port := config.AppConfig.AppPort
