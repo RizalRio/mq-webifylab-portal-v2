@@ -5,8 +5,11 @@ import (
 	"os"
 
 	"webifylab-backend/internal/config"
+	"webifylab-backend/internal/handlers"
 	"webifylab-backend/internal/middleware"
 	"webifylab-backend/internal/migration"
+	"webifylab-backend/internal/repositories"
+	"webifylab-backend/internal/services"
 	"webifylab-backend/pkg/logger"
 	"webifylab-backend/pkg/validator"
 
@@ -91,17 +94,32 @@ func startServer() {
 		}
 	}
 
-	// Setup Gin Router
+	// ============================================
+	// INITIALIZIZE DEPENDENCIES (Dependency Injection)
+	// ============================================
+	// Repositories
+	userRepo := repositories.NewUserRepository(config.DB)
+	refreshTokenRepo := repositories.NewRefreshTokenRepository(config.DB)
+
+	// Services
+	authService := services.NewAuthService(userRepo, refreshTokenRepo)
+
+	// Handlers
+	authHandler := handlers.NewAuthHandler(authService)
+
+	// ============================================
+	// SETUP GIN ROUTER
+	// ============================================
 	router := gin.Default()
 
-	// 1. CORS Middleware
+	// 1. CORS Middleware (pertama, agar preflight OPTIONS works)
 	router.Use(middleware.SetupCORS())
 
 	// 2. Request Logger Middleware
 	router.Use(middleware.RequestLogger())
 
 	// ============================================
-	// PUBLIC ROUTES
+	// PUBLIC ROUTES (Tidak butuh auth)
 	// ============================================
 	router.GET("/api/v1/health", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
@@ -112,28 +130,30 @@ func startServer() {
 		})
 	})
 
-	// CORS test endpoint
-	router.GET("/api/v1/cors-test", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"success": true,
-			"message": "CORS is working correctly",
-			"data": map[string]interface{}{
-				"origin":       c.GetHeader("Origin"),
-				"env":          config.AppConfig.AppEnv,
-				"cors_enabled": true,
-			},
-		})
-	})
-
 	// ============================================
-	// PROTECTED ROUTES (untuk testing)
+	// AUTH ROUTES (Public)
 	// ============================================
-	protected := router.Group("/api/v1/protected")
-	protected.Use(middleware.AuthRequired())
-	protected.Use(middleware.RateLimit("100-M"))
-
+	auth := router.Group("/api/v1/auth")
 	{
-		protected.GET("/me", func(c *gin.Context) {
+		// Login dengan rate limit ketat (5 req/menit)
+		auth.POST("/login", middleware.RateLimit("5-M"), authHandler.Login)
+		
+		// Refresh token
+		auth.POST("/refresh", middleware.RateLimit("30-M"), authHandler.RefreshToken)
+	}
+
+	// ============================================
+	// PROTECTED ROUTES (Butuh Auth)
+	// ============================================
+	protected := router.Group("/api/v1")
+	protected.Use(middleware.AuthRequired())
+	{
+		// Auth protected routes
+		protected.POST("/auth/logout", authHandler.Logout)
+		protected.GET("/auth/me", authHandler.GetCurrentUser)
+
+		// Test endpoint (untuk verifikasi middleware)
+		protected.GET("/protected/me", func(c *gin.Context) {
 			userID := c.GetString("user_id")
 			role := c.GetString("role")
 			c.JSON(http.StatusOK, gin.H{
@@ -146,10 +166,10 @@ func startServer() {
 			})
 		})
 
-		adminOnly := protected.Group("/admin")
+		// Admin only endpoint
+		adminOnly := protected.Group("/protected/admin")
 		adminOnly.Use(middleware.RequireRole("super_admin", "admin"))
 		adminOnly.Use(middleware.RateLimit("5-M"))
-
 		{
 			adminOnly.GET("/dashboard", func(c *gin.Context) {
 				c.JSON(http.StatusOK, gin.H{
