@@ -1,10 +1,11 @@
 ---
 import { SERVICES } from "../../lib/constants";
+import { Code, Palette, Network, Check, ArrowRight } from "@lucide/astro";
 
-const icons: Record<string, string> = {
-  code: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
-  palette: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.47-1.125-.29-.289-.47-.688-.47-1.125a1.64 1.64 0 0 1 1.648-1.688h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>`,
-  network: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg>`,
+const icons: Record<string, any> = {
+  code: Code,
+  palette: Palette,
+  network: Network,
 };
 ---
 
@@ -35,7 +36,10 @@ const icons: Record<string, string> = {
 
           <!-- Icon -->
           <div class="icon-wrap icon-wrap-lg services-icon" aria-hidden="true">
-            <Fragment set:html={icons[service.icon]} />
+            {(() => {
+              const IconComp = icons[service.icon];
+              return <IconComp width="24" height="24" />;
+            })()}
           </div>
 
           <!-- Title -->
@@ -48,9 +52,7 @@ const icons: Record<string, string> = {
           <ul class="services-features" aria-label={`Fitur ${service.title}`}>
             {service.features.map((feat) => (
               <li class="services-feature-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-indigo)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M20 6L9 17l-5-5"/>
-                </svg>
+                <Check width="14" height="14" class="text-accent-indigo mt-[3px] shrink-0" stroke-width={2.5} aria-hidden="true" />
                 <span>{feat}</span>
               </li>
             ))}
@@ -59,9 +61,7 @@ const icons: Record<string, string> = {
           <!-- Ghost CTA -->
           <a href="#kontak" class="btn-ghost services-cta">
             Pelajari Lebih Lanjut
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
+            <ArrowRight width="14" height="14" stroke-width={2.5} aria-hidden="true" />
           </a>
 
         </article>
@@ -141,10 +141,6 @@ const icons: Record<string, string> = {
     font-size: 0.875rem;
     color: var(--color-neutral-700);
     line-height: 1.5;
-  }
-  .services-feature-item svg {
-    flex-shrink: 0;
-    margin-top: 3px;
   }
   .services-cta {
     margin-top: 0.25rem;

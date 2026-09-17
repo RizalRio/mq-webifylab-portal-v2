@@ -1,5 +1,6 @@
 ---
 import { PORTFOLIO_ITEMS } from "../../lib/constants";
+import { Clock, ArrowRight } from "@lucide/astro";
 
 const gradients = [
   "linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%)",
@@ -36,9 +37,7 @@ const gradients = [
 
             {item.comingSoon && (
               <div class="portfolio-coming-soon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-                </svg>
+                <Clock width="16" height="16" aria-hidden="true" stroke-width={2} />
                 <span>Coming Soon</span>
               </div>
             )}
@@ -66,9 +65,7 @@ const gradients = [
       <p class="portfolio-cta-text">Punya proyek yang ingin kami kerjakan bersama?</p>
       <a href="#kontak" class="btn-primary">
         Diskusikan Proyek Anda
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
+        <ArrowRight width="16" height="16" stroke-width={2.5} aria-hidden="true" />
       </a>
     </div>
 

@@ -1,5 +1,6 @@
 ---
 import { SITE, NAV_LINKS } from "../../lib/constants";
+import { Mail, MessageCircle, Heart } from '@lucide/astro';
 
 const year = new Date().getFullYear();
 
@@ -90,7 +91,8 @@ const footerServices = [
               <a href={link.href} class="footer-col-link">{link.label}</a>
             </li>
           ))}
-          <li><a href="#" class="footer-col-link">Privacy Policy</a></li>
+          <li><a href="/privacy" class="footer-col-link">Privacy Policy</a></li>
+          <li><a href="/terms" class="footer-col-link">Terms of Service</a></li>
         </ul>
       </div>
 
@@ -100,17 +102,13 @@ const footerServices = [
         <ul class="footer-col-list" role="list">
           <li>
             <a href={`mailto:${SITE.email}`} class="footer-col-link footer-contact-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-              </svg>
+              <Mail width="14" height="14" aria-hidden="true" />
               {SITE.email}
             </a>
           </li>
           <li>
             <a href={`https://wa.me/${SITE.whatsapp}`} target="_blank" rel="noopener noreferrer" class="footer-col-link footer-contact-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-              </svg>
+              <MessageCircle width="14" height="14" aria-hidden="true" />
               WhatsApp
             </a>
           </li>
@@ -126,9 +124,7 @@ const footerServices = [
       </p>
       <p class="footer-built-with">
         Dibangun dengan
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color: var(--color-error);" aria-hidden="true">
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-        </svg>
+        <Heart width="14" height="14" class="text-error" aria-hidden="true" fill="currentColor" />
         menggunakan Astro &amp; Tailwind CSS
       </p>
     </div>

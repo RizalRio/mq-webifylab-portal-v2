@@ -1,5 +1,6 @@
 ---
 import { SITE } from "../../lib/constants";
+import { Zap, ArrowRight, Check } from "@lucide/astro";
 ---
 
 <section
@@ -19,9 +20,7 @@ import { SITE } from "../../lib/constants";
       <!-- Label badge -->
       <div class="hero-label animate-fade-in-up" aria-label="Positioning">
         <span class="badge badge-indigo">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-          </svg>
+          <Zap width="14" height="14" stroke-width={2.5} />
           Software House & Ekosistem Digital
         </span>
       </div>
@@ -48,9 +47,7 @@ import { SITE } from "../../lib/constants";
           id="hero-cta-primary"
         >
           Konsultasi Gratis
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
+          <ArrowRight width="16" height="16" stroke-width={2.5} aria-hidden="true" />
         </a>
         <a
           href="#layanan"
@@ -64,16 +61,12 @@ import { SITE } from "../../lib/constants";
       <!-- Trust badge -->
       <div class="hero-trust animate-fade-in-up delay-400">
         <div class="hero-trust-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M20 6L9 17l-5-5"/>
-          </svg>
+          <Check width="16" height="16" stroke-width={2.5} class="text-success" aria-hidden="true" />
           <span>Dipercaya oleh UMKM &amp; Startup di Indonesia</span>
         </div>
         <div class="hero-trust-divider" aria-hidden="true">·</div>
         <div class="hero-trust-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M20 6L9 17l-5-5"/>
-          </svg>
+          <Check width="16" height="16" stroke-width={2.5} class="text-success" aria-hidden="true" />
           <span>Konsultasi pertama gratis</span>
         </div>
       </div>

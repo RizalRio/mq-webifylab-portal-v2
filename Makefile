@@ -1,4 +1,3 @@
-$makefile = @"
 .PHONY: setup dev build test deploy clean help
 
 # ========================================
@@ -51,7 +50,3 @@ clean: ## Clean build artifacts
 	rm -f apps/api/webifylab-api
 	rm -f apps/api/webifylab-api.exe
 	@echo "Cleaned!"
-"@
-
-Set-Content -Path "Makefile" -Value $makefile -Encoding UTF8
-Write-Host "✅ Makefile created" -ForegroundColor Green
