@@ -1,0 +1,300 @@
+---
+import { SITE, NAV_LINKS } from "../../lib/constants";
+---
+
+<header id="navbar" class="navbar-wrapper">
+  <div class="container-site">
+    <nav class="navbar-inner" aria-label="Navigasi utama">
+
+      <!-- Logo -->
+      <a href="/" class="navbar-logo" aria-label="Webifylab — Halaman Utama">
+        <span class="logo-icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="#4F46E5"/>
+            <path d="M8 12L12 8L16 12L20 8L24 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 20L12 16L16 20L20 16L24 20" stroke="#06B6D4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="logo-text">{SITE.name}</span>
+      </a>
+
+      <!-- Desktop Menu -->
+      <ul class="navbar-menu" role="list">
+        {NAV_LINKS.map((link) => (
+          <li>
+            <a href={link.href} class="navbar-link">{link.label}</a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Desktop CTA -->
+      <a href="#kontak" class="btn-primary navbar-cta" id="navbar-cta-btn">
+        Konsultasi Gratis
+      </a>
+
+      <!-- Hamburger (mobile) -->
+      <button
+        id="hamburger-btn"
+        class="hamburger"
+        aria-label="Buka menu navigasi"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+
+    </nav>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="mobile-menu"
+    aria-hidden="true"
+    role="navigation"
+    aria-label="Menu navigasi mobile"
+  >
+    <ul class="mobile-menu-list" role="list">
+      {NAV_LINKS.map((link) => (
+        <li>
+          <a href={link.href} class="mobile-menu-link">{link.label}</a>
+        </li>
+      ))}
+      <li class="mobile-menu-cta-wrap">
+        <a href="#kontak" class="btn-primary mobile-menu-cta">
+          Konsultasi Gratis
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<style>
+  /* ── Navbar wrapper ─────────────────────────────────────────── */
+  .navbar-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background-color: transparent;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .navbar-wrapper.scrolled {
+    background-color: #ffffff;
+    box-shadow: var(--shadow-navbar);
+  }
+
+  .navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    gap: 2rem;
+  }
+
+  /* ── Logo ───────────────────────────────────────────────────── */
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .logo-icon {
+    display: flex;
+    align-items: center;
+  }
+  .logo-text {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+  }
+
+  /* ── Desktop Menu ───────────────────────────────────────────── */
+  .navbar-menu {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+  }
+  @media (min-width: 768px) {
+    .navbar-menu { display: flex; }
+  }
+
+  .navbar-link {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-neutral-700);
+    text-decoration: none;
+    padding: 0.25rem 0;
+    position: relative;
+    transition: color 0.2s;
+  }
+  .navbar-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent-indigo);
+    transition: width 0.2s ease;
+  }
+  .navbar-link:hover {
+    color: var(--color-accent-indigo);
+  }
+  .navbar-link:hover::after {
+    width: 100%;
+  }
+
+  .navbar-cta {
+    display: none;
+    font-size: 0.9375rem;
+  }
+  @media (min-width: 768px) {
+    .navbar-cta { display: inline-flex; }
+  }
+
+  /* ── Hamburger ──────────────────────────────────────────────── */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+  }
+  .hamburger:hover {
+    background-color: var(--color-neutral-100);
+  }
+  @media (min-width: 768px) {
+    .hamburger { display: none; }
+  }
+
+  .hamburger-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: var(--color-neutral-900);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  /* Hamburger open state */
+  .hamburger[aria-expanded="true"] .hamburger-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger[aria-expanded="true"] .hamburger-bar:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .hamburger[aria-expanded="true"] .hamburger-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ── Mobile Menu ────────────────────────────────────────────── */
+  .mobile-menu {
+    display: none;
+    background-color: #ffffff;
+    border-top: 1px solid var(--color-neutral-300);
+    box-shadow: 0 4px 16px rgb(0 0 0 / 0.08);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+  }
+  .mobile-menu.open {
+    display: block;
+    max-height: 400px;
+    opacity: 1;
+  }
+  @media (min-width: 768px) {
+    .mobile-menu { display: none !important; }
+  }
+
+  .mobile-menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0 1rem;
+  }
+
+  .mobile-menu-link {
+    display: block;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-neutral-700);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-neutral-100);
+    transition: color 0.2s, background-color 0.2s;
+  }
+  .mobile-menu-link:hover {
+    color: var(--color-accent-indigo);
+    background-color: var(--color-neutral-100);
+  }
+
+  .mobile-menu-cta-wrap {
+    padding: 1rem 1.5rem 0;
+  }
+  .mobile-menu-cta {
+    width: 100%;
+    justify-content: center;
+  }
+</style>
+
+<script>
+  const navbar   = document.getElementById("navbar")!;
+  const hamburger = document.getElementById("hamburger-btn")!;
+  const mobileMenu = document.getElementById("mobile-menu")!;
+
+  // ── Scroll: transparent → solid ──────────────────────────────
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  };
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  handleScroll(); // run on load
+
+  // ── Hamburger toggle ──────────────────────────────────────────
+  hamburger.addEventListener("click", () => {
+    const isOpen = hamburger.getAttribute("aria-expanded") === "true";
+    hamburger.setAttribute("aria-expanded", String(!isOpen));
+    mobileMenu.setAttribute("aria-hidden", String(isOpen));
+    mobileMenu.classList.toggle("open", !isOpen);
+  });
+
+  // ── Close mobile menu on nav link click ──────────────────────
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburger.setAttribute("aria-expanded", "false");
+      mobileMenu.setAttribute("aria-hidden", "true");
+      mobileMenu.classList.remove("open");
+    });
+  });
+
+  // ── Close on Escape key ───────────────────────────────────────
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && mobileMenu.classList.contains("open")) {
+      hamburger.setAttribute("aria-expanded", "false");
+      mobileMenu.setAttribute("aria-hidden", "true");
+      mobileMenu.classList.remove("open");
+      hamburger.focus();
+    }
+  });
+</script>

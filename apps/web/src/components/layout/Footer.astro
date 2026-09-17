@@ -1,0 +1,281 @@
+---
+import { SITE, NAV_LINKS } from "../../lib/constants";
+
+const year = new Date().getFullYear();
+
+const socialLinks = [
+  {
+    label: "LinkedIn",
+    href: SITE.social.linkedin,
+    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>`,
+  },
+  {
+    label: "GitHub",
+    href: SITE.social.github,
+    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>`,
+  },
+  {
+    label: "Instagram",
+    href: SITE.social.instagram,
+    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`,
+  },
+];
+
+const footerServices = [
+  "Pengembangan Aplikasi",
+  "Desain Grafis & Web Design",
+  "SaaS & Ekosistem Digital",
+  "Konsultasi AI & Data",
+];
+---
+
+<footer class="footer" aria-label="Footer">
+  <div class="container-site">
+
+    <!-- Top: Brand + columns -->
+    <div class="footer-top">
+
+      <!-- Brand column -->
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="Webifylab — Halaman Utama">
+          <span class="footer-logo-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" rx="8" fill="#4F46E5"/>
+              <path d="M8 12L12 8L16 12L20 8L24 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 20L12 16L16 20L20 16L24 20" stroke="#06B6D4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="footer-logo-text">{SITE.name}</span>
+        </a>
+        <p class="footer-tagline">{SITE.tagline}</p>
+        <p class="footer-brand-desc">
+          Partner teknologi untuk membangun ekosistem digital yang siap berkembang
+          bersama bisnis Anda.
+        </p>
+
+        <!-- Social links -->
+        <div class="footer-social" aria-label="Media sosial Webifylab">
+          {socialLinks.map((s) => (
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-social-link"
+              aria-label={s.label}
+            >
+              <Fragment set:html={s.icon} />
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Layanan column -->
+      <div class="footer-col">
+        <h3 class="footer-col-title">Layanan</h3>
+        <ul class="footer-col-list" role="list">
+          {footerServices.map((svc) => (
+            <li>
+              <a href="#layanan" class="footer-col-link">{svc}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Perusahaan column -->
+      <div class="footer-col">
+        <h3 class="footer-col-title">Perusahaan</h3>
+        <ul class="footer-col-list" role="list">
+          {NAV_LINKS.map((link) => (
+            <li>
+              <a href={link.href} class="footer-col-link">{link.label}</a>
+            </li>
+          ))}
+          <li><a href="#" class="footer-col-link">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Kontak column -->
+      <div class="footer-col">
+        <h3 class="footer-col-title">Kontak</h3>
+        <ul class="footer-col-list" role="list">
+          <li>
+            <a href={`mailto:${SITE.email}`} class="footer-col-link footer-contact-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+              {SITE.email}
+            </a>
+          </li>
+          <li>
+            <a href={`https://wa.me/${SITE.whatsapp}`} target="_blank" rel="noopener noreferrer" class="footer-col-link footer-contact-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+              WhatsApp
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <hr class="footer-divider" />
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        &copy; {year} {SITE.name}. All rights reserved.
+      </p>
+      <p class="footer-built-with">
+        Dibangun dengan
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color: var(--color-error);" aria-hidden="true">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+        menggunakan Astro &amp; Tailwind CSS
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-neutral-900);
+    color: #fff;
+    padding-block: 4rem 2rem;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  @media (min-width: 640px) {
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 1024px) {
+    .footer-top { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
+  }
+
+  /* Brand */
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+  .footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+  .footer-logo-text {
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+  .footer-tagline {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-accent-cyan);
+  }
+  .footer-brand-desc {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65;
+    max-width: 280px;
+  }
+
+  /* Social */
+  .footer-social {
+    display: flex;
+    gap: 0.625rem;
+    margin-top: 0.5rem;
+  }
+  .footer-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .footer-social-link:hover {
+    background: var(--color-accent-indigo);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  /* Columns */
+  .footer-col-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 1rem;
+  }
+  .footer-col-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+  .footer-col-link {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    transition: color 0.2s;
+    display: block;
+    min-height: 24px;
+  }
+  .footer-col-link:hover {
+    color: #fff;
+  }
+  .footer-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Divider */
+  .footer-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin: 0;
+  }
+
+  /* Bottom bar */
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 1.5rem;
+    align-items: center;
+    text-align: center;
+  }
+  @media (min-width: 768px) {
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+  }
+  .footer-copy {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.45);
+  }
+  .footer-built-with {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    color: rgba(255,255,255,0.35);
+  }
+</style>

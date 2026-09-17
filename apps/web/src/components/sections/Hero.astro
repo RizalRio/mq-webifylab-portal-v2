@@ -1,0 +1,378 @@
+---
+import { SITE } from "../../lib/constants";
+---
+
+<section
+  id="beranda"
+  class="hero-section"
+  aria-label="Hero — Webifylab"
+>
+  <!-- Background decoration -->
+  <div class="hero-bg-gradient" aria-hidden="true"></div>
+  <div class="hero-bg-grid" aria-hidden="true"></div>
+
+  <div class="container-site hero-container">
+
+    <!-- Left: Text content -->
+    <div class="hero-content">
+
+      <!-- Label badge -->
+      <div class="hero-label animate-fade-in-up" aria-label="Positioning">
+        <span class="badge badge-indigo">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+          Software House & Ekosistem Digital
+        </span>
+      </div>
+
+      <!-- Headline H1 -->
+      <h1 class="hero-headline animate-fade-in-up delay-100">
+        Dari Ide Menjadi
+        <span class="hero-headline-accent">Ekosistem Digital</span>
+      </h1>
+
+      <!-- Sub-headline -->
+      <p class="hero-subheadline animate-fade-in-up delay-200">
+        Webifylab membantu bisnis Anda membangun aplikasi, desain, dan sistem
+        SaaS yang siap berkembang — didukung oleh keahlian AI &amp; Data.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="hero-ctas animate-fade-in-up delay-300">
+        <a
+          href={`https://wa.me/${SITE.whatsapp}?text=Halo%20Webifylab%2C%20saya%20ingin%20konsultasi%20gratis%20mengenai%20kebutuhan%20teknologi%20bisnis%20saya.`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary hero-btn-primary"
+          id="hero-cta-primary"
+        >
+          Konsultasi Gratis
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a
+          href="#layanan"
+          class="btn-secondary"
+          id="hero-cta-secondary"
+        >
+          Lihat Layanan
+        </a>
+      </div>
+
+      <!-- Trust badge -->
+      <div class="hero-trust animate-fade-in-up delay-400">
+        <div class="hero-trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
+          <span>Dipercaya oleh UMKM &amp; Startup di Indonesia</span>
+        </div>
+        <div class="hero-trust-divider" aria-hidden="true">·</div>
+        <div class="hero-trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
+          <span>Konsultasi pertama gratis</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Visual -->
+    <div class="hero-visual animate-fade-in delay-200" aria-hidden="true">
+      <div class="hero-visual-card animate-float">
+        <!-- Abstract network / ecosystem illustration -->
+        <svg viewBox="0 0 480 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="hero-svg">
+          <!-- Background blobs -->
+          <ellipse cx="240" cy="200" rx="200" ry="160" fill="url(#blob1)" opacity="0.15"/>
+          <ellipse cx="300" cy="150" rx="120" ry="100" fill="url(#blob2)" opacity="0.12"/>
+
+          <!-- Connection lines -->
+          <g stroke="var(--color-neutral-300)" stroke-width="1.5" stroke-dasharray="4 4">
+            <line x1="120" y1="180" x2="240" y2="120"/>
+            <line x1="240" y1="120" x2="360" y2="180"/>
+            <line x1="240" y1="120" x2="240" y2="270"/>
+            <line x1="120" y1="180" x2="120" y2="310"/>
+            <line x1="360" y1="180" x2="360" y2="310"/>
+            <line x1="120" y1="310" x2="240" y2="270"/>
+            <line x1="360" y1="310" x2="240" y2="270"/>
+          </g>
+
+          <!-- Node: Center top (main hub) -->
+          <circle cx="240" cy="120" r="32" fill="var(--color-accent-indigo)"/>
+          <text x="240" y="116" text-anchor="middle" fill="white" font-size="11" font-weight="600" font-family="Inter, sans-serif">Web</text>
+          <text x="240" y="130" text-anchor="middle" fill="white" font-size="11" font-weight="600" font-family="Inter, sans-serif">App</text>
+
+          <!-- Node: Left -->
+          <circle cx="120" cy="180" r="26" fill="white" stroke="var(--color-accent-indigo)" stroke-width="2"/>
+          <text x="120" y="176" text-anchor="middle" fill="var(--color-accent-indigo)" font-size="9.5" font-weight="600" font-family="Inter, sans-serif">UI/UX</text>
+          <text x="120" y="188" text-anchor="middle" fill="var(--color-accent-indigo)" font-size="9.5" font-weight="600" font-family="Inter, sans-serif">Design</text>
+
+          <!-- Node: Right -->
+          <circle cx="360" cy="180" r="26" fill="white" stroke="var(--color-accent-cyan)" stroke-width="2"/>
+          <text x="360" y="176" text-anchor="middle" fill="#0891B2" font-size="9.5" font-weight="600" font-family="Inter, sans-serif">SaaS</text>
+          <text x="360" y="188" text-anchor="middle" fill="#0891B2" font-size="9.5" font-weight="600" font-family="Inter, sans-serif">Ecosystem</text>
+
+          <!-- Node: Bottom left -->
+          <circle cx="120" cy="310" r="22" fill="white" stroke="var(--color-neutral-300)" stroke-width="2"/>
+          <text x="120" y="306" text-anchor="middle" fill="var(--color-neutral-700)" font-size="9" font-weight="600" font-family="Inter, sans-serif">AI &</text>
+          <text x="120" y="318" text-anchor="middle" fill="var(--color-neutral-700)" font-size="9" font-weight="600" font-family="Inter, sans-serif">Data</text>
+
+          <!-- Node: Bottom center -->
+          <circle cx="240" cy="270" r="28" fill="var(--color-primary)" opacity="0.9"/>
+          <text x="240" y="266" text-anchor="middle" fill="white" font-size="9.5" font-weight="600" font-family="Inter, sans-serif">Webify</text>
+          <text x="240" y="278" text-anchor="middle" fill="white" font-size="9.5" font-weight="600" font-family="Inter, sans-serif">lab</text>
+
+          <!-- Node: Bottom right -->
+          <circle cx="360" cy="310" r="22" fill="white" stroke="var(--color-neutral-300)" stroke-width="2"/>
+          <text x="360" y="306" text-anchor="middle" fill="var(--color-neutral-700)" font-size="9" font-weight="600" font-family="Inter, sans-serif">API</text>
+          <text x="360" y="318" text-anchor="middle" fill="var(--color-neutral-700)" font-size="9" font-weight="600" font-family="Inter, sans-serif">First</text>
+
+          <!-- Pulse rings on main node -->
+          <circle cx="240" cy="120" r="44" stroke="var(--color-accent-indigo)" stroke-width="1" opacity="0.3">
+            <animate attributeName="r" values="32;52;32" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.3;0;0.3" dur="3s" repeatCount="indefinite"/>
+          </circle>
+
+          <!-- Gradient defs -->
+          <defs>
+            <radialGradient id="blob1" cx="50%" cy="50%">
+              <stop offset="0%" stop-color="var(--color-accent-indigo)"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+            <radialGradient id="blob2" cx="50%" cy="50%">
+              <stop offset="0%" stop-color="var(--color-accent-cyan)"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+          </defs>
+        </svg>
+
+        <!-- Floating stat cards -->
+        <div class="hero-stat hero-stat-1">
+          <span class="hero-stat-num">AI</span>
+          <span class="hero-stat-label">Ready</span>
+        </div>
+        <div class="hero-stat hero-stat-2">
+          <span class="hero-stat-num">∞</span>
+          <span class="hero-stat-label">Scalable</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero-scroll-indicator animate-fade-in delay-500" aria-hidden="true">
+    <div class="hero-scroll-mouse">
+      <div class="hero-scroll-dot"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ── Section ──────────────────────────────────────────────────── */
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: 72px; /* navbar height */
+  }
+
+  /* ── Background decorations ────────────────────────────────────── */
+  .hero-bg-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #f8faff 0%, #ffffff 50%, #f0f4ff 100%);
+    z-index: 0;
+  }
+  .hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--color-neutral-300) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-neutral-300) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.3;
+    z-index: 0;
+  }
+
+  /* ── Container ─────────────────────────────────────────────────── */
+  .hero-container {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding-block: 4rem 3rem;
+    align-items: center;
+  }
+  @media (min-width: 1024px) {
+    .hero-container {
+      grid-template-columns: 58% 42%;
+      gap: 3rem;
+      padding-block: 5rem 4rem;
+    }
+  }
+
+  /* ── Left: Text Content ────────────────────────────────────────── */
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hero-label {
+    display: flex;
+  }
+
+  .hero-headline {
+    font-size: clamp(2rem, 6vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--color-neutral-900);
+    letter-spacing: -0.02em;
+  }
+  .hero-headline-accent {
+    display: block;
+    background: linear-gradient(135deg, var(--color-accent-indigo), var(--color-accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subheadline {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    color: var(--color-neutral-700);
+    line-height: 1.75;
+    max-width: 560px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  @media (min-width: 480px) {
+    .hero-ctas { flex-direction: row; align-items: center; }
+  }
+
+  .hero-btn-primary {
+    font-size: 1.0625rem;
+    padding: 0.875rem 2rem;
+  }
+
+  .hero-trust {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-top: 0.25rem;
+  }
+  .hero-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    color: var(--color-neutral-500);
+  }
+  .hero-trust-divider {
+    color: var(--color-neutral-300);
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  /* ── Right: Visual ─────────────────────────────────────────────── */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-visual-card {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    background: #ffffff;
+    border-radius: 1.5rem;
+    border: 1px solid var(--color-neutral-300);
+    box-shadow: 0 20px 60px -10px rgb(79 70 229 / 0.15), 0 4px 16px -4px rgb(0 0 0 / 0.08);
+    padding: 2rem;
+    overflow: visible;
+  }
+
+  .hero-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Floating stat cards */
+  .hero-stat {
+    position: absolute;
+    background: #ffffff;
+    border: 1px solid var(--color-neutral-300);
+    border-radius: 0.75rem;
+    padding: 0.5rem 0.875rem;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: float 4s ease-in-out infinite;
+  }
+  .hero-stat-1 {
+    top: -12px;
+    right: -12px;
+    animation-delay: 0.5s;
+  }
+  .hero-stat-2 {
+    bottom: 16px;
+    left: -16px;
+    animation-delay: 1s;
+  }
+  .hero-stat-num {
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: var(--color-accent-indigo);
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--color-neutral-500);
+    margin-top: 2px;
+  }
+
+  /* ── Scroll indicator ──────────────────────────────────────────── */
+  .hero-scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  .hero-scroll-mouse {
+    width: 26px;
+    height: 40px;
+    border: 2px solid var(--color-neutral-300);
+    border-radius: 13px;
+    display: flex;
+    justify-content: center;
+    padding-top: 6px;
+  }
+  .hero-scroll-dot {
+    width: 4px;
+    height: 8px;
+    background-color: var(--color-accent-indigo);
+    border-radius: 2px;
+    animation: scrollDot 2s ease-in-out infinite;
+  }
+  @keyframes scrollDot {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(8px); opacity: 0.3; }
+  }
+</style>

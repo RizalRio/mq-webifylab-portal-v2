@@ -1,0 +1,45 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+
+import Hero          from "../components/sections/Hero.astro";
+import Problem       from "../components/sections/Problem.astro";
+import Services      from "../components/sections/Services.astro";
+import WhyWebifylab  from "../components/sections/WhyWebifylab.astro";
+import Approach      from "../components/sections/Approach.astro";
+import Portfolio     from "../components/sections/Portfolio.astro";
+import Contact       from "../components/sections/Contact.astro";
+---
+
+<Layout>
+  <Header />
+
+  <main id="main-content">
+    <!-- S2: Hero -->
+    <Hero />
+
+    <!-- S3: Problem -->
+    <Problem />
+
+    <!-- S4: Services -->
+    <Services />
+
+    <!-- S5: Why Webifylab -->
+    <WhyWebifylab />
+
+    <!-- S6: Approach -->
+    <Approach />
+
+    <!-- S7: Portfolio -->
+    <Portfolio />
+
+    <!-- S8: Testimonial → HIDDEN in V1 (no testimonials yet) -->
+
+    <!-- S9: CTA / Contact -->
+    <Contact />
+  </main>
+
+  <!-- S10: Footer -->
+  <Footer />
+</Layout>

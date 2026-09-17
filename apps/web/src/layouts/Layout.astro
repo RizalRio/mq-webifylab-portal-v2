@@ -1,0 +1,76 @@
+---
+import { SITE } from "../lib/constants";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+}
+
+const {
+  title = `${SITE.name} — Software House untuk Ekosistem Digital & AI`,
+  description = SITE.description,
+  ogImage = `${SITE.url}/og-image.png`,
+  canonical = SITE.url,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="software house, pembuatan aplikasi, web development, SaaS development, AI integration, data analytics, UI/UX design, ekosistem digital" />
+    <meta name="author" content="Rizal — Webifylab" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={`${SITE.name} — Dari Ide Menjadi Ekosistem Digital`} />
+    <meta property="og:description" content="Partner teknologi untuk membangun aplikasi, desain, dan sistem SaaS yang siap berkembang dengan AI & Data." />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:site_name" content={SITE.name} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${SITE.name} — Dari Ide Menjadi Ekosistem Digital`} />
+    <meta name="twitter:description" content="Partner teknologi untuk membangun aplikasi, desain, dan sistem SaaS yang siap berkembang dengan AI & Data." />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Preconnect for Google Fonts (already loaded in CSS, this ensures early DNS) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Theme color (browser toolbar) -->
+    <meta name="theme-color" content="#1E3A5F" />
+  </head>
+
+  <body>
+    <!-- Skip to main content (accessibility) -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] btn-primary text-sm"
+    >
+      Lewati ke konten utama
+    </a>
+
+    <slot />
+  </body>
+</html>

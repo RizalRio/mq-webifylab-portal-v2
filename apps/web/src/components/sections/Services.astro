@@ -1,0 +1,154 @@
+---
+import { SERVICES } from "../../lib/constants";
+
+const icons: Record<string, string> = {
+  code: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+  palette: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.47-1.125-.29-.289-.47-.688-.47-1.125a1.64 1.64 0 0 1 1.648-1.688h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>`,
+  network: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg>`,
+};
+---
+
+<section id="layanan" class="section-pad services-section" aria-labelledby="services-title">
+  <div class="container-site">
+
+    <!-- Section header -->
+    <div class="services-header">
+      <span class="section-label">Layanan</span>
+      <h2 class="section-title" id="services-title">Layanan Kami</h2>
+      <p class="section-subtitle services-subtitle">
+        Tiga pilar layanan yang saling terintegrasi untuk membangun
+        ekosistem digital bisnis Anda.
+      </p>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="services-grid" role="list">
+      {SERVICES.map((service, i) => (
+        <article class="card services-card" role="listitem" style={`--delay: ${i * 0.12}s`}>
+
+          <!-- Badge (if any) -->
+          {service.badge && (
+            <div class="services-badge-wrap">
+              <span class="badge badge-indigo">{service.badge}</span>
+            </div>
+          )}
+
+          <!-- Icon -->
+          <div class="icon-wrap icon-wrap-lg services-icon" aria-hidden="true">
+            <Fragment set:html={icons[service.icon]} />
+          </div>
+
+          <!-- Title -->
+          <h3 class="services-card-title">{service.title}</h3>
+
+          <!-- Description -->
+          <p class="services-card-desc">{service.description}</p>
+
+          <!-- Features list -->
+          <ul class="services-features" aria-label={`Fitur ${service.title}`}>
+            {service.features.map((feat) => (
+              <li class="services-feature-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-indigo)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5"/>
+                </svg>
+                <span>{feat}</span>
+              </li>
+            ))}
+          </ul>
+
+          <!-- Ghost CTA -->
+          <a href="#kontak" class="btn-ghost services-cta">
+            Pelajari Lebih Lanjut
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-section {
+    background-color: #ffffff;
+  }
+  .services-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+  .services-subtitle {
+    text-align: center;
+    margin-inline: auto;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .services-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    animation: fadeInUp 0.6s ease-out both;
+    animation-delay: var(--delay, 0s);
+  }
+  .services-badge-wrap {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+  }
+  .services-icon {
+    margin-top: 0.25rem;
+  }
+  .services-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-neutral-900);
+    line-height: 1.35;
+    padding-right: 2rem; /* space for badge */
+  }
+  .services-card-desc {
+    font-size: 0.9375rem;
+    color: var(--color-neutral-700);
+    line-height: 1.7;
+  }
+  .services-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+  }
+  .services-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-neutral-700);
+    line-height: 1.5;
+  }
+  .services-feature-item svg {
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .services-cta {
+    margin-top: 0.25rem;
+    align-self: flex-start;
+    padding-left: 0;
+  }
+</style>

@@ -1,0 +1,91 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import { SITE } from "../lib/constants";
+---
+
+<Layout
+  title={`404 — Halaman Tidak Ditemukan | ${SITE.name}`}
+  description="Maaf, halaman yang Anda cari tidak ada atau telah dipindahkan."
+>
+  <Header />
+
+  <main id="main-content" class="notfound-main">
+    <div class="notfound-container">
+      <!-- 404 graphic -->
+      <div class="notfound-graphic" aria-hidden="true">
+        <span class="notfound-number">404</span>
+      </div>
+
+      <h1 class="notfound-title">Halaman Tidak Ditemukan</h1>
+      <p class="notfound-desc">
+        Maaf, halaman yang Anda cari tidak ada atau telah dipindahkan.
+      </p>
+
+      <div class="notfound-actions">
+        <a href="/" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M5 12l7-7m-7 7l7 7"/>
+          </svg>
+          Kembali ke Beranda
+        </a>
+        <a href="/#kontak" class="btn-secondary">
+          Hubungi Kami
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .notfound-main {
+    min-height: calc(100vh - 72px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1.5rem;
+    padding-top: calc(72px + 4rem);
+    background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
+  }
+  .notfound-container {
+    text-align: center;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .notfound-graphic {
+    position: relative;
+  }
+  .notfound-number {
+    font-size: clamp(6rem, 20vw, 10rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--color-accent-indigo), var(--color-accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .notfound-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    color: var(--color-neutral-900);
+  }
+  .notfound-desc {
+    font-size: 1.0625rem;
+    color: var(--color-neutral-700);
+    line-height: 1.6;
+  }
+  .notfound-actions {
+    display: flex;
+    gap: 0.875rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+</style>
