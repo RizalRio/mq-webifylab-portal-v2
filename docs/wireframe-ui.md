@@ -1,14 +1,15 @@
 # 🖼️ Wireframe & UI Specification Document
+
 ## Webifylab Landing Page — Version 1.0
 
-| Metadata         | Detail                                      |
-|------------------|---------------------------------------------|
-| **Product**      | Webifylab Landing Page                      |
-| **Version**      | 1.0                                         |
-| **Author**       | Rizal                                       |
-| **Created**      | 17 September 2026                           |
-| **Status**       | Draft                                       |
-| **Tools**        | Figma (optional), ASCII Wireframes          |
+| Metadata    | Detail                             |
+| ----------- | ---------------------------------- |
+| **Product** | Webifylab Landing Page             |
+| **Version** | 1.0                                |
+| **Author**  | Rizal                              |
+| **Created** | 17 September 2026                  |
+| **Status**  | Draft                              |
+| **Tools**   | Figma (optional), ASCII Wireframes |
 
 ---
 
@@ -44,13 +45,13 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
 
 ### 1.2 Global Layout Rules
 
-| Rule | Value |
-|------|-------|
-| **Container Max Width** | 1280px (7xl) |
-| **Container Padding** | 16px (mobile), 24px (tablet), 32px (desktop) |
-| **Section Padding** | 60px (mobile), 80px (tablet), 120px (desktop) |
-| **Grid Gap** | 16px (mobile), 24px (tablet), 32px (desktop) |
-| **Background Pattern** | Alternating white & slate-100 |
+| Rule                    | Value                                         |
+| ----------------------- | --------------------------------------------- |
+| **Container Max Width** | 1280px (7xl)                                  |
+| **Container Padding**   | 16px (mobile), 24px (tablet), 32px (desktop)  |
+| **Section Padding**     | 60px (mobile), 80px (tablet), 120px (desktop) |
+| **Grid Gap**            | 16px (mobile), 24px (tablet), 32px (desktop)  |
+| **Background Pattern**  | Alternating white & slate-100                 |
 
 ---
 
@@ -68,6 +69,7 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
 ```
 
 **Specifications:**
+
 - **Height:** 72px
 - **Background:** White (transparent saat di atas, solid saat scroll)
 - **Position:** Fixed top, z-index: 50
@@ -94,6 +96,7 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
 ```
 
 **Specifications:**
+
 - **Height:** 64px
 - **Hamburger Icon:** Right aligned, 24x24px
 - **Mobile Menu:** Full-width dropdown, background white, shadow-lg
@@ -101,6 +104,7 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
 - **CTA Button:** Full-width, margin-top 16px
 
 **Interactions:**
+
 - Scroll > 50px → Background berubah dari transparent ke white + shadow
 - Hamburger click → Toggle mobile menu dengan animasi slide-down (300ms)
 - Menu item click → Smooth scroll ke section + close mobile menu
@@ -132,12 +136,13 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
 ```
 
 **Specifications:**
+
 - **Min Height:** 100vh (full viewport)
 - **Layout:** 2 columns (60% text, 40% visual)
 - **Background:** Gradient (white → slate-100) atau solid white
 - **H1:** 48px desktop, 32px mobile, font-weight 800, color slate-900
 - **Sub-headline:** 18px, font-weight 400, color slate-700, max-width 600px
-- **CTA Buttons:** 
+- **CTA Buttons:**
   - Primary: "Konsultasi Gratis →" (margin-right 16px)
   - Secondary: "Lihat Layanan"
 - **Trust Badge:** Below CTA, icon Check + text, color slate-500, font-size 14px
@@ -168,12 +173,14 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
 ```
 
 **Specifications:**
+
 - **Layout:** Single column, text top, visual bottom
 - **H1:** 32px, centered atau left-aligned
 - **CTA Buttons:** Full-width, stacked vertical, gap 12px
 - **Visual:** Below text, max-width 100%, margin-top 32px
 
 **Animations:**
+
 - Text: Fade-in + slide-up (delay 0ms, duration 600ms)
 - Visual: Fade-in (delay 200ms, duration 600ms)
 - CTA Buttons: Fade-in (delay 400ms, duration 600ms)
@@ -209,11 +216,12 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
 ```
 
 **Specifications:**
+
 - **Background:** Slate-100 (alternating dari Hero)
 - **Section Title:** 36px desktop, 28px mobile, centered, margin-bottom 16px
 - **Section Subtitle:** 18px, color slate-700, centered, max-width 700px, margin-bottom 48px
 - **Grid:** 3 columns desktop, 2 columns tablet, 1 column mobile
-- **Cards:** 
+- **Cards:**
   - Background: White
   - Padding: 32px
   - Border-radius: 16px
@@ -262,6 +270,7 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
 ```
 
 **Animations:**
+
 - Cards: Fade-in + slide-up (staggered delay: 0ms, 100ms, 200ms)
 
 ---
@@ -302,15 +311,16 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
 ```
 
 **Specifications:**
+
 - **Background:** White
 - **Layout:** Same as Problem Section (3 columns grid)
 - **Cards:** Same styling as Problem cards
-- **Features List:** 
+- **Features List:**
   - Bullet points dengan icon Check (small)
   - Font-size: 14px, color slate-700
   - Margin-top: 16px
   - Gap: 8px antar item
-- **CTA Link:** 
+- **CTA Link:**
   - Ghost Button variant
   - "Pelajari Lebih Lanjut →"
   - Margin-top: 24px
@@ -360,9 +370,10 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
 ```
 
 **Specifications:**
+
 - **Background:** Slate-100
 - **Layout:** 2x2 grid (desktop), 1 column (mobile)
-- **Cards:** 
+- **Cards:**
   - Background: White
   - Padding: 32px
   - Border-radius: 16px
@@ -405,10 +416,11 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
 ```
 
 **Specifications:**
+
 - **Background:** White
 - **Layout:** Horizontal flow (desktop), vertical stack (mobile)
 - **Steps:** 4 items dengan connector line/arrow
-- **Number Badge:** 
+- **Number Badge:**
   - 48x48px circle
   - Background: indigo
   - Text: white, font-weight 700, font-size 20px
@@ -492,6 +504,7 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
 ```
 
 **Specifications:**
+
 - **Background:** Slate-100
 - **Layout:** 3 columns grid (desktop), 2 columns (tablet), 1 column (mobile)
 - **Cards:**
@@ -536,6 +549,7 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
 ```
 
 **Specifications:**
+
 - **Background:** White
 - **Layout:** Carousel atau grid (jika > 1 testimonial)
 - **Card:**
@@ -544,7 +558,7 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
   - Border-radius: 16px
   - Quote icon: Large, color indigo, opacity 20%
 - **Quote Text:** 18px, font-style italic, color slate-900
-- **Author:** 
+- **Author:**
   - Avatar: 48x48px circle
   - Name: 16px, font-weight 600
   - Position: 14px, color slate-700
@@ -597,6 +611,7 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
 ```
 
 **Specifications:**
+
 - **Background:** Gradient (indigo → deep blue) atau solid deep blue
 - **Text Color:** White
 - **Layout:** Centered, max-width 600px
@@ -612,7 +627,7 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
   - Input: Full-width, padding 12px 16px, border 1px slate-300, border-radius 8px
   - Focus: Ring 2px indigo, border transparent
   - Gap antar fields: 24px
-- **Submit Button:** 
+- **Submit Button:**
   - Primary variant, full-width
   - Text: "Kirim Pesan →"
   - Loading state: Spinner + "Mengirim..."
@@ -665,6 +680,7 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
 ```
 
 **Specifications (Mobile):**
+
 - Form container padding: 24px
 - Form fields: Same as desktop
 - Submit button: Full-width
@@ -738,10 +754,11 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
 ```
 
 **Specifications:**
+
 - **Background:** Slate-900 (dark)
 - **Text Color:** White (headings), slate-300 (links)
 - **Padding:** 80px vertical, 32px horizontal
-- **Layout:** 
+- **Layout:**
   - Top: Logo + tagline (left aligned)
   - Middle: 3-4 columns grid (links)
   - Bottom: Copyright (centered, border-top slate-700, padding-top 32px)
@@ -786,6 +803,7 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
 ```
 
 **Specifications (Mobile):**
+
 - Columns: Stacked vertical
 - Gap antar columns: 32px
 
@@ -793,68 +811,68 @@ Landing page menggunakan pendekatan **single-page scroll** dengan 10 section uta
 
 ## 3. Responsive Breakpoints Summary
 
-| Section | Mobile (<768px) | Tablet (768-1023px) | Desktop (≥1024px) |
-|---------|-----------------|---------------------|-------------------|
-| **Navbar** | Hamburger menu | Hamburger menu | Full menu |
-| **Hero** | Stacked (text + visual) | 2 columns (50/50) | 2 columns (60/40) |
-| **Problem** | 1 column | 2 columns | 3 columns |
-| **Services** | 1 column | 2 columns | 3 columns |
-| **Why** | 1 column | 2 columns | 2x2 grid |
-| **Approach** | Vertical stack | Horizontal | Horizontal |
-| **Portfolio** | 1 column | 2 columns | 3 columns |
-| **Testimonial** | 1 column | 1 column | Carousel/Grid |
-| **Contact** | Form full-width | Form max-600px | Form max-600px |
-| **Footer** | Stacked columns | 2 columns | 3-4 columns |
+| Section         | Mobile (<768px)         | Tablet (768-1023px) | Desktop (≥1024px) |
+| --------------- | ----------------------- | ------------------- | ----------------- |
+| **Navbar**      | Hamburger menu          | Hamburger menu      | Full menu         |
+| **Hero**        | Stacked (text + visual) | 2 columns (50/50)   | 2 columns (60/40) |
+| **Problem**     | 1 column                | 2 columns           | 3 columns         |
+| **Services**    | 1 column                | 2 columns           | 3 columns         |
+| **Why**         | 1 column                | 2 columns           | 2x2 grid          |
+| **Approach**    | Vertical stack          | Horizontal          | Horizontal        |
+| **Portfolio**   | 1 column                | 2 columns           | 3 columns         |
+| **Testimonial** | 1 column                | 1 column            | Carousel/Grid     |
+| **Contact**     | Form full-width         | Form max-600px      | Form max-600px    |
+| **Footer**      | Stacked columns         | 2 columns           | 3-4 columns       |
 
 ---
 
 ## 4. Component Usage Matrix
 
-| Component | S1 | S2 | S3 | S4 | S5 | S6 | S7 | S8 | S9 | S10 |
-|-----------|----|----|----|----|----|----|----|----|----|----|
-| **Button Primary** | ✓ | ✓ | | | | | | | ✓ | |
-| **Button Secondary** | | ✓ | | | | | | | | |
-| **Button Ghost** | | | | ✓ | | | | | | ✓ |
-| **Card (Service)** | | | | ✓ | | | | | | |
-| **Card (Problem)** | | | ✓ | | | | | | | |
-| **Card (Why)** | | | | | ✓ | | | | | |
-| **Card (Portfolio)** | | | | | | | ✓ | | | |
-| **Card (Testimonial)**| | | | | | | | ✓ | | |
-| **Input Text** | | | | | | | | | ✓ | |
-| **Input Textarea** | | | | | | | | | ✓ | |
-| **Input Select** | | | | | | | | | ✓ | |
-| **Badge** | | | | ✓ | | | ✓ | | | |
-| **Icon** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | | ✓ |
+| Component              | S1  | S2  | S3  | S4  | S5  | S6  | S7  | S8  | S9  | S10 |
+| ---------------------- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Button Primary**     | ✓   | ✓   |     |     |     |     |     |     | ✓   |     |
+| **Button Secondary**   |     | ✓   |     |     |     |     |     |     |     |     |
+| **Button Ghost**       |     |     |     | ✓   |     |     |     |     |     | ✓   |
+| **Card (Service)**     |     |     |     | ✓   |     |     |     |     |     |     |
+| **Card (Problem)**     |     |     | ✓   |     |     |     |     |     |     |     |
+| **Card (Why)**         |     |     |     |     | ✓   |     |     |     |     |     |
+| **Card (Portfolio)**   |     |     |     |     |     |     | ✓   |     |     |     |
+| **Card (Testimonial)** |     |     |     |     |     |     |     | ✓   |     |     |
+| **Input Text**         |     |     |     |     |     |     |     |     | ✓   |     |
+| **Input Textarea**     |     |     |     |     |     |     |     |     | ✓   |     |
+| **Input Select**       |     |     |     |     |     |     |     |     | ✓   |     |
+| **Badge**              |     |     |     | ✓   |     |     | ✓   |     |     |     |
+| **Icon**               | ✓   | ✓   | ✓   | ✓   | ✓   | ✓   | ✓   | ✓   |     | ✓   |
 
 ---
 
 ## 5. Animation & Interaction Summary
 
-| Element | Animation | Trigger | Duration | Easing |
-|---------|-----------|---------|----------|--------|
-| **Hero Text** | Fade-in + slide-up | Page load | 600ms | ease-out |
-| **Hero Visual** | Fade-in | Page load (delay 200ms) | 600ms | ease-out |
-| **Section Cards** | Fade-in + slide-up | Scroll into view (staggered) | 400ms | ease-out |
-| **Button Hover** | Scale + opacity | Hover | 200ms | ease |
-| **Card Hover** | Shadow + border | Hover | 300ms | ease |
-| **Navbar** | Background change | Scroll > 50px | 300ms | ease |
-| **Mobile Menu** | Slide-down | Hamburger click | 300ms | ease-out |
-| **Form Success** | Fade-in | Form submit | 300ms | ease-out |
+| Element           | Animation          | Trigger                      | Duration | Easing   |
+| ----------------- | ------------------ | ---------------------------- | -------- | -------- |
+| **Hero Text**     | Fade-in + slide-up | Page load                    | 600ms    | ease-out |
+| **Hero Visual**   | Fade-in            | Page load (delay 200ms)      | 600ms    | ease-out |
+| **Section Cards** | Fade-in + slide-up | Scroll into view (staggered) | 400ms    | ease-out |
+| **Button Hover**  | Scale + opacity    | Hover                        | 200ms    | ease     |
+| **Card Hover**    | Shadow + border    | Hover                        | 300ms    | ease     |
+| **Navbar**        | Background change  | Scroll > 50px                | 300ms    | ease     |
+| **Mobile Menu**   | Slide-down         | Hamburger click              | 300ms    | ease-out |
+| **Form Success**  | Fade-in            | Form submit                  | 300ms    | ease-out |
 
 ---
 
 ## 6. Accessibility Considerations
 
-| Element | Requirement |
-|---------|-------------|
-| **Images** | Alt text untuk semua gambar (decorative images: alt="") |
-| **Icons** | ARIA labels untuk icon-only buttons |
-| **Forms** | Labels untuk semua inputs, error messages jelas |
-| **Colors** | Kontras minimal 4.5:1 untuk teks, 3:1 untuk UI components |
-| **Focus** | Visible focus states untuk semua interactive elements |
-| **Keyboard** | Semua interaksi bisa diakses via keyboard (Tab, Enter, Esc) |
-| **Motion** | Respect `prefers-reduced-motion` (disable animations) |
-| **Skip Link** | "Skip to content" link di awal halaman |
+| Element       | Requirement                                                 |
+| ------------- | ----------------------------------------------------------- |
+| **Images**    | Alt text untuk semua gambar (decorative images: alt="")     |
+| **Icons**     | ARIA labels untuk icon-only buttons                         |
+| **Forms**     | Labels untuk semua inputs, error messages jelas             |
+| **Colors**    | Kontras minimal 4.5:1 untuk teks, 3:1 untuk UI components   |
+| **Focus**     | Visible focus states untuk semua interactive elements       |
+| **Keyboard**  | Semua interaksi bisa diakses via keyboard (Tab, Enter, Esc) |
+| **Motion**    | Respect `prefers-reduced-motion` (disable animations)       |
+| **Skip Link** | "Skip to content" link di awal halaman                      |
 
 ---
 
@@ -875,17 +893,17 @@ Sebelum development, pastikan:
 
 ## 8. Open Questions
 
-| No | Pertanyaan | Status |
-|----|-----------|--------|
-| Q1 | Apakah layout Hero Section (2 columns desktop, stacked mobile) sudah sesuai? | Pending |
-| Q2 | Apakah ingin menggunakan Figma untuk wireframe visual? Atau cukup dengan ASCII + spesifikasi ini? | Pending |
-| Q3 | Apakah ada preferensi untuk visual Hero Section? (Ilustrasi abstrak, gradient blob, atau screenshot produk?) | Pending |
-| Q4 | Apakah section Testimonial (S8) ingin ditampilkan di V1 dengan placeholder, atau disembunyikan? | Pending |
-| Q5 | Apakah ada animasi khusus yang diinginkan? Atau cukup dengan fade-in + slide-up standar? | Pending |
+| No  | Pertanyaan                                                                                                   | Status  |
+| --- | ------------------------------------------------------------------------------------------------------------ | ------- |
+| Q1  | Apakah layout Hero Section (2 columns desktop, stacked mobile) sudah sesuai?                                 | Pending |
+| Q2  | Apakah ingin menggunakan Figma untuk wireframe visual? Atau cukup dengan ASCII + spesifikasi ini?            | Pending |
+| Q3  | Apakah ada preferensi untuk visual Hero Section? (Ilustrasi abstrak, gradient blob, atau screenshot produk?) | Pending |
+| Q4  | Apakah section Testimonial (S8) ingin ditampilkan di V1 dengan placeholder, atau disembunyikan?              | Pending |
+| Q5  | Apakah ada animasi khusus yang diinginkan? Atau cukup dengan fade-in + slide-up standar?                     | Pending |
 
 ---
 
-*Dokumen ini adalah living document. Versi akan diperbarui seiring feedback dan perkembangan desain.*
+_Dokumen ini adalah living document. Versi akan diperbarui seiring feedback dan perkembangan desain._
 
 **Last Updated:** 17 September 2026
 **Next Step:** Review wireframe, finalisasi layout, lalu mulai development atau buat mockup visual di Figma.

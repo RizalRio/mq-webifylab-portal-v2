@@ -1,16 +1,17 @@
 # 🏗️ Technical Design Document (TDD)
+
 ## Webifylab Landing Page — Version 1.0
 
-| Metadata         | Detail                                      |
-|------------------|---------------------------------------------|
-| **Product**      | Webifylab Landing Page                      |
-| **Version**      | 1.0                                         |
-| **Author**       | Rizal                                       |
-| **Role**         | System Analyst / Software Engineer          |
-| **Created**      | 17 September 2026                           |
-| **Status**       | Draft                                       |
-| **Tech Stack**   | Astro (Frontend), Golang (Backend API - V1.5) |
-| **Hosting**      | VPS 1 vCPU, 1 GB RAM, 20 GB SSD            |
+| Metadata       | Detail                                        |
+| -------------- | --------------------------------------------- |
+| **Product**    | Webifylab Landing Page                        |
+| **Version**    | 1.0                                           |
+| **Author**     | Rizal                                         |
+| **Role**       | System Analyst / Software Engineer            |
+| **Created**    | 17 September 2026                             |
+| **Status**     | Draft                                         |
+| **Tech Stack** | Astro (Frontend), Golang (Backend API - V1.5) |
+| **Hosting**    | VPS 1 vCPU, 1 GB RAM, 20 GB SSD               |
 
 ---
 
@@ -18,14 +19,14 @@
 
 ### 1.1 Design Principles
 
-| Principle | Deskripsi |
-|-----------|-----------|
-| **Static-First** | Landing page V1 100% static (HTML/CSS/JS) untuk performa maksimal dan hemat resource VPS |
-| **Progressive Enhancement** | Backend (Golang) ditambahkan bertahap saat dibutuhkan |
-| **Resource Efficiency** | Setiap komponen harus ringan — VPS hanya 1GB RAM |
-| **Future-Proof** | Struktur siap untuk ekspansi ke SaaS & AI ecosystem |
-| **Security by Default** | HTTPS, CSP headers, no inline scripts |
-| **Observable** | Logging & monitoring sejak hari pertama |
+| Principle                   | Deskripsi                                                                                |
+| --------------------------- | ---------------------------------------------------------------------------------------- |
+| **Static-First**            | Landing page V1 100% static (HTML/CSS/JS) untuk performa maksimal dan hemat resource VPS |
+| **Progressive Enhancement** | Backend (Golang) ditambahkan bertahap saat dibutuhkan                                    |
+| **Resource Efficiency**     | Setiap komponen harus ringan — VPS hanya 1GB RAM                                         |
+| **Future-Proof**            | Struktur siap untuk ekspansi ke SaaS & AI ecosystem                                      |
+| **Security by Default**     | HTTPS, CSP headers, no inline scripts                                                    |
+| **Observable**              | Logging & monitoring sejak hari pertama                                                  |
 
 ### 1.2 High-Level Architecture
 
@@ -76,22 +77,22 @@
 
 ### 1.3 Technology Stack Details
 
-| Layer | Technology | Version | Alasan |
-|-------|-----------|---------|--------|
-| **Frontend Framework** | Astro | 4.x | SSG terbaik untuk content-focused sites, zero JS by default |
-| **Styling** | Tailwind CSS | 3.x | Utility-first, tree-shaking, rapid development |
-| **Icons** | Lucide Astro | Latest | Ringan, konsisten, tree-shakeable |
-| **Fonts** | Inter / Plus Jakarta Sans | - | Modern, readable, variable font |
-| **Backend API (V1.5)** | Golang | 1.22+ | Efficient, low memory, cocok untuk VPS 1GB |
-| **HTTP Router (Go)** | Chi atau Fiber | Latest | Lightweight, fast, idiomatic |
-| **Web Server** | Nginx | 1.24+ | Stabil, ringan, fitur lengkap |
-| **SSL** | Let's Encrypt + Certbot | - | Gratis, auto-renew |
-| **Form Handling (V1)** | Formspree | Free tier | Tanpa backend, cepat setup |
-| **Analytics (V1)** | Plausible / GA4 | - | Plausible lebih ringan & privacy-friendly |
-| **Process Manager (V1.5)** | Systemd | - | Native Linux, auto-restart |
-| **Version Control** | Git + GitHub | - | Standard industry |
-| **CI/CD (Opsional)** | GitHub Actions | - | Auto deploy on push |
-| **Monitoring** | UptimeRobot (free) + htop | - | External + internal monitoring |
+| Layer                      | Technology                | Version   | Alasan                                                      |
+| -------------------------- | ------------------------- | --------- | ----------------------------------------------------------- |
+| **Frontend Framework**     | Astro                     | 4.x       | SSG terbaik untuk content-focused sites, zero JS by default |
+| **Styling**                | Tailwind CSS              | 3.x       | Utility-first, tree-shaking, rapid development              |
+| **Icons**                  | Lucide Astro              | Latest    | Ringan, konsisten, tree-shakeable                           |
+| **Fonts**                  | Inter / Plus Jakarta Sans | -         | Modern, readable, variable font                             |
+| **Backend API (V1.5)**     | Golang                    | 1.22+     | Efficient, low memory, cocok untuk VPS 1GB                  |
+| **HTTP Router (Go)**       | Chi atau Fiber            | Latest    | Lightweight, fast, idiomatic                                |
+| **Web Server**             | Nginx                     | 1.24+     | Stabil, ringan, fitur lengkap                               |
+| **SSL**                    | Let's Encrypt + Certbot   | -         | Gratis, auto-renew                                          |
+| **Form Handling (V1)**     | Formspree                 | Free tier | Tanpa backend, cepat setup                                  |
+| **Analytics (V1)**         | Plausible / GA4           | -         | Plausible lebih ringan & privacy-friendly                   |
+| **Process Manager (V1.5)** | Systemd                   | -         | Native Linux, auto-restart                                  |
+| **Version Control**        | Git + GitHub              | -         | Standard industry                                           |
+| **CI/CD (Opsional)**       | GitHub Actions            | -         | Auto deploy on push                                         |
+| **Monitoring**             | UptimeRobot (free) + htop | -         | External + internal monitoring                              |
 
 ---
 
@@ -256,13 +257,13 @@ apps/api/
 
 ### 3.1 VPS Specifications Reminder
 
-| Resource | Value | Notes |
-|----------|-------|-------|
-| CPU | 1 vCPU | Shared, cukup untuk static + light API |
-| RAM | 1 GB | Sangat terbatas, harus efisien |
-| Storage | 20 GB SSD | Cukup untuk static files + logs |
-| Bandwidth | Unmetered | Tidak perlu khawatir traffic |
-| OS | Ubuntu 22.04 LTS / Debian 12 | Stabil, well-supported |
+| Resource  | Value                        | Notes                                  |
+| --------- | ---------------------------- | -------------------------------------- |
+| CPU       | 1 vCPU                       | Shared, cukup untuk static + light API |
+| RAM       | 1 GB                         | Sangat terbatas, harus efisien         |
+| Storage   | 20 GB SSD                    | Cukup untuk static files + logs        |
+| Bandwidth | Unmetered                    | Tidak perlu khawatir traffic           |
+| OS        | Ubuntu 22.04 LTS / Debian 12 | Stabil, well-supported                 |
 
 ### 3.2 Memory Budget Plan
 
@@ -479,7 +480,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Install dependencies
         working-directory: ./apps/web
@@ -528,18 +529,18 @@ jobs:
 
 ### 5.1 Security Layers
 
-| Layer | Measure | Implementation |
-|-------|---------|----------------|
-| **Network** | Firewall | UFW: only allow 22 (SSH), 80 (HTTP), 443 (HTTPS) |
-| **Network** | SSH hardening | Key-based auth only, disable root login, change port |
-| **Network** | Fail2ban | Block IPs after failed login attempts |
-| **Transport** | HTTPS | Let's Encrypt, auto-renew, HSTS enabled |
-| **Application** | CSP Headers | Restrict script/style sources |
-| **Application** | No inline scripts | All JS in separate files |
-| **Application** | Rate limiting | Nginx limit_req for API endpoints |
-| **Application** | Input validation | Server-side validation for all forms |
-| **Data** | No sensitive data in repo | .env for secrets, .gitignore for .env |
-| **Monitoring** | Log monitoring | Check /var/log/nginx/access.log & error.log regularly |
+| Layer           | Measure                   | Implementation                                        |
+| --------------- | ------------------------- | ----------------------------------------------------- |
+| **Network**     | Firewall                  | UFW: only allow 22 (SSH), 80 (HTTP), 443 (HTTPS)      |
+| **Network**     | SSH hardening             | Key-based auth only, disable root login, change port  |
+| **Network**     | Fail2ban                  | Block IPs after failed login attempts                 |
+| **Transport**   | HTTPS                     | Let's Encrypt, auto-renew, HSTS enabled               |
+| **Application** | CSP Headers               | Restrict script/style sources                         |
+| **Application** | No inline scripts         | All JS in separate files                              |
+| **Application** | Rate limiting             | Nginx limit_req for API endpoints                     |
+| **Application** | Input validation          | Server-side validation for all forms                  |
+| **Data**        | No sensitive data in repo | .env for secrets, .gitignore for .env                 |
+| **Monitoring**  | Log monitoring            | Check /var/log/nginx/access.log & error.log regularly |
 
 ### 5.2 Secrets Management
 
@@ -580,13 +581,13 @@ PLAUSIBLE_DOMAIN=webifylab.com
 
 ### 6.1 Monitoring Stack (Lightweight)
 
-| Tool | Purpose | Resource Usage |
-|------|---------|----------------|
-| **htop** | Real-time process monitoring | ~2MB RAM |
-| **UptimeRobot** | External uptime monitoring | Free, external |
-| **Nginx access/error logs** | Request & error tracking | Disk only |
-| **Golang structured logs** | API request logging (V1.5) | Disk only |
-| **Systemd journal** | System logs | Disk only |
+| Tool                        | Purpose                      | Resource Usage |
+| --------------------------- | ---------------------------- | -------------- |
+| **htop**                    | Real-time process monitoring | ~2MB RAM       |
+| **UptimeRobot**             | External uptime monitoring   | Free, external |
+| **Nginx access/error logs** | Request & error tracking     | Disk only      |
+| **Golang structured logs**  | API request logging (V1.5)   | Disk only      |
+| **Systemd journal**         | System logs                  | Disk only      |
 
 ### 6.2 Log Rotation
 
@@ -635,13 +636,13 @@ journalctl -u webifylab-api -f
 
 ### 7.1 Backup Strategy
 
-| What | Frequency | Retention | Method |
-|------|-----------|-----------|--------|
-| Website files | Daily | 7 days | rsync to local / cloud storage |
-| Nginx config | On change | Git versioned | Git repository |
-| SSL certificates | Auto-renew | Let's Encrypt manages | Certbot |
-| Database (V2+) | Daily | 30 days | pg_dump + offsite backup |
-| Logs | Daily | 14 days | Logrotate |
+| What             | Frequency  | Retention             | Method                         |
+| ---------------- | ---------- | --------------------- | ------------------------------ |
+| Website files    | Daily      | 7 days                | rsync to local / cloud storage |
+| Nginx config     | On change  | Git versioned         | Git repository                 |
+| SSL certificates | Auto-renew | Let's Encrypt manages | Certbot                        |
+| Database (V2+)   | Daily      | 30 days               | pg_dump + offsite backup       |
+| Logs             | Daily      | 14 days               | Logrotate                      |
 
 ### 7.2 Backup Script (infra/scripts/backup.sh)
 
@@ -666,13 +667,13 @@ echo "✅ Backup completed: $DATE"
 
 ### 7.3 Disaster Recovery Plan
 
-| Scenario | Recovery Steps | RTO | RPO |
-|----------|---------------|-----|-----|
-| VPS down | Restore from backup to new VPS | 1 hour | 24 hours |
-| SSL expired | Run certbot renew | 5 minutes | 0 |
-| Nginx misconfig | Restore config from Git | 10 minutes | 0 |
-| Disk full | Clean logs, expand disk | 30 minutes | 0 |
-| RAM OOM | Restart services, add swap | 5 minutes | 0 |
+| Scenario        | Recovery Steps                 | RTO        | RPO      |
+| --------------- | ------------------------------ | ---------- | -------- |
+| VPS down        | Restore from backup to new VPS | 1 hour     | 24 hours |
+| SSL expired     | Run certbot renew              | 5 minutes  | 0        |
+| Nginx misconfig | Restore config from Git        | 10 minutes | 0        |
+| Disk full       | Clean logs, expand disk        | 30 minutes | 0        |
+| RAM OOM         | Restart services, add swap     | 5 minutes  | 0        |
 
 ---
 
@@ -680,30 +681,30 @@ echo "✅ Backup completed: $DATE"
 
 ### 8.1 Frontend Performance
 
-| Technique | Implementation | Impact |
-|-----------|---------------|--------|
-| **Static generation** | Astro SSG | Zero server-side rendering |
-| **Zero JS by default** | Astro islands only where needed | Minimal JS payload |
-| **Image optimization** | WebP/AVIF, responsive sizes | 50-80% smaller images |
-| **Lazy loading** | `loading="lazy"` for images | Faster initial load |
-| **Font optimization** | Variable fonts, preconnect | Faster font loading |
-| **CSS purging** | Tailwind tree-shaking | Minimal CSS |
-| **Compression** | Gzip/Brotli via Nginx | 60-80% smaller transfers |
-| **Caching** | Long-term cache for static assets | Repeat visits instant |
+| Technique              | Implementation                    | Impact                     |
+| ---------------------- | --------------------------------- | -------------------------- |
+| **Static generation**  | Astro SSG                         | Zero server-side rendering |
+| **Zero JS by default** | Astro islands only where needed   | Minimal JS payload         |
+| **Image optimization** | WebP/AVIF, responsive sizes       | 50-80% smaller images      |
+| **Lazy loading**       | `loading="lazy"` for images       | Faster initial load        |
+| **Font optimization**  | Variable fonts, preconnect        | Faster font loading        |
+| **CSS purging**        | Tailwind tree-shaking             | Minimal CSS                |
+| **Compression**        | Gzip/Brotli via Nginx             | 60-80% smaller transfers   |
+| **Caching**            | Long-term cache for static assets | Repeat visits instant      |
 
 ### 8.2 Performance Budget
 
-| Metric | Budget | Tool |
-|--------|--------|------|
-| Total page size | < 500 KB | `du -sh dist/` |
-| LCP (Largest Contentful Paint) | < 1.5s | Lighthouse |
-| FCP (First Contentful Paint) | < 1.0s | Lighthouse |
-| CLS (Cumulative Layout Shift) | < 0.05 | Lighthouse |
-| TBT (Total Blocking Time) | < 100ms | Lighthouse |
-| Lighthouse Performance | > 95 | Lighthouse |
-| Lighthouse SEO | > 95 | Lighthouse |
-| Lighthouse Accessibility | > 90 | Lighthouse |
-| Lighthouse Best Practices | > 95 | Lighthouse |
+| Metric                         | Budget   | Tool           |
+| ------------------------------ | -------- | -------------- |
+| Total page size                | < 500 KB | `du -sh dist/` |
+| LCP (Largest Contentful Paint) | < 1.5s   | Lighthouse     |
+| FCP (First Contentful Paint)   | < 1.0s   | Lighthouse     |
+| CLS (Cumulative Layout Shift)  | < 0.05   | Lighthouse     |
+| TBT (Total Blocking Time)      | < 100ms  | Lighthouse     |
+| Lighthouse Performance         | > 95     | Lighthouse     |
+| Lighthouse SEO                 | > 95     | Lighthouse     |
+| Lighthouse Accessibility       | > 90     | Lighthouse     |
+| Lighthouse Best Practices      | > 95     | Lighthouse     |
 
 ---
 
@@ -711,11 +712,11 @@ echo "✅ Backup completed: $DATE"
 
 ### 9.1 API Endpoints
 
-| Method | Endpoint | Description | Auth |
-|--------|----------|-------------|------|
-| GET | `/api/health` | Health check | None |
-| POST | `/api/contact` | Submit contact form | Rate limited |
-| POST | `/api/analytics/event` | Track custom events | Rate limited |
+| Method | Endpoint               | Description         | Auth         |
+| ------ | ---------------------- | ------------------- | ------------ |
+| GET    | `/api/health`          | Health check        | None         |
+| POST   | `/api/contact`         | Submit contact form | Rate limited |
+| POST   | `/api/analytics/event` | Track custom events | Rate limited |
 
 ### 9.2 Contact API Design
 
@@ -750,14 +751,14 @@ echo "✅ Backup completed: $DATE"
 
 ### 9.3 Golang Tech Stack Detail (V1.5)
 
-| Component | Choice | Reason |
-|-----------|--------|--------|
-| HTTP Framework | Chi | Lightweight, stdlib-compatible, middleware support |
-| Logger | Zerolog | Zero-allocation, fast, structured |
-| Validator | Go-playground/validator | Industry standard |
-| Config | Viper | Env + file config |
-| Notification | Telegram Bot API | Free, instant notification |
-| Testing | stdlib testing + testify | Standard + assertions |
+| Component      | Choice                   | Reason                                             |
+| -------------- | ------------------------ | -------------------------------------------------- |
+| HTTP Framework | Chi                      | Lightweight, stdlib-compatible, middleware support |
+| Logger         | Zerolog                  | Zero-allocation, fast, structured                  |
+| Validator      | Go-playground/validator  | Industry standard                                  |
+| Config         | Viper                    | Env + file config                                  |
+| Notification   | Telegram Bot API         | Free, instant notification                         |
+| Testing        | stdlib testing + testify | Standard + assertions                              |
 
 ---
 
@@ -832,36 +833,38 @@ main (production)
 
 - **main:** Production-ready code
 - **develop:** Integration branch
-- **feature/*:** New features
-- **fix/*:** Bug fixes
-- **release/*:** Release preparation
+- **feature/\*:** New features
+- **fix/\*:** Bug fixes
+- **release/\*:** Release preparation
 
 ---
 
 ## 11. Risks & Mitigation (Technical)
 
-| Risk | Impact | Likelihood | Mitigation |
-|------|--------|------------|------------|
-| VPS 1GB OOM under load | Website down | Low | Static files + swap + monitoring |
-| SSL certificate expired | Browser warning | Low | Certbot auto-renew + monitoring |
-| Disk full (logs) | Service crash | Medium | Logrotate + monitoring |
-| DDoS attack | Website down | Low | Cloudflare (free tier) + Nginx rate limit |
-| Dependency vulnerability | Security breach | Medium | Regular `npm audit` & `gosec` |
-| Deployment failure | Downtime | Low | Test deploy script locally first |
-| VPS provider downtime | Website down | Low | External monitoring + backup plan |
-| Golang learning curve | Delay V1.5 | Medium | Start with simple endpoints, learn gradually |
+| Risk                     | Impact          | Likelihood | Mitigation                                   |
+| ------------------------ | --------------- | ---------- | -------------------------------------------- |
+| VPS 1GB OOM under load   | Website down    | Low        | Static files + swap + monitoring             |
+| SSL certificate expired  | Browser warning | Low        | Certbot auto-renew + monitoring              |
+| Disk full (logs)         | Service crash   | Medium     | Logrotate + monitoring                       |
+| DDoS attack              | Website down    | Low        | Cloudflare (free tier) + Nginx rate limit    |
+| Dependency vulnerability | Security breach | Medium     | Regular `npm audit` & `gosec`                |
+| Deployment failure       | Downtime        | Low        | Test deploy script locally first             |
+| VPS provider downtime    | Website down    | Low        | External monitoring + backup plan            |
+| Golang learning curve    | Delay V1.5      | Medium     | Start with simple endpoints, learn gradually |
 
 ---
 
 ## 12. Future Roadmap (Technical)
 
 ### V1.0 (Now) — Landing Page
+
 - [x] Astro static site
 - [x] Nginx + SSL
 - [x] Formspree integration
 - [x] Basic analytics
 
 ### V1.5 (Month 2-3) — Backend Foundation
+
 - [ ] Golang API (Chi framework)
 - [ ] Contact form handler (replace Formspree)
 - [ ] Self-hosted analytics endpoint
@@ -869,6 +872,7 @@ main (production)
 - [ ] Systemd service management
 
 ### V2.0 (Month 6+) — SaaS Ecosystem
+
 - [ ] Authentication service (JWT)
 - [ ] Multi-tenant architecture
 - [ ] PostgreSQL database
@@ -877,6 +881,7 @@ main (production)
 - [ ] Kubernetes-ready design
 
 ### V3.0 (Year 2+) — AI & Data
+
 - [ ] Data pipeline (ETL) in Golang
 - [ ] ML model serving (ONNX runtime)
 - [ ] Vector database (pgvector)
@@ -887,18 +892,18 @@ main (production)
 
 ## 13. Open Questions (Technical)
 
-| No | Pertanyaan | Status |
-|----|-----------|--------|
-| Q1 | Apakah VPS sudah di-setup dengan OS Ubuntu/Debian? | Pending |
-| Q2 | Apakah domain sudah dibeli dan DNS pointed ke VPS? | Pending |
-| Q3 | Preferensi framework Golang: Chi atau Fiber? | Pending |
-| Q4 | Apakah ingin self-hosted analytics (Plausible) atau GA4? | Pending |
-| Q5 | Apakah perlu CI/CD sejak V1 atau manual deploy dulu? | Pending |
-| Q6 | Apakah ada preference untuk notification channel (Email/Telegram/Discord)? | Pending |
+| No  | Pertanyaan                                                                 | Status  |
+| --- | -------------------------------------------------------------------------- | ------- |
+| Q1  | Apakah VPS sudah di-setup dengan OS Ubuntu/Debian?                         | Pending |
+| Q2  | Apakah domain sudah dibeli dan DNS pointed ke VPS?                         | Pending |
+| Q3  | Preferensi framework Golang: Chi atau Fiber?                               | Pending |
+| Q4  | Apakah ingin self-hosted analytics (Plausible) atau GA4?                   | Pending |
+| Q5  | Apakah perlu CI/CD sejak V1 atau manual deploy dulu?                       | Pending |
+| Q6  | Apakah ada preference untuk notification channel (Email/Telegram/Discord)? | Pending |
 
 ---
 
-*Dokumen ini adalah living document. Versi akan diperbarui seiring perkembangan arsitektur.*
+_Dokumen ini adalah living document. Versi akan diperbarui seiring perkembangan arsitektur._
 
 **Last Updated:** 17 September 2026
 **Next Step:** Setup VPS, initialize repository, mulai development Astro frontend.

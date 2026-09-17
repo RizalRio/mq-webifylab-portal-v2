@@ -1,14 +1,15 @@
 # 📝 Content & Copywriting Document
+
 ## Webifylab Landing Page — Version 1.0
 
-| Metadata         | Detail                                      |
-|------------------|---------------------------------------------|
-| **Product**      | Webifylab Landing Page                      |
-| **Version**      | 1.0                                         |
-| **Author**       | Rizal                                       |
-| **Created**      | 17 September 2026                           |
-| **Status**       | Draft                                       |
-| **Language**     | Bahasa Indonesia (dengan istilah teknis Inggris) |
+| Metadata     | Detail                                           |
+| ------------ | ------------------------------------------------ |
+| **Product**  | Webifylab Landing Page                           |
+| **Version**  | 1.0                                              |
+| **Author**   | Rizal                                            |
+| **Created**  | 17 September 2026                                |
+| **Status**   | Draft                                            |
+| **Language** | Bahasa Indonesia (dengan istilah teknis Inggris) |
 
 ---
 
@@ -16,30 +17,31 @@
 
 ### 1.1 Brand Voice Characteristics
 
-| Karakteristik | Deskripsi | Contoh |
-|---------------|-----------|--------|
-| **Profesional** | Menunjukkan keahlian dan kredibilitas tanpa sombong | ✅ "Kami membangun sistem yang scalable" ❌ "Kami adalah yang terbaik" |
-| **Inovatif** | Menunjukkan visi ke depan, siap untuk teknologi masa depan | ✅ "Siap untuk era AI & Data" ❌ "Solusi IT biasa saja" |
-| **Approachable** | Mudah dipahami, tidak intimidatif, ramah | ✅ "Mari diskusikan ide Anda" ❌ "Hubungi kami untuk konsultasi profesional" |
-| **Solution-Oriented** | Fokus pada solusi dan hasil, bukan sekadar fitur | ✅ "Website yang menghasilkan leads" ❌ "Website dengan teknologi terbaru" |
-| **Transparent** | Jujur, jelas, tidak overpromise | ✅ "Konsultasi gratis tanpa komitmen" ❌ "Garansi 100% sukses" |
+| Karakteristik         | Deskripsi                                                  | Contoh                                                                       |
+| --------------------- | ---------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| **Profesional**       | Menunjukkan keahlian dan kredibilitas tanpa sombong        | ✅ "Kami membangun sistem yang scalable" ❌ "Kami adalah yang terbaik"       |
+| **Inovatif**          | Menunjukkan visi ke depan, siap untuk teknologi masa depan | ✅ "Siap untuk era AI & Data" ❌ "Solusi IT biasa saja"                      |
+| **Approachable**      | Mudah dipahami, tidak intimidatif, ramah                   | ✅ "Mari diskusikan ide Anda" ❌ "Hubungi kami untuk konsultasi profesional" |
+| **Solution-Oriented** | Fokus pada solusi dan hasil, bukan sekadar fitur           | ✅ "Website yang menghasilkan leads" ❌ "Website dengan teknologi terbaru"   |
+| **Transparent**       | Jujur, jelas, tidak overpromise                            | ✅ "Konsultasi gratis tanpa komitmen" ❌ "Garansi 100% sukses"               |
 
 ### 1.2 Writing Rules
 
-| Do ✅ | Don't ❌ |
-|-------|---------|
-| Gunakan kalimat aktif | Jangan gunakan kalimat pasif berlebihan |
-| Gunakan "Anda" untuk menyapa pembaca | Jangan gunakan "kalian" atau "kamu" (terlalu informal) |
-| Gunakan "kami" untuk merujuk Webifylab | Jangan gunakan "saya" (kecuali di bagian about/founder) |
-| Singkat dan padat (1-2 kalimat per poin) | Jangan menulis paragraf panjang (> 3 kalimat) |
-| Gunakan bullet points untuk list | Jangan menulis list dalam paragraf |
-| Gunakan istilah teknis dengan konteks | Jangan gunakan jargon tanpa penjelasan |
-| Fokus pada manfaat (benefit), bukan fitur | Jangan hanya menyebutkan fitur tanpa manfaat |
-| Gunakan angka spesifik jika ada | Jangan gunakan "banyak", "sering", "cepat" tanpa konteks |
+| Do ✅                                     | Don't ❌                                                 |
+| ----------------------------------------- | -------------------------------------------------------- |
+| Gunakan kalimat aktif                     | Jangan gunakan kalimat pasif berlebihan                  |
+| Gunakan "Anda" untuk menyapa pembaca      | Jangan gunakan "kalian" atau "kamu" (terlalu informal)   |
+| Gunakan "kami" untuk merujuk Webifylab    | Jangan gunakan "saya" (kecuali di bagian about/founder)  |
+| Singkat dan padat (1-2 kalimat per poin)  | Jangan menulis paragraf panjang (> 3 kalimat)            |
+| Gunakan bullet points untuk list          | Jangan menulis list dalam paragraf                       |
+| Gunakan istilah teknis dengan konteks     | Jangan gunakan jargon tanpa penjelasan                   |
+| Fokus pada manfaat (benefit), bukan fitur | Jangan hanya menyebutkan fitur tanpa manfaat             |
+| Gunakan angka spesifik jika ada           | Jangan gunakan "banyak", "sering", "cepat" tanpa konteks |
 
 ### 1.3 Keywords & Phrases
 
 **Keywords yang harus sering muncul:**
+
 - Ekosistem digital
 - Scalable / Siap berkembang
 - AI & Data ready
@@ -47,6 +49,7 @@
 - Partner teknologi jangka panjang
 
 **Phrases yang harus dihindari:**
+
 - "One-stop solution" (terlalu klise)
 - "Terbaik di Indonesia" (overpromise)
 - "Murah dan berkualitas" (terlalu salesy)
@@ -58,13 +61,14 @@
 
 ### S1: Navbar
 
-| Elemen | Content |
-|--------|---------|
-| **Logo Text** | Webifylab |
+| Elemen         | Content                                      |
+| -------------- | -------------------------------------------- |
+| **Logo Text**  | Webifylab                                    |
 | **Menu Items** | Layanan \| Pendekatan \| Portfolio \| Kontak |
-| **CTA Button** | Konsultasi Gratis |
+| **CTA Button** | Konsultasi Gratis                            |
 
 **Notes:**
+
 - Menu items adalah anchor link ke section terkait
 - CTA button mengarah ke section Contact (S9) atau WhatsApp
 
@@ -72,20 +76,22 @@
 
 ### S2: Hero Section
 
-| Elemen | Content |
-|--------|---------|
-| **Headline (H1)** | Dari Ide Menjadi Ekosistem Digital |
-| **Sub-headline** | Webifylab membantu bisnis Anda membangun aplikasi, desain, dan sistem SaaS yang siap berkembang — didukung oleh keahlian AI & Data. |
-| **CTA Primary** | Konsultasi Gratis → |
-| **CTA Secondary** | Lihat Layanan |
-| **Trust Badge (opsional)** | Dipercaya oleh UMKM & Startup di Indonesia |
+| Elemen                     | Content                                                                                                                             |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| **Headline (H1)**          | Dari Ide Menjadi Ekosistem Digital                                                                                                  |
+| **Sub-headline**           | Webifylab membantu bisnis Anda membangun aplikasi, desain, dan sistem SaaS yang siap berkembang — didukung oleh keahlian AI & Data. |
+| **CTA Primary**            | Konsultasi Gratis →                                                                                                                 |
+| **CTA Secondary**          | Lihat Layanan                                                                                                                       |
+| **Trust Badge (opsional)** | Dipercaya oleh UMKM & Startup di Indonesia                                                                                          |
 
 **Alternative Headlines (untuk A/B testing di masa depan):**
+
 1. "Bangun Sistem Digital yang Tumbuh Bersama Bisnis Anda"
 2. "Partner Teknologi untuk Era AI & Data"
 3. "Dari Website hingga Ekosistem SaaS — Kami Siap Mendampingi"
 
 **Visual Direction:**
+
 - Ilustrasi abstrak atau gradient yang menunjukkan "koneksi" dan "ekosistem"
 - Hindari foto stock orang bersalaman (terlalu klise)
 - Warna dominan: Deep Blue/Indigo dengan accent Cyan
@@ -94,10 +100,10 @@
 
 ### S3: Problem Section
 
-| Elemen | Content |
-|--------|---------|
-| **Section Title (H2)** | Mengapa Bisnis Anda Butuh Partner Teknologi yang Tepat? |
-| **Section Subtitle** | Banyak bisnis kehilangan kesempatan karena partner teknologi yang tidak memahami kebutuhan jangka panjang. |
+| Elemen                 | Content                                                                                                    |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **Section Title (H2)** | Mengapa Bisnis Anda Butuh Partner Teknologi yang Tepat?                                                    |
+| **Section Subtitle**   | Banyak bisnis kehilangan kesempatan karena partner teknologi yang tidak memahami kebutuhan jangka panjang. |
 
 **Card 1:**
 | Elemen | Content |
@@ -124,10 +130,10 @@
 
 ### S4: Services Section
 
-| Elemen | Content |
-|--------|---------|
-| **Section Title (H2)** | Layanan Kami |
-| **Section Subtitle** | Tiga pilar layanan yang saling terintegrasi untuk membangun ekosistem digital bisnis Anda. |
+| Elemen                 | Content                                                                                    |
+| ---------------------- | ------------------------------------------------------------------------------------------ |
+| **Section Title (H2)** | Layanan Kami                                                                               |
+| **Section Subtitle**   | Tiga pilar layanan yang saling terintegrasi untuk membangun ekosistem digital bisnis Anda. |
 
 **Card 1 — Pengembangan Aplikasi:**
 | Elemen | Content |
@@ -160,10 +166,10 @@
 
 ### S5: Why Webifylab Section
 
-| Elemen | Content |
-|--------|---------|
-| **Section Title (H2)** | Mengapa Webifylab? |
-| **Section Subtitle** | Kami bukan sekadar vendor — kami adalah partner teknologi yang memahami visi jangka panjang bisnis Anda. |
+| Elemen                 | Content                                                                                                  |
+| ---------------------- | -------------------------------------------------------------------------------------------------------- |
+| **Section Title (H2)** | Mengapa Webifylab?                                                                                       |
+| **Section Subtitle**   | Kami bukan sekadar vendor — kami adalah partner teknologi yang memahami visi jangka panjang bisnis Anda. |
 
 **Item 1:**
 | Elemen | Content |
@@ -197,10 +203,10 @@
 
 ### S6: Tech & Approach Section
 
-| Elemen | Content |
-|--------|---------|
-| **Section Title (H2)** | Pendekatan Kami |
-| **Section Subtitle** | Metodologi kerja yang terstruktur untuk memastikan proyek berjalan lancar dan hasil maksimal. |
+| Elemen                 | Content                                                                                       |
+| ---------------------- | --------------------------------------------------------------------------------------------- |
+| **Section Title (H2)** | Pendekatan Kami                                                                               |
+| **Section Subtitle**   | Metodologi kerja yang terstruktur untuk memastikan proyek berjalan lancar dan hasil maksimal. |
 
 **Step 1:**
 | Elemen | Content |
@@ -231,6 +237,7 @@
 | **Description** | Kami membantu deployment, memberikan dokumentasi lengkap, dan siap mendukung Anda pasca-launch. |
 
 **Tech Stack Showcase (opsional, bisa ditambahkan):**
+
 - **Frontend:** React, Next.js, Astro, Vue.js
 - **Backend:** Node.js, Python (FastAPI), Go
 - **Database:** PostgreSQL, MongoDB, Redis
@@ -241,10 +248,10 @@
 
 ### S7: Portfolio Section
 
-| Elemen | Content |
-|--------|---------|
-| **Section Title (H2)** | Portfolio |
-| **Section Subtitle** | Beberapa proyek yang telah kami kerjakan. |
+| Elemen                 | Content                                   |
+| ---------------------- | ----------------------------------------- |
+| **Section Title (H2)** | Portfolio                                 |
+| **Section Subtitle**   | Beberapa proyek yang telah kami kerjakan. |
 
 **Jika belum ada proyek nyata, gunakan placeholder:**
 
@@ -273,6 +280,7 @@
 | **Description** | Detail proyek akan segera ditampilkan. |
 
 **Alternative: Jika ada proyek personal/open-source yang bisa ditampilkan:**
+
 - Gunakan proyek tersebut sebagai showcase
 - Jelaskan konteks: "Proyek personal" atau "Open-source contribution"
 
@@ -280,10 +288,10 @@
 
 ### S8: Testimonial Section
 
-| Elemen | Content |
-|--------|---------|
-| **Section Title (H2)** | Apa Kata Klien Kami |
-| **Section Subtitle** | Kepuasan klien adalah prioritas utama kami. |
+| Elemen                 | Content                                     |
+| ---------------------- | ------------------------------------------- |
+| **Section Title (H2)** | Apa Kata Klien Kami                         |
+| **Section Subtitle**   | Kepuasan klien adalah prioritas utama kami. |
 
 **Jika belum ada testimonial, sembunyikan section ini di V1 atau gunakan placeholder:**
 
@@ -302,21 +310,22 @@
 
 ### S9: CTA / Contact Section
 
-| Elemen | Content |
-|--------|---------|
-| **Section Title (H2)** | Siap Membangun Sesuatu yang Luar Biasa? |
-| **Section Subtitle** | Ceritakan ide atau tantangan Anda. Konsultasi pertama gratis, tanpa komitmen. |
+| Elemen                 | Content                                                                       |
+| ---------------------- | ----------------------------------------------------------------------------- |
+| **Section Title (H2)** | Siap Membangun Sesuatu yang Luar Biasa?                                       |
+| **Section Subtitle**   | Ceritakan ide atau tantangan Anda. Konsultasi pertama gratis, tanpa komitmen. |
 
 **Form Fields:**
 
-| Field | Label | Placeholder | Validation Message |
-|-------|-------|-------------|-------------------|
-| **Nama** | Nama Lengkap | Masukkan nama Anda | Nama wajib diisi |
-| **Email** | Email Aktif | nama@email.com | Email tidak valid |
-| **Jenis Layanan** | Jenis Layanan yang Dibutuhkan | Pilih layanan | Pilih salah satu layanan |
-| **Pesan** | Ceritakan Kebutuhan Anda | Deskripsikan proyek atau tantangan Anda... | Pesan wajib diisi (min. 10 karakter) |
+| Field             | Label                         | Placeholder                                | Validation Message                   |
+| ----------------- | ----------------------------- | ------------------------------------------ | ------------------------------------ |
+| **Nama**          | Nama Lengkap                  | Masukkan nama Anda                         | Nama wajib diisi                     |
+| **Email**         | Email Aktif                   | nama@email.com                             | Email tidak valid                    |
+| **Jenis Layanan** | Jenis Layanan yang Dibutuhkan | Pilih layanan                              | Pilih salah satu layanan             |
+| **Pesan**         | Ceritakan Kebutuhan Anda      | Deskripsikan proyek atau tantangan Anda... | Pesan wajib diisi (min. 10 karakter) |
 
 **Dropdown Options for "Jenis Layanan":**
+
 - Pengembangan Aplikasi (Web/Mobile)
 - Desain Grafis & Web Design
 - SaaS & Ekosistem Digital
@@ -342,6 +351,7 @@
 | **Description** | Gagal mengirim pesan. Silakan coba lagi atau hubungi kami via WhatsApp. |
 
 **WhatsApp Pre-filled Message:**
+
 ```
 Halo Webifylab, saya tertarik untuk konsultasi mengenai:
 [Nama]
@@ -354,21 +364,21 @@ Halo Webifylab, saya tertarik untuk konsultasi mengenai:
 
 ### S10: Footer
 
-| Elemen | Content |
-|--------|---------|
-| **Copyright** | © 2026 Webifylab. All rights reserved. |
-| **Tagline** | Dari Ide Menjadi Ekosistem Digital |
-| **Quick Links** | Layanan \| Pendekatan \| Portfolio \| Kontak |
-| **Contact** | hello@webifylab.com |
-| **Social Media** | LinkedIn \| GitHub \| Instagram |
-| **Legal Links** | Privacy Policy \| Terms of Service |
+| Elemen           | Content                                      |
+| ---------------- | -------------------------------------------- |
+| **Copyright**    | © 2026 Webifylab. All rights reserved.       |
+| **Tagline**      | Dari Ide Menjadi Ekosistem Digital           |
+| **Quick Links**  | Layanan \| Pendekatan \| Portfolio \| Kontak |
+| **Contact**      | hello@webifylab.com                          |
+| **Social Media** | LinkedIn \| GitHub \| Instagram              |
+| **Legal Links**  | Privacy Policy \| Terms of Service           |
 
 ---
 
 ## 3. FAQ Section (Bonus — Bagus untuk SEO)
 
-| Elemen | Content |
-|--------|---------|
+| Elemen                 | Content                         |
+| ---------------------- | ------------------------------- |
 | **Section Title (H2)** | Pertanyaan yang Sering Diajukan |
 
 **Q1:**
@@ -407,30 +417,30 @@ Halo Webifylab, saya tertarik untuk konsultasi mengenai:
 
 ### Homepage
 
-| Tag | Content |
-|-----|---------|
-| **Title** | Webifylab — Software House untuk Ekosistem Digital & AI |
+| Tag                  | Content                                                                                                                                                             |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Title**            | Webifylab — Software House untuk Ekosistem Digital & AI                                                                                                             |
 | **Meta Description** | Webifylab membantu bisnis membangun aplikasi, desain, dan sistem SaaS yang scalable. Partner teknologi jangka panjang dengan keahlian AI & Data. Konsultasi gratis! |
-| **Keywords** | software house, pembuatan aplikasi, web development, SaaS development, AI integration, data analytics, UI/UX design, ekosistem digital |
+| **Keywords**         | software house, pembuatan aplikasi, web development, SaaS development, AI integration, data analytics, UI/UX design, ekosistem digital                              |
 
 ### Open Graph Tags
 
-| Tag | Content |
-|-----|---------|
-| **og:title** | Webifylab — Dari Ide Menjadi Ekosistem Digital |
+| Tag                | Content                                                                                                    |
+| ------------------ | ---------------------------------------------------------------------------------------------------------- |
+| **og:title**       | Webifylab — Dari Ide Menjadi Ekosistem Digital                                                             |
 | **og:description** | Partner teknologi untuk membangun aplikasi, desain, dan sistem SaaS yang siap berkembang dengan AI & Data. |
-| **og:image** | [URL gambar OG — 1200x630px] |
-| **og:url** | https://webifylab.com |
-| **og:type** | website |
+| **og:image**       | [URL gambar OG — 1200x630px]                                                                               |
+| **og:url**         | https://webifylab.com                                                                                      |
+| **og:type**        | website                                                                                                    |
 
 ### Twitter Card
 
-| Tag | Content |
-|-----|---------|
-| **twitter:card** | summary_large_image |
-| **twitter:title** | Webifylab — Dari Ide Menjadi Ekosistem Digital |
+| Tag                     | Content                                                                                                    |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **twitter:card**        | summary_large_image                                                                                        |
+| **twitter:title**       | Webifylab — Dari Ide Menjadi Ekosistem Digital                                                             |
 | **twitter:description** | Partner teknologi untuk membangun aplikasi, desain, dan sistem SaaS yang siap berkembang dengan AI & Data. |
-| **twitter:image** | [URL gambar OG] |
+| **twitter:image**       | [URL gambar OG]                                                                                            |
 
 ---
 
@@ -438,35 +448,35 @@ Halo Webifylab, saya tertarik untuk konsultasi mengenai:
 
 ### Form Validation
 
-| Scenario | Message |
-|----------|---------|
-| **Empty required field** | [Field name] wajib diisi |
-| **Invalid email** | Format email tidak valid |
-| **Message too short** | Pesan terlalu singkat (min. 10 karakter) |
-| **Form submitted successfully** | Pesan terkirim! Kami akan membalas dalam 1x24 jam. |
-| **Form submission failed** | Gagal mengirim pesan. Silakan coba lagi atau hubungi via WhatsApp. |
+| Scenario                        | Message                                                            |
+| ------------------------------- | ------------------------------------------------------------------ |
+| **Empty required field**        | [Field name] wajib diisi                                           |
+| **Invalid email**               | Format email tidak valid                                           |
+| **Message too short**           | Pesan terlalu singkat (min. 10 karakter)                           |
+| **Form submitted successfully** | Pesan terkirim! Kami akan membalas dalam 1x24 jam.                 |
+| **Form submission failed**      | Gagal mengirim pesan. Silakan coba lagi atau hubungi via WhatsApp. |
 
 ### Loading States
 
-| Scenario | Message |
-|----------|---------|
+| Scenario            | Message           |
+| ------------------- | ----------------- |
 | **Form submitting** | Mengirim pesan... |
-| **Page loading** | Memuat... |
+| **Page loading**    | Memuat...         |
 
 ### Empty States
 
-| Scenario | Message |
-|----------|---------|
-| **Portfolio empty** | Portfolio akan segera ditampilkan. Stay tuned! |
-| **Testimonial empty** | Testimonial akan segera ditampilkan. |
+| Scenario              | Message                                        |
+| --------------------- | ---------------------------------------------- |
+| **Portfolio empty**   | Portfolio akan segera ditampilkan. Stay tuned! |
+| **Testimonial empty** | Testimonial akan segera ditampilkan.           |
 
 ### 404 Page
 
-| Elemen | Content |
-|--------|---------|
-| **Title** | Halaman Tidak Ditemukan |
+| Elemen          | Content                                                        |
+| --------------- | -------------------------------------------------------------- |
+| **Title**       | Halaman Tidak Ditemukan                                        |
 | **Description** | Maaf, halaman yang Anda cari tidak ada atau telah dipindahkan. |
-| **CTA** | Kembali ke Beranda → |
+| **CTA**         | Kembali ke Beranda →                                           |
 
 ---
 
@@ -489,18 +499,18 @@ Sebelum deploy, pastikan semua konten berikut sudah final:
 
 ## 7. Open Questions
 
-| No | Pertanyaan | Status |
-|----|-----------|--------|
-| Q1 | Apakah headline "Dari Ide Menjadi Ekosistem Digital" sudah sesuai? Atau ada alternatif lain yang lebih disukai? | Pending |
-| Q2 | Apakah ada nama brand/produk SaaS spesifik yang ingin disebutkan di section Services? | Pending |
-| Q3 | Apakah ada proyek nyata yang bisa ditampilkan di portfolio? Atau tetap gunakan placeholder? | Pending |
-| Q4 | Nomor WhatsApp mana yang akan digunakan untuk CTA? | Pending |
-| Q5 | Email kontak apa yang akan digunakan? (hello@webifylab.com atau email pribadi?) | Pending |
-| Q6 | Apakah ada testimonial dari klien sebelumnya? Atau sembunyikan section ini di V1? | Pending |
+| No  | Pertanyaan                                                                                                      | Status  |
+| --- | --------------------------------------------------------------------------------------------------------------- | ------- |
+| Q1  | Apakah headline "Dari Ide Menjadi Ekosistem Digital" sudah sesuai? Atau ada alternatif lain yang lebih disukai? | Pending |
+| Q2  | Apakah ada nama brand/produk SaaS spesifik yang ingin disebutkan di section Services?                           | Pending |
+| Q3  | Apakah ada proyek nyata yang bisa ditampilkan di portfolio? Atau tetap gunakan placeholder?                     | Pending |
+| Q4  | Nomor WhatsApp mana yang akan digunakan untuk CTA?                                                              | Pending |
+| Q5  | Email kontak apa yang akan digunakan? (hello@webifylab.com atau email pribadi?)                                 | Pending |
+| Q6  | Apakah ada testimonial dari klien sebelumnya? Atau sembunyikan section ini di V1?                               | Pending |
 
 ---
 
-*Dokumen ini adalah living document. Versi akan diperbarui seiring feedback dan perkembangan proyek.*
+_Dokumen ini adalah living document. Versi akan diperbarui seiring feedback dan perkembangan proyek._
 
 **Last Updated:** 17 September 2026
 **Next Step:** Review konten, finalisasi copywriting, lalu lanjut ke Design System / Wireframe.

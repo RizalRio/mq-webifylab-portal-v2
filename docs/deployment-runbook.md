@@ -1,15 +1,16 @@
 # 🚀 Deployment & Operations Runbook
+
 ## Webifylab Landing Page — Version 1.0
 
-| Metadata         | Detail                                      |
-|------------------|---------------------------------------------|
-| **Product**      | Webifylab Landing Page                      |
-| **Version**      | 1.0                                         |
-| **Author**       | Rizal                                       |
-| **Created**      | 17 September 2026                           |
-| **Status**       | Draft                                       |
-| **Architecture** | Monorepo (Astro + Golang)                   |
-| **VPS Specs**    | 1 vCPU, 1 GB RAM, 20 GB SSD, Unmetered     |
+| Metadata         | Detail                                 |
+| ---------------- | -------------------------------------- |
+| **Product**      | Webifylab Landing Page                 |
+| **Version**      | 1.0                                    |
+| **Author**       | Rizal                                  |
+| **Created**      | 17 September 2026                      |
+| **Status**       | Draft                                  |
+| **Architecture** | Monorepo (Astro + Golang)              |
+| **VPS Specs**    | 1 vCPU, 1 GB RAM, 20 GB SSD, Unmetered |
 
 ---
 
@@ -17,16 +18,16 @@
 
 ### 1.1 What You Need Before Starting
 
-| Item | Status | Notes |
-|------|--------|-------|
-| **VPS** | ☐ | Ubuntu 22.04 LTS / Debian 12 |
-| **Domain** | ☐ | webifylab.com (atau domain pilihan) |
-| **SSH Access** | ☐ | Root atau sudo user |
-| **Local Machine** | ☐ | Laptop Advan Workpro (Linux/WSL/Mac) |
-| **Git** | ☐ | Installed di local & VPS |
-| **Node.js** | ☐ | v20+ (local only, untuk build Astro) |
-| **Go** | ☐ | v1.22+ (VPS, untuk V1.5) |
-| **Code Editor** | ☐ | VS Code |
+| Item              | Status | Notes                                |
+| ----------------- | ------ | ------------------------------------ |
+| **VPS**           | ☐      | Ubuntu 22.04 LTS / Debian 12         |
+| **Domain**        | ☐      | webifylab.com (atau domain pilihan)  |
+| **SSH Access**    | ☐      | Root atau sudo user                  |
+| **Local Machine** | ☐      | Laptop Advan Workpro (Linux/WSL/Mac) |
+| **Git**           | ☐      | Installed di local & VPS             |
+| **Node.js**       | ☐      | v20+ (local only, untuk build Astro) |
+| **Go**            | ☐      | v1.22+ (VPS, untuk V1.5)             |
+| **Code Editor**   | ☐      | VS Code                              |
 
 ### 1.2 Environment Variables
 
@@ -193,6 +194,7 @@ sudo ufw status verbose
 ```
 
 **Expected output:**
+
 ```
 Status: active
 
@@ -283,6 +285,7 @@ free -h
 ```
 
 **Expected output:**
+
 ```
               total        used        free      shared  buff/cache   available
 Mem:          987Mi       234Mi       456Mi       12Mi       297Mi       612Mi
@@ -344,12 +347,12 @@ sudo chmod -R 755 /var/www/webifylab
 
 **Di domain registrar (Niagahoster, Cloudflare, Namecheap, dll):**
 
-| Type | Name | Value | TTL |
-|------|------|-------|-----|
-| **A** | `@` | `xxx.xxx.xxx.xxx` | 3600 |
-| **A** | `www` | `xxx.xxx.xxx.xxx` | 3600 |
-| **AAAA** | `@` | (IPv6 jika ada) | 3600 |
-| **TXT** | `@` | `v=spf1 include:_spf.google.com ~all` | 3600 |
+| Type     | Name  | Value                                 | TTL  |
+| -------- | ----- | ------------------------------------- | ---- |
+| **A**    | `@`   | `xxx.xxx.xxx.xxx`                     | 3600 |
+| **A**    | `www` | `xxx.xxx.xxx.xxx`                     | 3600 |
+| **AAAA** | `@`   | (IPv6 jika ada)                       | 3600 |
+| **TXT**  | `@`   | `v=spf1 include:_spf.google.com ~all` | 3600 |
 
 ### 3.2 Verify DNS Propagation
 
@@ -623,6 +626,7 @@ sudo nginx -t
 ```
 
 **Expected output:**
+
 ```
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
@@ -729,6 +733,7 @@ curl -I https://webifylab.com
 ```
 
 **Expected response:**
+
 ```
 HTTP/2 200
 server: nginx
@@ -755,12 +760,12 @@ ssh-copy-id -i ~/.ssh/webifylab_deploy.pub deploy@xxx.xxx.xxx.xxx
 
 Di GitHub repository → Settings → Secrets and variables → Actions:
 
-| Secret Name | Value |
-|-------------|-------|
-| `VPS_HOST` | `xxx.xxx.xxx.xxx` |
-| `VPS_USER` | `deploy` |
-| `VPS_SSH_KEY` | (isi dari `~/.ssh/webifylab_deploy`) |
-| `VPS_SSH_PORT` | `22` |
+| Secret Name    | Value                                |
+| -------------- | ------------------------------------ |
+| `VPS_HOST`     | `xxx.xxx.xxx.xxx`                    |
+| `VPS_USER`     | `deploy`                             |
+| `VPS_SSH_KEY`  | (isi dari `~/.ssh/webifylab_deploy`) |
+| `VPS_SSH_PORT` | `22`                                 |
 
 #### Step 3: Create GitHub Actions Workflow
 
@@ -772,13 +777,13 @@ on:
   push:
     branches: [main]
     paths:
-      - 'apps/web/**'
-      - '.github/workflows/deploy.yml'
+      - "apps/web/**"
+      - ".github/workflows/deploy.yml"
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -786,8 +791,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
           cache-dependency-path: apps/web/package-lock.json
 
       - name: Install dependencies
@@ -976,8 +981,9 @@ curl https://webifylab.com/api/health
 ```
 
 **Expected response:**
+
 ```json
-{"status":"ok","version":"1.0.0","timestamp":"2026-09-17T10:00:00Z"}
+{ "status": "ok", "version": "1.0.0", "timestamp": "2026-09-17T10:00:00Z" }
 ```
 
 ---
@@ -987,12 +993,14 @@ curl https://webifylab.com/api/health
 ### 8.1 Uptime Monitoring
 
 **UptimeRobot (Free):**
+
 - [ ] Daftar di https://uptimerobot.com
 - [ ] Add monitor: `https://webifylab.com`
 - [ ] Interval: 5 menit
 - [ ] Alert: Email + Telegram
 
 **Health Check Endpoint:**
+
 ```bash
 # Test dari luar
 curl -I https://webifylab.com/health
@@ -1095,14 +1103,14 @@ awk '{print $4}' /var/log/webifylab/access.log | cut -d: -f2 | sort | uniq -c | 
 
 ### 9.1 Backup Strategy
 
-| What | Frequency | Retention | Method |
-|------|-----------|-----------|--------|
-| **Website files** | Daily | 7 days | tar + local |
-| **Nginx config** | On change | Git versioned | Git |
-| **SSL certificates** | Auto | Let's Encrypt | Certbot |
-| **Database (V1.5)** | Daily | 30 days | pg_dump |
-| **Logs** | Daily | 14 days | Logrotate |
-| **Full VPS** | Weekly | 4 weeks | VPS provider snapshot |
+| What                 | Frequency | Retention     | Method                |
+| -------------------- | --------- | ------------- | --------------------- |
+| **Website files**    | Daily     | 7 days        | tar + local           |
+| **Nginx config**     | On change | Git versioned | Git                   |
+| **SSL certificates** | Auto      | Let's Encrypt | Certbot               |
+| **Database (V1.5)**  | Daily     | 30 days       | pg_dump               |
+| **Logs**             | Daily     | 14 days       | Logrotate             |
+| **Full VPS**         | Weekly    | 4 weeks       | VPS provider snapshot |
 
 ### 9.2 Backup Script
 
@@ -1195,16 +1203,16 @@ pg_restore -U webifylab -h localhost -d webifylab -v \
 
 ### 9.4 Disaster Recovery Plan
 
-| Scenario | Steps | RTO | RPO |
-|----------|-------|-----|-----|
-| **Website down (Nginx)** | `sudo systemctl restart nginx` | 1 min | 0 |
-| **API down (V1.5)** | `sudo systemctl restart webifylab-api` | 1 min | 0 |
-| **SSL expired** | `sudo certbot renew` | 5 min | 0 |
-| **Disk full** | Clean logs, expand disk | 30 min | 0 |
-| **RAM OOM** | Restart services, check swap | 5 min | 0 |
-| **Corrupted files** | Restore from backup | 15 min | 24h |
-| **VPS total failure** | Provision new VPS, restore backups | 1-2h | 24h |
-| **DDoS attack** | Enable Cloudflare, rate limit | 30 min | 0 |
+| Scenario                 | Steps                                  | RTO    | RPO |
+| ------------------------ | -------------------------------------- | ------ | --- |
+| **Website down (Nginx)** | `sudo systemctl restart nginx`         | 1 min  | 0   |
+| **API down (V1.5)**      | `sudo systemctl restart webifylab-api` | 1 min  | 0   |
+| **SSL expired**          | `sudo certbot renew`                   | 5 min  | 0   |
+| **Disk full**            | Clean logs, expand disk                | 30 min | 0   |
+| **RAM OOM**              | Restart services, check swap           | 5 min  | 0   |
+| **Corrupted files**      | Restore from backup                    | 15 min | 24h |
+| **VPS total failure**    | Provision new VPS, restore backups     | 1-2h   | 24h |
+| **DDoS attack**          | Enable Cloudflare, rate limit          | 30 min | 0   |
 
 ---
 
@@ -1333,11 +1341,11 @@ sudo apt clean
 
 ### 10.2 Emergency Contacts
 
-| Service | Contact | Notes |
-|---------|---------|-------|
-| **VPS Provider** | (isi sesuai provider) | Untuk hardware/network issues |
-| **Domain Registrar** | (isi sesuai registrar) | Untuk DNS issues |
-| **Let's Encrypt** | https://community.letsencrypt.org | Untuk SSL issues |
+| Service              | Contact                           | Notes                         |
+| -------------------- | --------------------------------- | ----------------------------- |
+| **VPS Provider**     | (isi sesuai provider)             | Untuk hardware/network issues |
+| **Domain Registrar** | (isi sesuai registrar)            | Untuk DNS issues              |
+| **Let's Encrypt**    | https://community.letsencrypt.org | Untuk SSL issues              |
 
 ---
 
@@ -1533,17 +1541,17 @@ ps aux --sort=-%cpu | head -10
 
 ## 14. Open Questions
 
-| No | Pertanyaan | Status |
-|----|-----------|--------|
-| Q1 | VPS provider apa yang digunakan? (DigitalOcean, Vultr, IDCloudHost, dll) | Pending |
-| Q2 | Domain registrar apa yang digunakan? (Niagahoster, Cloudflare, Namecheap) | Pending |
-| Q3 | Apakah ingin menggunakan Cloudflare sebagai CDN/proxy? | Pending |
-| Q4 | Apakah ada preferensi untuk notification channel (Email/Telegram)? | Pending |
-| Q5 | Apakah VPS sudah di-provision atau masih perlu dibeli? | Pending |
+| No  | Pertanyaan                                                                | Status  |
+| --- | ------------------------------------------------------------------------- | ------- |
+| Q1  | VPS provider apa yang digunakan? (DigitalOcean, Vultr, IDCloudHost, dll)  | Pending |
+| Q2  | Domain registrar apa yang digunakan? (Niagahoster, Cloudflare, Namecheap) | Pending |
+| Q3  | Apakah ingin menggunakan Cloudflare sebagai CDN/proxy?                    | Pending |
+| Q4  | Apakah ada preferensi untuk notification channel (Email/Telegram)?        | Pending |
+| Q5  | Apakah VPS sudah di-provision atau masih perlu dibeli?                    | Pending |
 
 ---
 
-*Dokumen ini adalah living document. Versi akan diperbarui seiring perubahan infrastruktur.*
+_Dokumen ini adalah living document. Versi akan diperbarui seiring perubahan infrastruktur._
 
 **Last Updated:** 17 September 2026
 **Next Step:** Setup VPS, configure domain, deploy landing page.

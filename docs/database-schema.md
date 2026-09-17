@@ -1,15 +1,16 @@
 # 🗄️ Database Schema Document
+
 ## Webifylab Ecosystem — Version 1.0
 
-| Metadata         | Detail                                      |
-|------------------|---------------------------------------------|
-| **Product**      | Webifylab Ecosystem                         |
-| **Version**      | 1.0                                         |
-| **Author**       | Rizal                                       |
-| **Created**      | 17 September 2026                           |
-| **Status**       | Draft (Design Phase)                        |
-| **Database**     | PostgreSQL 16+                              |
-| **Implementation** | V1.5 (Contact + Analytics), V2 (SaaS)    |
+| Metadata           | Detail                                |
+| ------------------ | ------------------------------------- |
+| **Product**        | Webifylab Ecosystem                   |
+| **Version**        | 1.0                                   |
+| **Author**         | Rizal                                 |
+| **Created**        | 17 September 2026                     |
+| **Status**         | Draft (Design Phase)                  |
+| **Database**       | PostgreSQL 16+                        |
+| **Implementation** | V1.5 (Contact + Analytics), V2 (SaaS) |
 
 ---
 
@@ -17,43 +18,43 @@
 
 ### 1.1 Core Principles
 
-| Principle | Deskripsi |
-|-----------|-----------|
-| **Normalized (3NF)** | Hindari data redundancy, pastikan integritas |
-| **Audit Trail** | Setiap tabel punya `created_at`, `updated_at` |
-| **Soft Delete** | Gunakan `deleted_at` daripada hard delete |
-| **Multi-tenant Ready** | Schema siap untuk SaaS multi-tenant di V2 |
-| **AI/Vector Ready** | Support pgvector untuk embeddings & RAG |
-| **Performance First** | Indexes strategis, query optimization |
-| **Security** | Row-Level Security (RLS) untuk multi-tenant |
+| Principle              | Deskripsi                                     |
+| ---------------------- | --------------------------------------------- |
+| **Normalized (3NF)**   | Hindari data redundancy, pastikan integritas  |
+| **Audit Trail**        | Setiap tabel punya `created_at`, `updated_at` |
+| **Soft Delete**        | Gunakan `deleted_at` daripada hard delete     |
+| **Multi-tenant Ready** | Schema siap untuk SaaS multi-tenant di V2     |
+| **AI/Vector Ready**    | Support pgvector untuk embeddings & RAG       |
+| **Performance First**  | Indexes strategis, query optimization         |
+| **Security**           | Row-Level Security (RLS) untuk multi-tenant   |
 
 ### 1.2 Naming Conventions
 
-| Element | Convention | Example |
-|---------|-----------|---------|
-| **Table names** | snake_case, plural | `users`, `contact_submissions` |
-| **Column names** | snake_case | `first_name`, `created_at` |
-| **Primary keys** | `id` (UUID) | `id UUID PRIMARY KEY` |
-| **Foreign keys** | `{table}_id` | `user_id`, `project_id` |
-| **Timestamps** | `created_at`, `updated_at`, `deleted_at` | `TIMESTAMPTZ DEFAULT NOW()` |
-| **Booleans** | `is_*` atau `has_*` | `is_active`, `has_subscription` |
-| **Enums** | snake_case | `app_development`, `web_design` |
-| **Indexes** | `idx_{table}_{column}` | `idx_users_email` |
+| Element          | Convention                               | Example                         |
+| ---------------- | ---------------------------------------- | ------------------------------- |
+| **Table names**  | snake_case, plural                       | `users`, `contact_submissions`  |
+| **Column names** | snake_case                               | `first_name`, `created_at`      |
+| **Primary keys** | `id` (UUID)                              | `id UUID PRIMARY KEY`           |
+| **Foreign keys** | `{table}_id`                             | `user_id`, `project_id`         |
+| **Timestamps**   | `created_at`, `updated_at`, `deleted_at` | `TIMESTAMPTZ DEFAULT NOW()`     |
+| **Booleans**     | `is_*` atau `has_*`                      | `is_active`, `has_subscription` |
+| **Enums**        | snake_case                               | `app_development`, `web_design` |
+| **Indexes**      | `idx_{table}_{column}`                   | `idx_users_email`               |
 
 ### 1.3 Data Types Strategy
 
-| Use Case | PostgreSQL Type | Alasan |
-|----------|----------------|--------|
-| **Primary Key** | `UUID` | Globally unique, aman untuk API |
-| **Timestamps** | `TIMESTAMPTZ` | Timezone-aware |
-| **JSON Data** | `JSONB` | Flexible, indexable, fast |
-| **Text (long)** | `TEXT` | No length limit |
-| **Text (short)** | `VARCHAR(n)` | With length constraint |
-| **Enum-like** | `VARCHAR` + CHECK | More flexible than ENUM type |
-| **Money** | `DECIMAL(10,2)` | Precise, no floating point issues |
-| **Boolean** | `BOOLEAN` | Native type |
-| **Arrays** | `TEXT[]` atau `UUID[]` | Native array support |
-| **Vectors (AI)** | `VECTOR(1536)` | pgvector extension |
+| Use Case         | PostgreSQL Type        | Alasan                            |
+| ---------------- | ---------------------- | --------------------------------- |
+| **Primary Key**  | `UUID`                 | Globally unique, aman untuk API   |
+| **Timestamps**   | `TIMESTAMPTZ`          | Timezone-aware                    |
+| **JSON Data**    | `JSONB`                | Flexible, indexable, fast         |
+| **Text (long)**  | `TEXT`                 | No length limit                   |
+| **Text (short)** | `VARCHAR(n)`           | With length constraint            |
+| **Enum-like**    | `VARCHAR` + CHECK      | More flexible than ENUM type      |
+| **Money**        | `DECIMAL(10,2)`        | Precise, no floating point issues |
+| **Boolean**      | `BOOLEAN`              | Native type                       |
+| **Arrays**       | `TEXT[]` atau `UUID[]` | Native array support              |
+| **Vectors (AI)** | `VECTOR(1536)`         | pgvector extension                |
 
 ---
 
@@ -154,27 +155,27 @@
 ```sql
 CREATE TABLE contact_submissions (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    
+
     -- Contact info
     name VARCHAR(100) NOT NULL,
     email VARCHAR(255) NOT NULL,
     service_type VARCHAR(50) NOT NULL,
     message TEXT NOT NULL,
-    
+
     -- Status tracking
     status VARCHAR(20) NOT NULL DEFAULT 'new'
         CHECK (status IN ('new', 'read', 'replied', 'archived', 'spam')),
-    
+
     -- Metadata
     source VARCHAR(50) DEFAULT 'website',  -- website, whatsapp, email
     ip_address INET,
     user_agent TEXT,
     referrer_url TEXT,
-    
+
     -- Admin notes
     admin_notes TEXT,
     assigned_to UUID REFERENCES users(id),
-    
+
     -- Timestamps
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -188,7 +189,7 @@ CREATE INDEX idx_contact_submissions_created_at ON contact_submissions(created_a
 CREATE INDEX idx_contact_submissions_service_type ON contact_submissions(service_type);
 
 -- Full-text search index
-CREATE INDEX idx_contact_submissions_search ON contact_submissions 
+CREATE INDEX idx_contact_submissions_search ON contact_submissions
     USING GIN(to_tsvector('indonesian', name || ' ' || message));
 
 -- Trigger for updated_at
@@ -200,25 +201,26 @@ CREATE TRIGGER update_contact_submissions_updated_at
 
 **Columns Detail:**
 
-| Column | Type | Constraints | Description |
-|--------|------|-------------|-------------|
-| `id` | UUID | PK, auto-generated | Unique identifier |
-| `name` | VARCHAR(100) | NOT NULL | Nama pengirim |
-| `email` | VARCHAR(255) | NOT NULL | Email pengirim |
-| `service_type` | VARCHAR(50) | NOT NULL, CHECK | Jenis layanan yang diminati |
-| `message` | TEXT | NOT NULL | Pesan dari pengunjung |
-| `status` | VARCHAR(20) | NOT NULL, DEFAULT 'new' | Status follow-up |
-| `source` | VARCHAR(50) | DEFAULT 'website' | Sumber kontak |
-| `ip_address` | INET | - | IP address pengirim |
-| `user_agent` | TEXT | - | Browser/device info |
-| `referrer_url` | TEXT | - | URL asal pengunjung |
-| `admin_notes` | TEXT | - | Catatan internal admin |
-| `assigned_to` | UUID | FK → users | Admin yang menangani |
-| `created_at` | TIMESTAMPTZ | NOT NULL, DEFAULT NOW() | Waktu submit |
-| `updated_at` | TIMESTAMPTZ | NOT NULL, DEFAULT NOW() | Waktu update terakhir |
-| `deleted_at` | TIMESTAMPTZ | NULL | Soft delete timestamp |
+| Column         | Type         | Constraints             | Description                 |
+| -------------- | ------------ | ----------------------- | --------------------------- |
+| `id`           | UUID         | PK, auto-generated      | Unique identifier           |
+| `name`         | VARCHAR(100) | NOT NULL                | Nama pengirim               |
+| `email`        | VARCHAR(255) | NOT NULL                | Email pengirim              |
+| `service_type` | VARCHAR(50)  | NOT NULL, CHECK         | Jenis layanan yang diminati |
+| `message`      | TEXT         | NOT NULL                | Pesan dari pengunjung       |
+| `status`       | VARCHAR(20)  | NOT NULL, DEFAULT 'new' | Status follow-up            |
+| `source`       | VARCHAR(50)  | DEFAULT 'website'       | Sumber kontak               |
+| `ip_address`   | INET         | -                       | IP address pengirim         |
+| `user_agent`   | TEXT         | -                       | Browser/device info         |
+| `referrer_url` | TEXT         | -                       | URL asal pengunjung         |
+| `admin_notes`  | TEXT         | -                       | Catatan internal admin      |
+| `assigned_to`  | UUID         | FK → users              | Admin yang menangani        |
+| `created_at`   | TIMESTAMPTZ  | NOT NULL, DEFAULT NOW() | Waktu submit                |
+| `updated_at`   | TIMESTAMPTZ  | NOT NULL, DEFAULT NOW() | Waktu update terakhir       |
+| `deleted_at`   | TIMESTAMPTZ  | NULL                    | Soft delete timestamp       |
 
 **Service Type Enum Values:**
+
 - `app_development` — Pengembangan Aplikasi
 - `web_design` — Desain Grafis & Web Design
 - `saas_ecosystem` — SaaS & Ekosistem Digital
@@ -234,26 +236,26 @@ CREATE TRIGGER update_contact_submissions_updated_at
 ```sql
 CREATE TABLE analytics_events (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    
+
     -- Event data
     event_type VARCHAR(50) NOT NULL,
     session_id UUID NOT NULL,
     user_id UUID REFERENCES users(id),  -- NULL for anonymous
-    
+
     -- Page/URL info
     page_url TEXT NOT NULL,
     page_title TEXT,
     referrer_url TEXT,
-    
+
     -- Metadata (flexible JSON)
     metadata JSONB DEFAULT '{}',
-    
+
     -- Device/Location
     ip_address INET,
     user_agent TEXT,
     country_code VARCHAR(2),
     city VARCHAR(100),
-    
+
     -- Timestamp
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
@@ -274,6 +276,7 @@ CREATE INDEX idx_analytics_events_metadata ON analytics_events USING GIN(metadat
 ```
 
 **Event Types:**
+
 - `page_view` — Pengunjung membuka halaman
 - `cta_click` — Klik tombol CTA
 - `form_submit` — Submit form kontak
@@ -318,25 +321,25 @@ CREATE INDEX idx_analytics_events_metadata ON analytics_events USING GIN(metadat
 ```sql
 CREATE TABLE users (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    
+
     -- Authentication
     email VARCHAR(255) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
     email_verified_at TIMESTAMPTZ,
-    
+
     -- Profile
     full_name VARCHAR(100) NOT NULL,
     avatar_url TEXT,
     bio TEXT,
-    
+
     -- Role & permissions
     role VARCHAR(20) NOT NULL DEFAULT 'user'
         CHECK (role IN ('user', 'admin', 'super_admin')),
-    
+
     -- Status
     is_active BOOLEAN NOT NULL DEFAULT true,
     last_login_at TIMESTAMPTZ,
-    
+
     -- Timestamps
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -359,22 +362,22 @@ CREATE INDEX idx_users_created_at ON users(created_at DESC);
 ```sql
 CREATE TABLE tenants (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    
+
     -- Identity
     name VARCHAR(100) NOT NULL,
     slug VARCHAR(50) NOT NULL UNIQUE,
-    
+
     -- Ownership
     owner_id UUID NOT NULL REFERENCES users(id),
-    
+
     -- Settings (flexible JSON)
     settings JSONB DEFAULT '{}',
-    
+
     -- Status
     is_active BOOLEAN NOT NULL DEFAULT true,
     plan VARCHAR(20) NOT NULL DEFAULT 'free'
         CHECK (plan IN ('free', 'starter', 'professional', 'enterprise')),
-    
+
     -- Timestamps
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -403,31 +406,31 @@ CREATE POLICY tenant_isolation ON tenants
 ```sql
 CREATE TABLE projects (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    
+
     -- Client info
     client_id UUID REFERENCES tenants(id),
     user_id UUID NOT NULL REFERENCES users(id),  -- Project owner
-    
+
     -- Project details
     title VARCHAR(200) NOT NULL,
     description TEXT,
     status VARCHAR(30) NOT NULL DEFAULT 'planning'
         CHECK (status IN ('planning', 'in_progress', 'completed', 'on_hold', 'cancelled')),
-    
+
     -- Timeline
     start_date DATE,
     end_date DATE,
     actual_end_date DATE,
-    
+
     -- Budget
     budget DECIMAL(12, 2),
     currency VARCHAR(3) DEFAULT 'IDR',
-    
+
     -- Metadata
     tech_stack TEXT[],  -- Array of technologies
     project_url TEXT,
     thumbnail_url TEXT,
-    
+
     -- Timestamps
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -450,34 +453,34 @@ CREATE INDEX idx_projects_start_date ON projects(start_date);
 ```sql
 CREATE TABLE portfolios (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    
+
     -- Content
     title VARCHAR(200) NOT NULL,
     slug VARCHAR(200) NOT NULL UNIQUE,
     category VARCHAR(50) NOT NULL
         CHECK (category IN ('web_app', 'mobile_app', 'ui_ux_design', 'saas', 'other')),
     description TEXT NOT NULL,
-    
+
     -- Media
     thumbnail_url TEXT NOT NULL,
     images TEXT[],  -- Array of image URLs
     project_url TEXT,
     case_study_url TEXT,
-    
+
     -- Details
     tech_stack TEXT[],
     client_name VARCHAR(100),
     client_industry VARCHAR(50),
-    
+
     -- Publishing
     is_published BOOLEAN NOT NULL DEFAULT false,
     published_at TIMESTAMPTZ,
     featured BOOLEAN NOT NULL DEFAULT false,
-    
+
     -- SEO
     meta_title VARCHAR(60),
     meta_description VARCHAR(160),
-    
+
     -- Timestamps
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -492,7 +495,7 @@ CREATE INDEX idx_portfolios_featured ON portfolios(featured) WHERE featured = tr
 CREATE INDEX idx_portfolios_published_at ON portfolios(published_at DESC);
 
 -- Full-text search
-CREATE INDEX idx_portfolios_search ON portfolios 
+CREATE INDEX idx_portfolios_search ON portfolios
     USING GIN(to_tsvector('indonesian', title || ' ' || description));
 ```
 
@@ -505,29 +508,29 @@ CREATE INDEX idx_portfolios_search ON portfolios
 ```sql
 CREATE TABLE subscriptions (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    
+
     -- Ownership
     tenant_id UUID NOT NULL REFERENCES tenants(id),
-    
+
     -- Plan details
     plan VARCHAR(20) NOT NULL
         CHECK (plan IN ('starter', 'professional', 'enterprise')),
     status VARCHAR(20) NOT NULL DEFAULT 'active'
         CHECK (status IN ('active', 'past_due', 'cancelled', 'trialing')),
-    
+
     -- Billing cycle
     current_period_start TIMESTAMPTZ NOT NULL,
     current_period_end TIMESTAMPTZ NOT NULL,
     cancel_at_period_end BOOLEAN NOT NULL DEFAULT false,
-    
+
     -- Payment
     amount DECIMAL(10, 2) NOT NULL,
     currency VARCHAR(3) NOT NULL DEFAULT 'IDR',
     payment_method VARCHAR(50),
-    
+
     -- External references
     payment_gateway_id VARCHAR(100),  -- Midtrans/Xendit ID
-    
+
     -- Timestamps
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
@@ -548,28 +551,28 @@ CREATE INDEX idx_subscriptions_current_period_end ON subscriptions(current_perio
 ```sql
 CREATE TABLE invoices (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    
+
     -- References
     subscription_id UUID NOT NULL REFERENCES subscriptions(id),
     tenant_id UUID NOT NULL REFERENCES tenants(id),
-    
+
     -- Invoice details
     invoice_number VARCHAR(50) NOT NULL UNIQUE,
     amount DECIMAL(10, 2) NOT NULL,
     currency VARCHAR(3) NOT NULL DEFAULT 'IDR',
-    
+
     -- Status
     status VARCHAR(20) NOT NULL DEFAULT 'pending'
         CHECK (status IN ('pending', 'paid', 'failed', 'cancelled', 'refunded')),
-    
+
     -- Dates
     issued_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     due_date DATE NOT NULL,
     paid_at TIMESTAMPTZ,
-    
+
     -- PDF
     pdf_url TEXT,
-    
+
     -- Timestamps
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
@@ -594,20 +597,20 @@ CREATE INDEX idx_invoices_invoice_number ON invoices(invoice_number);
 ```sql
 CREATE TABLE ai_conversations (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    
+
     -- Ownership
     user_id UUID NOT NULL REFERENCES users(id),
     tenant_id UUID REFERENCES tenants(id),
-    
+
     -- Conversation details
     title VARCHAR(200),
     model VARCHAR(50) NOT NULL,  -- gpt-4, llama-3, etc
     system_prompt TEXT,
-    
+
     -- Stats
     total_tokens INTEGER DEFAULT 0,
     total_messages INTEGER DEFAULT 0,
-    
+
     -- Timestamps
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -629,23 +632,23 @@ CREATE INDEX idx_ai_conversations_created_at ON ai_conversations(created_at DESC
 ```sql
 CREATE TABLE ai_messages (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    
+
     -- References
     conversation_id UUID NOT NULL REFERENCES ai_conversations(id) ON DELETE CASCADE,
-    
+
     -- Message content
     role VARCHAR(20) NOT NULL
         CHECK (role IN ('system', 'user', 'assistant', 'tool')),
     content TEXT NOT NULL,
-    
+
     -- Metadata
     tokens_used INTEGER,
     model VARCHAR(50),
     finish_reason VARCHAR(50),
-    
+
     -- Embeddings (for RAG retrieval)
     embedding VECTOR(1536),  -- pgvector
-    
+
     -- Timestamp
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
@@ -656,7 +659,7 @@ CREATE INDEX idx_ai_messages_role ON ai_messages(role);
 CREATE INDEX idx_ai_messages_created_at ON ai_messages(created_at);
 
 -- Vector index for similarity search (RAG)
-CREATE INDEX idx_ai_messages_embedding ON ai_messages 
+CREATE INDEX idx_ai_messages_embedding ON ai_messages
     USING ivfflat (embedding vector_cosine_ops) WITH (lists = 100);
 ```
 
@@ -669,21 +672,21 @@ CREATE INDEX idx_ai_messages_embedding ON ai_messages
 ```sql
 CREATE TABLE embeddings (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    
+
     -- Content reference
     content_type VARCHAR(50) NOT NULL,  -- document, faq, product, etc
     content_id UUID NOT NULL,
-    
+
     -- Chunk data
     chunk_text TEXT NOT NULL,
     chunk_index INTEGER NOT NULL,
-    
+
     -- Embedding vector
     embedding VECTOR(1536) NOT NULL,  -- OpenAI ada-002 dimension
-    
+
     -- Metadata
     metadata JSONB DEFAULT '{}',
-    
+
     -- Timestamp
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
@@ -693,7 +696,7 @@ CREATE INDEX idx_embeddings_content ON embeddings(content_type, content_id);
 CREATE INDEX idx_embeddings_chunk_index ON embeddings(chunk_index);
 
 -- Vector index for similarity search
-CREATE INDEX idx_embeddings_vector ON embeddings 
+CREATE INDEX idx_embeddings_vector ON embeddings
     USING ivfflat (embedding vector_cosine_ops) WITH (lists = 100);
 ```
 
@@ -929,11 +932,11 @@ func NewDatabasePool(cfg *DatabaseConfig) (*pgxpool.Pool, error) {
     if err != nil {
         return nil, err
     }
-    
+
     // Connection pool settings
     poolConfig.MaxConns = 20
     poolConfig.MinConns = 5
-    
+
     return pgxpool.NewWithConfig(context.Background(), poolConfig)
 }
 ```
@@ -964,7 +967,7 @@ func (r *ContactRepository) Create(ctx context.Context, submission *models.Conta
         VALUES ($1, $2, $3, $4, $5, $6, $7)
         RETURNING id, created_at
     `
-    
+
     return r.pool.QueryRow(ctx, query,
         submission.Name,
         submission.Email,
@@ -984,13 +987,13 @@ func (r *ContactRepository) GetAll(ctx context.Context, limit, offset int) ([]mo
         ORDER BY created_at DESC
         LIMIT $1 OFFSET $2
     `
-    
+
     rows, err := r.pool.Query(ctx, query, limit, offset)
     if err != nil {
         return nil, err
     }
     defer rows.Close()
-    
+
     var submissions []models.ContactSubmission
     for rows.Next() {
         var s models.ContactSubmission
@@ -999,7 +1002,7 @@ func (r *ContactRepository) GetAll(ctx context.Context, limit, offset int) ([]mo
         }
         submissions = append(submissions, s)
     }
-    
+
     return submissions, nil
 }
 ```
@@ -1148,17 +1151,17 @@ ssl_key_file = '/etc/ssl/private/postgres.key'
 
 ## 13. Open Questions
 
-| No | Pertanyaan | Status |
-|----|-----------|--------|
-| Q1 | Apakah PostgreSQL adalah pilihan yang tepat, atau preferensi SQLite untuk V1.5? | Pending |
-| Q2 | Apakah perlu multi-tenant architecture di V2, atau single-tenant dulu? | Pending |
-| Q3 | Apakah ada preferensi payment gateway (Midtrans, Xendit, Stripe)? | Pending |
-| Q4 | Apakah ingin self-hosted AI models atau pakai API (OpenAI, Anthropic)? | Pending |
-| Q5 | Apakah perlu database monitoring tool (pgAdmin, Metabase)? | Pending |
+| No  | Pertanyaan                                                                      | Status  |
+| --- | ------------------------------------------------------------------------------- | ------- |
+| Q1  | Apakah PostgreSQL adalah pilihan yang tepat, atau preferensi SQLite untuk V1.5? | Pending |
+| Q2  | Apakah perlu multi-tenant architecture di V2, atau single-tenant dulu?          | Pending |
+| Q3  | Apakah ada preferensi payment gateway (Midtrans, Xendit, Stripe)?               | Pending |
+| Q4  | Apakah ingin self-hosted AI models atau pakai API (OpenAI, Anthropic)?          | Pending |
+| Q5  | Apakah perlu database monitoring tool (pgAdmin, Metabase)?                      | Pending |
 
 ---
 
-*Dokumen ini adalah living document. Versi akan diperbarui seiring perkembangan ekosistem Webifylab.*
+_Dokumen ini adalah living document. Versi akan diperbarui seiring perkembangan ekosistem Webifylab._
 
 **Last Updated:** 17 September 2026
 **Next Step:** Setup PostgreSQL di VPS, run migrations V1.5, integrate dengan Golang API.
