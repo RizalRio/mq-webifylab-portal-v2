@@ -2,8 +2,8 @@
 import { SITE } from "../../lib/constants";
 import { Mail, MessageCircle, Check, AlertCircle, ArrowRight, Loader } from "@lucide/astro";
 
-// Replace with your actual Formspree endpoint
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+// Endpoint untuk Golang API backend (V1.5)
+const API_ENDPOINT = "http://localhost:8080/api/contact";
 
 const SERVICE_OPTIONS = [
   "Pengembangan Aplikasi (Web/Mobile)",
@@ -86,7 +86,7 @@ const WA_MESSAGE = encodeURIComponent(
       <form
         id="contact-form"
         class="contact-form"
-        action={FORMSPREE_ENDPOINT}
+        action={API_ENDPOINT}
         method="POST"
         novalidate
       >
@@ -488,10 +488,20 @@ const WA_MESSAGE = encodeURIComponent(
 
     try {
       const data = new FormData(form);
+      const payload = {
+        name: data.get("name"),
+        email: data.get("email"),
+        serviceType: data.get("service"),
+        message: data.get("message")
+      };
+
       const res  = await fetch(form.action, {
         method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
+        body: JSON.stringify(payload),
+        headers: { 
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
       });
 
       if (res.ok) {

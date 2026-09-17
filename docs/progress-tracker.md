@@ -10,7 +10,7 @@
 | **Created**        | 17 September 2026                           |
 | **Last Updated**   | 17 September 2026                           |
 | **Current Phase**  | Phase 3: Frontend Development               |
-| **Overall Status** | 🟢 100% Complete (Frontend 100% Complete)   |
+| **Overall Status** | 🟢 100% Complete (Frontend & Backend V1.5 Complete)   |
 
 ---
 
@@ -21,7 +21,7 @@
 | **Documentation**     | 🟢 100% Complete | PRD, Content, TDD, Design, Wireframe, DB, SEO, Deploy + README done  |
 | **Environment Setup** | 🟡 50% Complete  | Local repo & Node.js setup selesai, VPS belum di-provision           |
 | **Frontend Dev**      | 🟢 100% Complete | Sitemap, robots.txt, lucide icons & legal pages done                 |
-| **Backend Dev**       | 🔴 0% Complete   | Ditargetkan untuk V1.5                                               |
+| **Backend Dev**       | 🟢 100% Complete | Golang API V1.5 & PostgreSQL selesai diimplementasi  |
 | **Deployment**        | 🔴 0% Complete   | Menunggu VPS provision & go-live                                     |
 | **Timeline**          | 🟢 On Track      | Target launch V1: Akhir bulan ini                                    |
 
@@ -112,15 +112,15 @@ _Status: 100% Complete._
 
 ## ⚙️ Phase 4: Backend Development (Golang - V1.5)
 
-_Status: Backlog. Akan dikerjakan setelah V1 Landing Page live._
+_Status: 100% Complete._
 
-- [ ] Initialize Go module di `apps/api` (`go mod init`).
-- [ ] Setup folder structure (`cmd`, `internal`, `pkg`).
-- [ ] Buat `main.go` dengan Chi/Fiber router.
-- [ ] Implementasi `/api/health` endpoint.
-- [ ] Implementasi `/api/contact` endpoint (terima JSON, validasi, kirim notifikasi Telegram/Email).
-- [ ] Setup PostgreSQL connection (VPS) & run migrations.
-- [ ] Ganti Formspree di frontend untuk hit Golang API.
+- [x] Initialize Go module di `apps/api` (`go mod init`).
+- [x] Setup folder structure (`cmd`, `internal`, `pkg`).
+- [x] Buat `main.go` dengan Chi/Fiber router.
+- [x] Implementasi `/api/health` endpoint.
+- [x] Implementasi `/api/contact` endpoint (terima JSON, validasi, kirim notifikasi Telegram/Email).
+- [x] Setup PostgreSQL connection (VPS) & run migrations.
+- [x] Ganti Formspree di frontend untuk hit Golang API.
 
 ---
 
