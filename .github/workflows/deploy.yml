@@ -56,5 +56,5 @@ jobs:
           script: |
             cd /root/webifylab
             touch apps/api/.env
-            docker compose down || true
+            docker compose down --remove-orphans
             docker compose up -d --build
