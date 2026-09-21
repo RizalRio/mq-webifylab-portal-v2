@@ -55,5 +55,6 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             cd /root/webifylab
-            docker compose down
+            touch apps/api/.env
+            docker compose down || true
             docker compose up -d --build
