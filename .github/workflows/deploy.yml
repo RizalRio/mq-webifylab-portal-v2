@@ -1,22 +1,22 @@
-name: Deploy to VPS
+name: Deploy Landing Page ke VPS
 
 on:
   push:
     branches:
-      - main
+      - main # Akan berjalan otomatis setiap ada push ke branch main
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
           cache-dependency-path: apps/web/package-lock.json
 
