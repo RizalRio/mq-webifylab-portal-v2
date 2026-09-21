@@ -15,6 +15,8 @@ help: ## Show this help
 	@echo "  make test-web    - Run web tests"
 	@echo "  make test-api    - Run API tests"
 	@echo "  make deploy      - Deploy to VPS"
+	@echo "  make docker-up   - Start services with Docker Compose"
+	@echo "  make docker-down - Stop Docker Compose services"
 	@echo "  make clean       - Clean build artifacts"
 	@echo ""
 
@@ -43,6 +45,12 @@ test-api: ## Run API tests
 deploy: ## Deploy to VPS
 	@echo "Run deploy script..."
 	powershell -File infra/scripts/deploy.ps1
+
+docker-up: ## Start services with Docker Compose
+	docker compose up -d --build
+
+docker-down: ## Stop Docker Compose services
+	docker compose down
 
 clean: ## Clean build artifacts
 	rm -rf apps/web/dist

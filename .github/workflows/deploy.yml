@@ -1,0 +1,59 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: apps/web/package-lock.json
+
+      - name: Install Frontend Dependencies
+        working-directory: ./apps/web
+        run: npm ci
+
+      - name: Build Astro Frontend
+        working-directory: ./apps/web
+        run: npm run build
+
+      - name: Deploy Frontend to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          source: "apps/web/dist/*"
+          target: "/root/webifylab/html"
+          strip_components: 3 # Menghilangkan struktur 'apps/web/dist' saat disalin
+
+      - name: Deploy Backend & Docker Config to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          source: "apps/api,docker-compose.yml,infra/nginx/nginx.conf"
+          target: "/root/webifylab"
+
+      - name: Start Docker Services via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd /root/webifylab
+            docker compose down
+            docker compose up -d --build
