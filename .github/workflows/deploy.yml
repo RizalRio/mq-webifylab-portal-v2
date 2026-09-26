@@ -121,7 +121,10 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             cd /opt/webifylab
-            touch .env
+            # Hapus .env lama dan buat ulang dari GitHub Secrets agar 100% aman
+            echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" > .env
+            echo "RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}" >> .env
+            # Tambahkan secret lain di sini jika ada (contoh: TELEGRAM_BOT_TOKEN)
             docker compose up -d --build
             sleep 10
             docker compose ps

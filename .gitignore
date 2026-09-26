@@ -1,4 +1,3 @@
-$gitignore = @"
 # ========================================
 # Webifylab Monorepo .gitignore
 # ========================================
@@ -64,7 +63,3 @@ coverage/
 # Misc
 .cache/
 *.tsbuildinfo
-"@
-
-Set-Content -Path ".gitignore" -Value $gitignore -Encoding UTF8
-Write-Host "✅ .gitignore created" -ForegroundColor Green
