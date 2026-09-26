@@ -92,11 +92,11 @@ jobs:
             apps/web/dist/ \
             ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:/opt/webifylab/web/
 
-      - name: Upload Go binary to server
+      - name: Upload Go binary & Dockerfile to server
         run: |
           rsync -avz \
             -e "ssh -i ~/.ssh/deploy_key" \
-            apps/api/webifylab-api \
+            apps/api/webifylab-api apps/api/Dockerfile \
             ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:/opt/webifylab/api/
 
       - name: Upload infra files (nginx, postgres)
@@ -121,6 +121,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             cd /opt/webifylab
+            touch .env
             docker compose up -d --build
             sleep 10
             docker compose ps

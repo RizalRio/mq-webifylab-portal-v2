@@ -29,7 +29,7 @@ services:
   # ─── Golang API ───
   api:
     build:
-      context: ./apps/api
+      context: ./api
       dockerfile: Dockerfile
     container_name: webifylab-api
     restart: unless-stopped
