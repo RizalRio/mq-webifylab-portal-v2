@@ -1,0 +1,138 @@
+name: Deploy Webifylab to Server
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # Allow manual trigger
+
+env:
+  GO_VERSION: "1.22"
+  NODE_VERSION: "20"
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # ─── Checkout Code ───
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ─── Build Astro Frontend ───
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+          cache-dependency-path: apps/web/package-lock.json
+
+      - name: Install frontend dependencies
+        working-directory: ./apps/web
+        run: npm ci
+
+      - name: Build Astro site
+        working-directory: ./apps/web
+        run: npm run build
+        env:
+          PUBLIC_SITE_URL: https://webifylab.my.id
+
+      - name: Verify Astro build output
+        working-directory: ./apps/web
+        run: |
+          test -d dist
+          test -f dist/index.html
+          du -sh dist/
+
+      # ─── Build Golang Backend ───
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
+
+      - name: Build Go binary (cross-compile for Linux)
+        working-directory: ./apps/api
+        run: |
+          CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build \
+            -ldflags="-s -w -X main.version=$(git rev-parse --short HEAD)" \
+            -o webifylab-api \
+            ./cmd/server/main.go
+          ls -lh webifylab-api
+
+      # ─── Deploy to Server ───
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+
+      - name: Stop Coming Soon container (if exists)
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            docker stop webifylab_landing 2>/dev/null || true
+            docker rm webifylab_landing 2>/dev/null || true
+
+      - name: Create deployment directory
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            sudo mkdir -p /opt/webifylab/{web,api,infra/nginx,infra/postgres}
+            sudo chown -R ${{ secrets.SERVER_USERNAME }}:${{ secrets.SERVER_USERNAME }} /opt/webifylab
+
+      - name: Upload Astro build to server
+        run: |
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            apps/web/dist/ \
+            ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:/opt/webifylab/web/
+
+      - name: Upload Go binary to server
+        run: |
+          rsync -avz \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            apps/api/webifylab-api \
+            ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:/opt/webifylab/api/
+
+      - name: Upload infra files (nginx, postgres)
+        run: |
+          rsync -avz \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            infra/ \
+            ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:/opt/webifylab/infra/
+
+      - name: Upload docker-compose.yml
+        run: |
+          rsync -avz \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            docker-compose.yml \
+            ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:/opt/webifylab/
+
+      - name: Start production stack
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd /opt/webifylab
+            docker compose up -d --build
+            sleep 10
+            docker compose ps
+            echo "✅ Deployment complete!"
+
+      - name: Health check
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            sleep 5
+            curl -f http://localhost/api/health || exit 1
+            echo "✅ Health check passed"
